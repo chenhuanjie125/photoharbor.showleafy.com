@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PhotoHarbor user guide for first archive, proof, Safe Delete, and recovery.">
+    <title>使用说明 | PhotoHarbor</title>
+    <link rel="icon" href="assets/app-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/app-icon.png">
+    <link rel="stylesheet" href="assets/styles.css?v=20260606i">
+  </head>
+  <body data-title-key="guide_title">
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html"><img class="brand-mark" src="assets/app-icon.png" alt=""><span>PhotoHarbor</span></a>
+        <div class="nav-links">
+          <a href="index.html" data-i18n="nav_home">首页</a>
+          <a href="privacy.html" data-i18n="nav_privacy">隐私</a>
+          <a href="support.html" data-i18n="nav_support">支持</a>
+          <a href="guide.html" aria-current="page" data-i18n="nav_guide">使用说明</a>
+        </div>
+        <div class="nav-actions">
+          <div class="lang-switch" aria-label="Language switch">
+            <button class="lang-option" type="button" data-lang="zh">中</button>
+            <button class="lang-option" type="button" data-lang="en">EN</button>
+          </div>
+          <a class="btn btn-primary" href="mailto:support@showleafy.com" data-i18n="nav_cta">下载 App</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="page-hero-card">
+          <p class="eyebrow" data-i18n="nav_guide">使用说明</p>
+          <h1 data-i18n="guide_title">从第一次归档到安全释放空间</h1>
+          <p class="page-hero-copy" data-i18n="guide_intro">按照下面的步骤完成第一次 PhotoHarbor 工作流：添加目标、选择照片、等待 proof、处理阻断、再安全删除。</p>
+        </div>
+      </section>
+
+      <div class="page-layout">
+        <div class="page-grid">
+          <aside class="toc" aria-label="Guide sections">
+            <a href="#prepare" data-i18n="guide_toc_1">准备工作</a>
+            <a href="#target" data-i18n="guide_toc_2">添加目标</a>
+            <a href="#task" data-i18n="guide_toc_3">创建任务</a>
+            <a href="#proof" data-i18n="guide_toc_4">等待 proof</a>
+            <a href="#delete" data-i18n="guide_toc_5">安全删除</a>
+            <a href="#library" data-i18n="guide_toc_6">浏览与恢复</a>
+          </aside>
+          <div class="page-content">
+            <section class="page-section" id="prepare">
+              <h2 data-i18n="guide_prepare_title">准备工作</h2>
+              <p data-i18n="guide_prepare_text">准备一个可访问的 NAS、Mac / Windows 共享文件夹、WebDAV、SFTP 或云盘目标，并在 iOS 中授予 PhotoHarbor 照片访问权限。</p>
+            </section>
+            <section class="page-section" id="target">
+              <h2 data-i18n="guide_target_title">添加存储目标</h2>
+              <p data-i18n="guide_target_text">在 Targets 中添加目标并完成连接检查。云盘目标需要通过对应平台 OAuth 授权，并选择用于归档的文件夹。</p>
+            </section>
+            <section class="page-section" id="task">
+              <h2 data-i18n="guide_task_title">创建归档任务</h2>
+              <p data-i18n="guide_task_text">在 Archive 中选择目标、远端文件夹、冲突策略和照片/视频。任务创建后会进入后台队列。</p>
+            </section>
+            <section class="page-section" id="proof">
+              <h2 data-i18n="guide_proof_title">等待归档证明</h2>
+              <p data-i18n="guide_proof_text">任务会经历上传、上传回执、提交、预览和最终归档证明检查。只有 proof 完成后，项目才具备 Safe Delete 资格。</p>
+              <div class="notice" data-i18n="privacy_delete_text">PhotoHarbor 不会自动删除本机照片。只有通过 proof 的项目才会进入 Safe Delete 复核，最终删除仍需要用户确认。</div>
+            </section>
+            <section class="page-section" id="delete">
+              <h2 data-i18n="guide_delete_title">安全删除</h2>
+              <p data-i18n="guide_delete_text">进入 Safe Delete 查看候选、proof 和阻断原因。需要时主动再次校验，最后通过双确认删除本机副本。</p>
+            </section>
+            <section class="page-section" id="library">
+              <h2 data-i18n="guide_library_title">浏览与恢复</h2>
+              <p data-i18n="guide_library_text">在 Timeline 浏览远端媒体库。你可以预览、分享或保存回 iPhone，但缓存预览不能替代原件。</p>
+              <div class="placeholder" style="margin-top: 22px;">
+                <div>
+                  <strong data-i18n="guide_visual_title">流程截图占位</strong>
+                  <span data-i18n="guide_visual_note">后续替换为添加目标、归档任务、proof 和 Safe Delete 的连续截图</span>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><h2>PhotoHarbor</h2><p data-i18n="footer_intro">把照片归档到你自己的存储位置，在证明远端副本可读后，再决定是否释放本机空间。</p></div>
+        <div><h3 data-i18n="footer_product">产品</h3><div class="footer-links"><a href="index.html" data-i18n="nav_home">首页</a><a href="guide.html" data-i18n="nav_guide">使用说明</a></div></div>
+        <div><h3 data-i18n="footer_docs">文档</h3><div class="footer-links"><a href="privacy.html" data-i18n="nav_privacy">隐私</a><a href="support.html" data-i18n="nav_support">支持</a></div></div>
+        <div><h3 data-i18n="footer_contact">联系</h3><div class="footer-links"><a href="mailto:support@showleafy.com">support@showleafy.com</a></div><p data-i18n="footer_privacy_note">PhotoHarbor 不通过官网托管你的照片或凭据。</p></div>
+      </div>
+    </footer>
+    <script src="assets/app.js?v=20260606"></script>
+  </body>
+</html>

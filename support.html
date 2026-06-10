@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="PhotoHarbor support and troubleshooting.">
+    <title>支持 | PhotoHarbor</title>
+    <link rel="icon" href="assets/app-icon.png" type="image/png">
+    <link rel="apple-touch-icon" href="assets/app-icon.png">
+    <link rel="stylesheet" href="assets/styles.css?v=20260606i">
+  </head>
+  <body data-title-key="support_title">
+    <header class="site-header">
+      <nav class="nav" aria-label="Primary">
+        <a class="brand" href="index.html"><img class="brand-mark" src="assets/app-icon.png" alt=""><span>PhotoHarbor</span></a>
+        <div class="nav-links">
+          <a href="index.html" data-i18n="nav_home">首页</a>
+          <a href="privacy.html" data-i18n="nav_privacy">隐私</a>
+          <a href="support.html" aria-current="page" data-i18n="nav_support">支持</a>
+          <a href="guide.html" data-i18n="nav_guide">使用说明</a>
+        </div>
+        <div class="nav-actions">
+          <div class="lang-switch" aria-label="Language switch">
+            <button class="lang-option" type="button" data-lang="zh">中</button>
+            <button class="lang-option" type="button" data-lang="en">EN</button>
+          </div>
+          <a class="btn btn-primary" href="mailto:support@showleafy.com" data-i18n="nav_cta">下载 App</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero">
+        <div class="page-hero-card">
+          <p class="eyebrow" data-i18n="nav_support">支持</p>
+          <h1 data-i18n="support_title">我们一起把归档链路收口</h1>
+          <p class="page-hero-copy" data-i18n="support_intro">如果连接、上传、证明或 Safe Delete 出现问题，先看影响范围，再按步骤处理。需要帮助时请联系 support@showleafy.com。</p>
+        </div>
+      </section>
+
+      <section class="section section-tight">
+        <div class="contact-card">
+          <div>
+            <h2 data-i18n="support_contact_title">联系支持</h2>
+            <p data-i18n="support_contact_text">发送问题描述、目标类型、发生时间和脱敏诊断文件，我们会更快定位。</p>
+          </div>
+          <a class="btn btn-secondary" href="mailto:support@showleafy.com" data-i18n="support_email">support@showleafy.com</a>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="grid grid-3">
+          <article class="card"><div class="icon-bubble">1</div><h3 data-i18n="support_card_1">添加目标失败</h3><p data-i18n="support_card_1_text">检查地址、端口、账号权限和目标目录读写能力。</p></article>
+          <article class="card"><div class="icon-bubble">2</div><h3 data-i18n="support_card_2">上传暂停或失败</h3><p data-i18n="support_card_2_text">确认网络策略、Wi-Fi 设置、云盘授权和任务详情中的失败项。</p></article>
+          <article class="card"><div class="icon-bubble">3</div><h3 data-i18n="support_card_3">Safe Delete 不可用</h3><p data-i18n="support_card_3_text">查看 proof 状态和阻断原因。失败项不得继续删除。</p></article>
+          <article class="card"><div class="icon-bubble">4</div><h3 data-i18n="support_card_4">预览或缩略图异常</h3><p data-i18n="support_card_4_text">远端媒体库会先尝试缓存和原生缩略图，失败时可重新扫描或导出诊断。</p></article>
+          <article class="card"><div class="icon-bubble">5</div><h3 data-i18n="support_card_5">云盘授权问题</h3><p data-i18n="support_card_5_text">重新授权前确认 provider、账号和文件夹选择是否正确。</p></article>
+          <article class="card"><div class="icon-bubble">6</div><h3 data-i18n="support_card_6">导出诊断</h3><p data-i18n="support_card_6_text">设置页可生成脱敏 JSON，用于说明任务状态和错误类别。</p></article>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="section-header">
+          <h2 data-i18n="support_faq_title">常见问题</h2>
+        </div>
+        <div class="faq">
+          <details open>
+            <summary data-i18n="support_q1">PhotoHarbor 会自动删除照片吗？</summary>
+            <p data-i18n="support_a1">不会。删除只会在 Safe Delete 复核后，由用户明确确认触发。</p>
+          </details>
+          <details>
+            <summary data-i18n="support_q2">上传完成是否代表可以删除？</summary>
+            <p data-i18n="support_a2">不代表。必须等远端可读证明完成，且没有阻断原因，才会进入删除复核。</p>
+          </details>
+          <details>
+            <summary data-i18n="support_q3">远端发现的照片可以作为删除依据吗？</summary>
+            <p data-i18n="support_a3">默认不可以。远端发现项没有归档 proof，不能伪装成本机可删资产。</p>
+          </details>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div><h2>PhotoHarbor</h2><p data-i18n="footer_intro">把照片归档到你自己的存储位置，在证明远端副本可读后，再决定是否释放本机空间。</p></div>
+        <div><h3 data-i18n="footer_product">产品</h3><div class="footer-links"><a href="index.html" data-i18n="nav_home">首页</a><a href="guide.html" data-i18n="nav_guide">使用说明</a></div></div>
+        <div><h3 data-i18n="footer_docs">文档</h3><div class="footer-links"><a href="privacy.html" data-i18n="nav_privacy">隐私</a><a href="support.html" data-i18n="nav_support">支持</a></div></div>
+        <div><h3 data-i18n="footer_contact">联系</h3><div class="footer-links"><a href="mailto:support@showleafy.com">support@showleafy.com</a></div><p data-i18n="footer_privacy_note">PhotoHarbor 不通过官网托管你的照片或凭据。</p></div>
+      </div>
+    </footer>
+    <script src="assets/app.js?v=20260606"></script>
+  </body>
+</html>
