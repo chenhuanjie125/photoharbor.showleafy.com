@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>PhotoHarbor Google Drive Picker</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f7f9fc;
+      color: #111827;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+    }
+
+    main {
+      width: min(420px, 100%);
+      text-align: center;
+    }
+
+    img {
+      width: 64px;
+      height: 64px;
+      border-radius: 14px;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    p {
+      margin: 0;
+      color: #5f6673;
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    button {
+      margin-top: 22px;
+      border: 0;
+      border-radius: 999px;
+      padding: 12px 18px;
+      background: #0a66e8;
+      color: white;
+      font: inherit;
+      font-weight: 700;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        background: #07111f;
+        color: #f8fafc;
+      }
+
+      p {
+        color: #cbd5e1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img src="assets/app-icon.png" alt="">
+    <h1>Choose a Google Drive folder</h1>
+    <p id="status">Loading Google Drive picker...</p>
+    <button id="retry" type="button" hidden>Try again</button>
+  </main>
+
+  <script>
+    const statusElement = document.getElementById("status");
+    const retryButton = document.getElementById("retry");
+    const params = new URLSearchParams(window.location.hash.slice(1));
+    const pickerConfig = {
+      apiKey: params.get("api_key") || "",
+      appId: params.get("app_id") || "",
+      accessToken: params.get("access_token") || "",
+      callbackScheme: params.get("callback_scheme") || "",
+      state: params.get("state") || ""
+    };
+
+    if (window.history && window.history.replaceState) {
+      window.history.replaceState(null, "", window.location.pathname);
+    }
+
+    function setStatus(message, canRetry) {
+      statusElement.textContent = message;
+      retryButton.hidden = !canRetry;
+    }
+
+    function callbackURL(query) {
+      const target = new URL(`${pickerConfig.callbackScheme}:/google-drive-picker`);
+      for (const [key, value] of Object.entries(query)) {
+        if (value !== undefined && value !== null && value !== "") {
+          target.searchParams.set(key, value);
+        }
+      }
+      target.searchParams.set("state", pickerConfig.state);
+      return target.toString();
+    }
+
+    function finish(query) {
+      window.location.href = callbackURL(query);
+    }
+
+    function fail(message) {
+      setStatus(message, true);
+    }
+
+    function validateConfig() {
+      return pickerConfig.apiKey &&
+        pickerConfig.appId &&
+        pickerConfig.accessToken &&
+        pickerConfig.callbackScheme &&
+        pickerConfig.state;
+    }
+
+    function onPickerCallback(data) {
+      const action = data[google.picker.Response.ACTION];
+      if (action === google.picker.Action.PICKED) {
+        const docs = data[google.picker.Response.DOCUMENTS] || [];
+        const doc = docs[0] || {};
+        const id = doc[google.picker.Document.ID] || doc.id || "";
+        const name = doc[google.picker.Document.NAME] || doc.name || doc.title || "";
+        if (id) {
+          finish({ folder_id: id, folder_name: name });
+        } else {
+          fail("Google Drive did not return a folder id. Please try again.");
+        }
+      } else if (action === google.picker.Action.CANCEL) {
+        finish({ error: "access_denied" });
+      }
+    }
+
+    function createPicker() {
+      if (!validateConfig()) {
+        fail("The picker link is missing required app configuration.");
+        return;
+      }
+
+      const folderView = new google.picker.DocsView(google.picker.ViewId.FOLDERS)
+        .setIncludeFolders(true)
+        .setSelectFolderEnabled(true)
+        .setMimeTypes("application/vnd.google-apps.folder");
+
+      const picker = new google.picker.PickerBuilder()
+        .setAppId(pickerConfig.appId)
+        .setDeveloperKey(pickerConfig.apiKey)
+        .setOAuthToken(pickerConfig.accessToken)
+        .addView(folderView)
+        .setCallback(onPickerCallback)
+        .setOrigin(window.location.origin)
+        .build();
+
+      picker.setVisible(true);
+      setStatus("Select a folder in the Google Drive window.", false);
+    }
+
+    function loadPicker() {
+      if (!validateConfig()) {
+        fail("The picker link is missing required app configuration.");
+        return;
+      }
+      if (!window.gapi) {
+        fail("Google Picker could not load. Check your network connection and try again.");
+        return;
+      }
+      gapi.load("picker", { callback: createPicker });
+    }
+
+    retryButton.addEventListener("click", loadPicker);
+    window.onGoogleApiLoad = loadPicker;
+  </script>
+  <script src="https://apis.google.com/js/api.js?onload=onGoogleApiLoad" async defer></script>
+</body>
+</html>
