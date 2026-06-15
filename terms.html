@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="PhotoHarbor Terms of Service covering product use, storage targets, cloud drive authorization, Safe Delete, purchases, and user responsibilities.">
+    <meta
+      name="description"
+      content="PhotoHarbor Terms of Service covering product use, storage targets, cloud drive authorization, Safe Delete, purchases, and user responsibilities."
+      data-i18n-content="meta_terms_description"
+    >
     <title>服务条款 | PhotoHarbor</title>
     <link rel="icon" href="assets/app-icon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
@@ -11,7 +15,7 @@
   </head>
   <body class="legal-page" data-title-key="terms_title">
     <header class="site-header">
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" aria-label="Primary" data-i18n-aria-label="aria_primary_nav">
         <a class="brand" href="index.html"><img class="brand-mark" src="assets/app-icon.png" alt=""><span>PhotoHarbor</span></a>
         <div class="nav-links">
           <a href="index.html" data-i18n="nav_home">首页</a>
@@ -21,9 +25,20 @@
           <a href="guide.html" data-i18n="nav_guide">使用说明</a>
         </div>
         <div class="nav-actions">
-          <div class="lang-switch" aria-label="Language switch">
-            <button class="lang-option" type="button" data-lang="zh">中</button>
-            <button class="lang-option" type="button" data-lang="en">EN</button>
+          <div class="lang-switch">
+            <label class="visually-hidden" for="site-language-terms" data-i18n="language_picker_label">Website language</label>
+            <select
+              class="lang-select"
+              id="site-language-terms"
+              aria-label="Website language"
+              data-i18n-aria-label="language_picker_label"
+            >
+              <option value="en" data-i18n="language_option_en">English</option>
+              <option value="zh-Hans" data-i18n="language_option_zh_hans">简体中文</option>
+              <option value="zh-Hant" data-i18n="language_option_zh_hant">繁體中文</option>
+              <option value="ja" data-i18n="language_option_ja">日本語</option>
+              <option value="de" data-i18n="language_option_de">Deutsch</option>
+            </select>
           </div>
           <a class="btn btn-primary" href="mailto:support@showleafy.com" data-i18n="nav_cta">获取 App</a>
         </div>

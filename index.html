@@ -3,16 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="PhotoHarbor turns storage you control into a private photo library for archiving, browsing, playing, restoring, and safely freeing iPhone space.">
+    <meta
+      name="description"
+      content="PhotoHarbor turns storage you control into a private photo library for archiving, browsing, playing, restoring, and safely freeing iPhone space."
+      data-i18n-content="meta_home_description"
+    >
     <title>PhotoHarbor</title>
     <link rel="icon" href="assets/app-icon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
     <link rel="stylesheet" href="assets/styles.css?v=20260610d">
   </head>
-  <body class="home-page" data-title-key="home_title">
+  <body class="home-page" data-title-key="home_page_title">
     <div class="scroll-progress" aria-hidden="true"></div>
     <header class="site-header">
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" aria-label="Primary" data-i18n-aria-label="aria_primary_nav">
         <a class="brand" href="index.html">
           <img class="brand-mark" src="assets/app-icon.png" alt="">
           <span>PhotoHarbor</span>
@@ -25,9 +29,20 @@
           <a href="guide.html" data-i18n="nav_guide">使用说明</a>
         </div>
         <div class="nav-actions">
-          <div class="lang-switch" aria-label="Language switch">
-            <button class="lang-option" type="button" data-lang="zh">中</button>
-            <button class="lang-option" type="button" data-lang="en">EN</button>
+          <div class="lang-switch">
+            <label class="visually-hidden" for="site-language-index" data-i18n="language_picker_label">Website language</label>
+            <select
+              class="lang-select"
+              id="site-language-index"
+              aria-label="Website language"
+              data-i18n-aria-label="language_picker_label"
+            >
+              <option value="en" data-i18n="language_option_en">English</option>
+              <option value="zh-Hans" data-i18n="language_option_zh_hans">简体中文</option>
+              <option value="zh-Hant" data-i18n="language_option_zh_hant">繁體中文</option>
+              <option value="ja" data-i18n="language_option_ja">日本語</option>
+              <option value="de" data-i18n="language_option_de">Deutsch</option>
+            </select>
           </div>
           <a class="btn btn-primary" href="mailto:support@showleafy.com?subject=PhotoHarbor" data-i18n="nav_cta">获取 App</a>
         </div>
@@ -60,7 +75,7 @@
           >
         </div>
 
-        <div class="capability-strip reveal" data-reveal-delay="180" aria-label="Core capabilities">
+        <div class="capability-strip reveal" data-reveal-delay="180" aria-label="Core capabilities" data-i18n-aria-label="aria_core_capabilities">
           <span data-i18n="home_capability_1">归档</span>
           <i aria-hidden="true"></i>
           <span data-i18n="home_capability_2">浏览</span>
@@ -184,7 +199,7 @@
               <h2 data-i18n="home_storage_title">你的存储，不必只有一种。</h2>
               <p data-i18n="home_storage_text">家里的 NAS、Mac / Windows 共享文件夹，或常用云盘，都可以成为 PhotoHarbor 的归档目标。你只需要在一个入口里选择照片要去哪里。</p>
             </div>
-            <div class="storage-list reveal" data-reveal-delay="100" aria-label="Supported storage targets">
+            <div class="storage-list reveal" data-reveal-delay="100" aria-label="Supported storage targets" data-i18n-aria-label="aria_supported_storage_targets">
               <div><strong>SMB</strong><span data-i18n="home_storage_nas">NAS 与 Mac / Windows 共享文件夹</span></div>
               <div><strong>WebDAV</strong><span data-i18n="home_storage_webdav">自建与第三方存储</span></div>
               <div><strong>SFTP</strong><span data-i18n="home_storage_sftp">密码或私钥连接</span></div>

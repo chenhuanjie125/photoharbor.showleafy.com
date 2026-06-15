@@ -3,7 +3,11 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="PhotoHarbor Privacy Policy covering photo access, storage targets, cloud drive authorization, diagnostics, retention, and user rights.">
+    <meta
+      name="description"
+      content="PhotoHarbor Privacy Policy covering photo access, storage targets, cloud drive authorization, diagnostics, retention, and user rights."
+      data-i18n-content="meta_privacy_description"
+    >
     <title>隐私政策 | PhotoHarbor</title>
     <link rel="icon" href="assets/app-icon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
@@ -11,7 +15,7 @@
   </head>
   <body class="legal-page" data-title-key="privacy_title">
     <header class="site-header">
-      <nav class="nav" aria-label="Primary">
+      <nav class="nav" aria-label="Primary" data-i18n-aria-label="aria_primary_nav">
         <a class="brand" href="index.html"><img class="brand-mark" src="assets/app-icon.png" alt=""><span>PhotoHarbor</span></a>
         <div class="nav-links">
           <a href="index.html" data-i18n="nav_home">首页</a>
@@ -21,9 +25,20 @@
           <a href="guide.html" data-i18n="nav_guide">使用说明</a>
         </div>
         <div class="nav-actions">
-          <div class="lang-switch" aria-label="Language switch">
-            <button class="lang-option" type="button" data-lang="zh">中</button>
-            <button class="lang-option" type="button" data-lang="en">EN</button>
+          <div class="lang-switch">
+            <label class="visually-hidden" for="site-language-privacy" data-i18n="language_picker_label">Website language</label>
+            <select
+              class="lang-select"
+              id="site-language-privacy"
+              aria-label="Website language"
+              data-i18n-aria-label="language_picker_label"
+            >
+              <option value="en" data-i18n="language_option_en">English</option>
+              <option value="zh-Hans" data-i18n="language_option_zh_hans">简体中文</option>
+              <option value="zh-Hant" data-i18n="language_option_zh_hant">繁體中文</option>
+              <option value="ja" data-i18n="language_option_ja">日本語</option>
+              <option value="de" data-i18n="language_option_de">Deutsch</option>
+            </select>
           </div>
           <a class="btn btn-primary" href="mailto:support@showleafy.com" data-i18n="nav_cta">下载 App</a>
         </div>
@@ -36,7 +51,7 @@
           <p class="eyebrow" data-i18n="nav_privacy">隐私</p>
           <h1 data-i18n="privacy_title">隐私政策</h1>
           <p class="page-hero-copy" data-i18n="privacy_intro">本政策说明 PhotoHarbor 如何处理照片、视频、存储目标凭据、第三方云盘授权、诊断信息和支持请求。</p>
-          <div class="legal-meta" aria-label="Policy metadata">
+          <div class="legal-meta" aria-label="Policy metadata" data-i18n-aria-label="aria_policy_metadata">
             <span><strong data-i18n="privacy_effective_label">生效日期</strong><em data-i18n="privacy_effective_date">2026 年 6 月 8 日</em></span>
             <span><strong data-i18n="privacy_contact_label">联系方式</strong><em>support@showleafy.com</em></span>
             <span><strong data-i18n="privacy_scope_label">适用范围</strong><em data-i18n="privacy_scope_value">PhotoHarbor App 与官网</em></span>
@@ -46,7 +61,7 @@
 
       <div class="page-layout legal-layout">
         <div class="page-grid legal-grid">
-          <aside class="toc legal-toc" aria-label="Privacy sections">
+          <aside class="toc legal-toc" aria-label="Privacy sections" data-i18n-aria-label="aria_privacy_sections">
             <a href="#summary" data-i18n="privacy_toc_summary">摘要</a>
             <a href="#scope" data-i18n="privacy_toc_scope">适用范围</a>
             <a href="#data" data-i18n="privacy_toc_data">处理的数据</a>
@@ -68,7 +83,7 @@
                 <strong data-i18n="privacy_no_active_collection_title">不会主动收集个人信息</strong>
                 <p data-i18n="privacy_no_active_collection_text">PhotoHarbor 不会通过后台任务、官网、开发者服务器或任何托管服务主动收集用户的个人信息、照片、视频、凭据、token、私钥或其他敏感数据。只有在用户主动选择照片、配置存储目标、授权第三方云盘、导出诊断或联系支持时，App 才会为完成对应功能处理必要数据。</p>
               </div>
-              <div class="legal-summary-grid" aria-label="Privacy summary">
+              <div class="legal-summary-grid" aria-label="Privacy summary" data-i18n-aria-label="aria_privacy_summary">
                 <div>
                   <strong data-i18n="privacy_summary_1_title">照片归档到你的目标</strong>
                   <span data-i18n="privacy_summary_1_text">App 读取你选择的照片和视频，并上传到你配置的位置。</span>

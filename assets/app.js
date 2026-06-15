@@ -713,51 +713,706 @@ const PH_TRANSLATIONS = {
   }
 };
 
+Object.assign(PH_TRANSLATIONS.zh, {
+  aria_core_capabilities: "核心能力",
+  aria_guide_sections: "使用说明章节",
+  aria_policy_metadata: "政策信息",
+  aria_primary_nav: "主导航",
+  aria_privacy_sections: "隐私章节",
+  aria_privacy_summary: "隐私摘要",
+  aria_supported_storage_targets: "支持的存储目标",
+  home_page_title: "PhotoHarbor",
+  language_option_de: "Deutsch",
+  language_option_en: "English",
+  language_option_ja: "日本語",
+  language_option_zh_hans: "简体中文",
+  language_option_zh_hant: "繁體中文",
+  language_picker_label: "网站语言",
+  meta_guide_description: "PhotoHarbor 使用说明，涵盖首次归档、proof、安全删除与恢复。",
+  meta_home_description: "PhotoHarbor 把你控制的存储变成一个可归档、可浏览、可播放、可恢复，并可安全释放 iPhone 空间的私人照片库。",
+  meta_privacy_description: "PhotoHarbor 隐私政策，涵盖照片访问、存储目标、云盘授权、诊断、保留与用户权利。",
+  meta_support_description: "PhotoHarbor 支持与故障排查。",
+  meta_terms_description: "PhotoHarbor 服务条款，涵盖产品使用、存储目标、云盘授权、安全删除、购买与用户责任。"
+});
+
+Object.assign(PH_TRANSLATIONS.en, {
+  aria_core_capabilities: "Core capabilities",
+  aria_guide_sections: "Guide sections",
+  aria_policy_metadata: "Policy metadata",
+  aria_primary_nav: "Primary navigation",
+  aria_privacy_sections: "Privacy sections",
+  aria_privacy_summary: "Privacy summary",
+  aria_supported_storage_targets: "Supported storage targets",
+  home_page_title: "PhotoHarbor",
+  language_option_de: "Deutsch",
+  language_option_en: "English",
+  language_option_ja: "日本語",
+  language_option_zh_hans: "简体中文",
+  language_option_zh_hant: "繁體中文",
+  language_picker_label: "Website language",
+  meta_guide_description: "PhotoHarbor user guide covering first archive, proof, Safe Delete, and recovery.",
+  meta_home_description: "PhotoHarbor turns storage you control into a private photo library for archiving, browsing, playing, restoring, and safely freeing iPhone space.",
+  meta_privacy_description: "PhotoHarbor Privacy Policy covering photo access, storage targets, cloud drive authorization, diagnostics, retention, and user rights.",
+  meta_support_description: "PhotoHarbor support and troubleshooting.",
+  meta_terms_description: "PhotoHarbor Terms of Service covering product use, storage targets, cloud drive authorization, Safe Delete, purchases, and user responsibilities."
+});
+
+function deepMapStrings(value, mapper) {
+  if (typeof value === "string") return mapper(value);
+  if (Array.isArray(value)) return value.map((item) => deepMapStrings(item, mapper));
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value).map(([key, item]) => [key, deepMapStrings(item, mapper)])
+    );
+  }
+  return value;
+}
+
+function buildTraditionalChineseTranslations(base) {
+  const phrasePairs = [
+    ["简体中文", "簡體中文"],
+    ["繁體中文", "繁體中文"],
+    ["网站", "網站"],
+    ["下载", "下載"],
+    ["获取", "取得"],
+    ["浏览", "瀏覽"],
+    ["视频", "影片"],
+    ["归档", "歸檔"],
+    ["隐私", "隱私"],
+    ["条款", "條款"],
+    ["说明", "說明"],
+    ["云盘", "雲端硬碟"],
+    ["目录", "目錄"],
+    ["选择", "選擇"],
+    ["删除", "刪除"],
+    ["确认", "確認"],
+    ["继续", "繼續"],
+    ["恢复", "回復"],
+    ["缩略图", "縮圖"],
+    ["网格", "網格"],
+    ["连接", "連線"],
+    ["诊断", "診斷"],
+    ["问题", "問題"],
+    ["导出", "匯出"],
+    ["邮件", "郵件"],
+    ["权限", "權限"],
+    ["适用", "適用"],
+    ["联系方式", "聯絡方式"],
+    ["范围", "範圍"],
+    ["处理", "處理"],
+    ["数据", "資料"],
+    ["类别", "類別"],
+    ["来源", "來源"],
+    ["用途", "用途"],
+    ["保存位置", "儲存位置"],
+    ["凭据", "憑證"],
+    ["设备", "裝置"],
+    ["系统", "系統"],
+    ["用户", "使用者"],
+    ["支持", "支援"],
+    ["服务", "服務"],
+    ["开发者", "開發者"],
+    ["浏览器", "瀏覽器"],
+    ["购买", "購買"],
+    ["购买方式", "購買方式"],
+    ["账单", "帳單"],
+    ["恢复购买", "回復購買"],
+    ["订阅", "訂閱"],
+    ["变更", "變更"],
+    ["并发", "並發"],
+    ["会话", "工作階段"],
+    ["检查", "檢查"],
+    ["后台", "背景"],
+    ["读写", "讀寫"],
+    ["内容", "內容"],
+    ["访问", "存取"],
+    ["允许", "允許"],
+    ["发送", "傳送"],
+    ["显示", "顯示"],
+    ["并", "並"],
+    ["与", "與"],
+    ["后", "後"],
+    ["仅", "僅"],
+    ["时", "時"],
+    ["会", "會"],
+    ["对", "對"],
+    ["级", "級"],
+    ["为", "為"],
+    ["无", "無"],
+    ["并且", "並且"],
+    ["规则", "規則"],
+    ["语言", "語言"],
+    ["协议", "協議"],
+    ["复核", "複核"],
+    ["页", "頁"],
+    ["国际", "國際"],
+    ["总", "總"],
+    ["类型", "類型"],
+    ["错误", "錯誤"],
+    ["状态", "狀態"],
+    ["授权", "授權"],
+    ["链路", "鏈路"],
+    ["项", "項"],
+    ["双确认", "雙重確認"],
+    ["存储", "儲存"],
+    ["目标", "目標"],
+    ["系统分享入口", "系統分享入口"],
+    ["步骤", "步驟"],
+    ["查找", "尋找"],
+    ["图片", "圖片"],
+    ["照片库", "照片圖庫"],
+    ["生效日期", "生效日期"],
+    ["准备工作", "準備工作"],
+    ["联系支持", "聯絡支援"],
+    ["常见问题", "常見問題"],
+    ["远端", "遠端"],
+    ["网盘", "網盤"],
+    ["本机", "本機"],
+    ["默认", "預設"],
+    ["文件夹", "資料夾"]
+  ];
+
+  return deepMapStrings(base, (text) => {
+    let value = text;
+    for (const [source, target] of phrasePairs) {
+      value = value.split(source).join(target);
+    }
+    return value;
+  });
+}
+
+PH_TRANSLATIONS["zh-Hans"] = PH_TRANSLATIONS.zh;
+delete PH_TRANSLATIONS.zh;
+
+PH_TRANSLATIONS["zh-Hant"] = {
+  ...buildTraditionalChineseTranslations(PH_TRANSLATIONS["zh-Hans"]),
+  aria_core_capabilities: "核心功能",
+  aria_guide_sections: "使用說明章節",
+  aria_policy_metadata: "政策資訊",
+  aria_primary_nav: "主導覽",
+  aria_privacy_sections: "隱私章節",
+  aria_privacy_summary: "隱私摘要",
+  aria_supported_storage_targets: "支援的儲存目標",
+  home_page_title: "PhotoHarbor",
+  language_picker_label: "網站語言",
+  meta_home_description: "PhotoHarbor 把你掌控的儲存變成一個可歸檔、可瀏覽、可播放、可回復，並可安全釋放 iPhone 空間的私人照片庫。",
+  meta_support_description: "PhotoHarbor 支援與疑難排解。"
+};
+
+PH_TRANSLATIONS.ja = {
+  ...PH_TRANSLATIONS.en,
+  aria_core_capabilities: "主な機能",
+  aria_guide_sections: "ガイドの各セクション",
+  aria_policy_metadata: "ポリシー情報",
+  aria_primary_nav: "メインナビゲーション",
+  aria_privacy_sections: "プライバシーの各セクション",
+  aria_privacy_summary: "プライバシー概要",
+  aria_supported_storage_targets: "対応ストレージ先",
+  footer_contact: "連絡先",
+  footer_docs: "ドキュメント",
+  footer_intro: "iPhone の写真を自分の保存先へアーカイブし、プライベートなメディアライブラリで閲覧、再生、共有、復元を続けられます。",
+  footer_privacy_note: "PhotoHarbor はこのサイト経由で写真や認証情報を保管しません。",
+  footer_product: "製品",
+  guide_delete_text: "Safe Delete で候補、proof、ブロッカーを確認し、必要なら再チェックを実行してから、二重確認でローカルコピーを削除します。",
+  guide_delete_title: "Safe Delete",
+  guide_intro: "PhotoHarbor の最初の流れです。保存先を追加し、写真を選び、proof を待ち、ブロッカーを処理してから安全に削除します。",
+  guide_library_text: "Timeline でリモートメディアを閲覧できます。プレビュー、共有、iPhone への保存はできますが、キャッシュされたプレビューは原本の代わりにはなりません。",
+  guide_library_title: "閲覧と復元",
+  guide_prepare_text: "接続できる NAS、Mac / Windows 共有、WebDAV、SFTP、またはクラウド保存先を用意し、iOS で PhotoHarbor に写真アクセスを許可します。",
+  guide_prepare_title: "準備",
+  guide_proof_text: "タスクはアップロード、アップロード受領確認、コミット、プレビュー、最終的なアーカイブ proof を順に進みます。proof が完了した項目だけが Safe Delete の対象になります。",
+  guide_proof_title: "アーカイブ proof を待つ",
+  guide_target_text: "Targets で保存先を追加し、接続確認を完了します。クラウド保存先は各プロバイダの OAuth 認可と、アーカイブ先フォルダの選択が必要です。",
+  guide_target_title: "保存先を追加",
+  guide_task_text: "Archive で保存先、リモートフォルダ、競合ポリシー、写真または動画を選びます。タスクはその後バックグラウンドキューに入ります。",
+  guide_task_title: "アーカイブタスクを作成",
+  guide_title: "最初のアーカイブから安全な容量解放まで",
+  guide_toc_1: "準備",
+  guide_toc_2: "保存先を追加",
+  guide_toc_3: "タスクを作成",
+  guide_toc_4: "proof を待つ",
+  guide_toc_5: "Safe Delete",
+  guide_toc_6: "閲覧と復元",
+  guide_visual_note: "後で、保存先追加、アーカイブタスク、proof、Safe Delete の連続スクリーンショットに差し替えます。",
+  guide_visual_title: "ワークフロー画像プレースホルダー",
+  home_archive_note_1: "バックグラウンドでアーカイブ",
+  home_archive_note_2: "進捗が明確",
+  home_archive_note_3: "一時停止して再開",
+  home_archive_text: "写真と保存先を選ぶと、PhotoHarbor がアーカイブタスクをバックグラウンドで順番に進めます。全体の進捗と現在の状態をいつでも確認でき、必要に応じて一時停止や再開もできます。",
+  home_archive_title: "写真を選んだら、あとはバックグラウンドへ。",
+  home_archive_visual_alt: "全体進捗、状態、一時停止と再開操作を表示する PhotoHarbor のアーカイブタスクリスト",
+  home_capability_1: "アーカイブ",
+  home_capability_2: "閲覧",
+  home_capability_3: "再生",
+  home_capability_4: "復元",
+  home_capability_5: "空き容量の確保",
+  home_cta_primary: "PhotoHarbor を入手",
+  home_cta_secondary: "主な機能を見る",
+  home_delete_link: "安全な空き容量解放を知る",
+  home_delete_text: "アーカイブ proof が完了した項目だけが Safe Delete に入ります。ブロッカーを確認し、必要に応じて再チェックし、最後は自分で確認します。PhotoHarbor が写真を自動削除することはありません。",
+  home_delete_title: "空き容量が必要なときに、削除を確認する。",
+  home_delete_visual_alt: "PhotoHarbor の Safe Delete 確認画面",
+  home_details_intro: "アップロードはより安定し、ネットワークはより安心、プライバシーはより安全、リモート閲覧はよりなめらかに。",
+  home_details_title: "写真のことを、もう少し気楽に。",
+  home_final_cta: "PhotoHarbor を入手",
+  home_final_support: "サポートへ連絡",
+  home_final_text: "アーカイブから始めて、自分で管理でき、いつでも見返せるプライベートな写真ライブラリを少しずつ育てましょう。",
+  home_final_title: "写真を、自分の場所に住まわせよう。",
+  home_intro: "写真や動画を NAS、Mac / Windows 共有フォルダ、またはクラウドへアーカイブし、ひとつのプライベートなメディアライブラリで閲覧、再生、共有、復元を続けられます。空き容量が必要なときだけローカルコピーを整理します。",
+  home_library_text: "PhotoHarbor はリモート写真のために閲覧しやすいメディアライブラリを作ります。アルバム、フォルダ、年、月、日から思い出を探せて、今いるフォルダへそのままアップロードもできます。",
+  home_library_title: "自分の写真ライブラリを、見慣れたまま使いやすく。",
+  home_library_visual_alt: "iPad と iPhone 上でリモートメディアライブラリのグリッドと月別閲覧を表示する PhotoHarbor",
+  home_page_title: "PhotoHarbor",
+  home_share_note_1: "システム共有から開始",
+  home_share_note_2: "リモートフォルダを選択",
+  home_share_note_3: "そのまま保存完了",
+  home_share_text: "写真、ファイル、またはシステム共有に対応した他の App で画像や動画を選び、PhotoHarbor を選択して、接続先とフォルダを指定します。iPhone に先に保存せず、自分の NAS、共有フォルダ、クラウドへ直接アップロードできます。",
+  home_share_title: "共有メニューから、そのまま自分の保存先へ。",
+  home_share_visual_alt: "システム共有メニューから画像と動画を PhotoHarbor のリモートフォルダへ保存する様子",
+  home_storage_baidu: "Baidu Netdisk",
+  home_storage_cloud: "ユーザーが認可したクラウドフォルダ",
+  home_storage_nas: "NAS と Mac / Windows 共有フォルダ",
+  home_storage_note: "PhotoHarbor は QNAP、Synology、FnOS NAS のネイティブサムネイルを直接読み取り、リモートライブラリの読み込みを高速化します。同時に、共通のプレビュー機能で一貫した閲覧体験を提供します。",
+  home_storage_roadmap: "今後も対応プロトコルやクラウド先を広げ、既存の保存先をひとつのプライベートライブラリへつなげていきます。",
+  home_storage_sftp: "パスワードまたは秘密鍵で接続",
+  home_storage_text: "自宅の NAS、Mac / Windows 共有フォルダ、または普段使っているクラウドが、PhotoHarbor の保存先になります。写真の行き先はひとつの入口から選ぶだけです。",
+  home_storage_title: "あなたの保存先は、ひとつでなくていい。",
+  home_storage_webdav: "自前または他社提供のストレージ",
+  home_thumbnail_note_1: "サムネイルを自動生成",
+  home_thumbnail_note_2: "サーバー側の小画像を再利用",
+  home_thumbnail_note_3: "必要時だけ高解像度プレビュー",
+  home_thumbnail_text: "PhotoHarbor はリモートメディアのサムネイルを自動生成してキャッシュし、対応するクラウドや NAS が持つ小画像も優先利用します。単体表示では、必要なときだけより鮮明なプレビューを出します。",
+  home_thumbnail_title: "リモート写真も、ローカルアルバムのように自然に。",
+  home_thumbnail_visual_alt: "リモートメディアのサムネイルグリッドと単体の高解像度プレビューを表示する PhotoHarbor",
+  home_title: "iPhone の写真を、自分の保存先へ持ち帰る",
+  home_visual_alt: "iPad と iPhone でリモートメディアライブラリを閲覧する PhotoHarbor",
+  language_picker_label: "サイトの言語",
+  meta_guide_description: "PhotoHarbor の初回アーカイブ、proof、Safe Delete、復元を説明するガイドです。",
+  meta_home_description: "PhotoHarbor は、あなたが管理する保存先を、アーカイブ、閲覧、再生、復元、安全な空き容量解放のためのプライベート写真ライブラリに変えます。",
+  meta_privacy_description: "PhotoHarbor のプライバシーポリシー。写真アクセス、保存先、クラウド認可、診断、保持、ユーザー権利を説明します。",
+  meta_support_description: "PhotoHarbor のサポートとトラブルシューティング。",
+  meta_terms_description: "PhotoHarbor 利用規約。製品利用、保存先、クラウド認可、Safe Delete、購入、ユーザー責任を説明します。",
+  nav_cta: "アプリを入手",
+  nav_guide: "使い方",
+  nav_home: "ホーム",
+  nav_privacy: "プライバシー",
+  nav_support: "サポート",
+  nav_terms: "利用規約",
+  privacy_baidu_link: "Baidu Netdisk オープンプラットフォーム",
+  privacy_baidu_text: "Baidu Netdisk 連携を有効にする場合、ユーザーは Baidu アカウントで認可する必要があります。PhotoHarbor は認可範囲内で、ユーザーが選択または設定したフォルダだけにアクセスします。",
+  privacy_baidu_title: "Baidu Netdisk",
+  privacy_changes_text: "PhotoHarbor のデータ処理、サードパーティ連携、サポート手順に重要な変更があれば、このページの発効日を更新し、必要に応じてアプリまたはサイトで案内します。",
+  privacy_changes_title: "11. 変更と連絡先",
+  privacy_children_text: "PhotoHarbor は子ども向けに設計されたアプリではなく、意図的に子どもの個人情報を収集しません。",
+  privacy_children_title: "9. 子どものプライバシー",
+  privacy_cloud_note: "サードパーティクラウドは、その地域やインフラ上でデータを処理する場合があります。各社のプライバシーポリシーと利用規約も確認してください。",
+  privacy_cloud_text: "Google Drive、Dropbox、OneDrive、Baidu Netdisk を接続すると、認可、本人確認、ファイル保存、プラットフォーム側の処理は各プロバイダが担当します。PhotoHarbor は、アーカイブ、閲覧、プレビュー、proof チェック、ユーザーが明示的に始めた操作のために必要最小限のデータだけにアクセスします。",
+  privacy_cloud_title: "4. サードパーティクラウドと外部サービス",
+  privacy_contact_label: "連絡先",
+  privacy_controller_label: "データ管理者 / 連絡先",
+  privacy_data_text: "PhotoHarbor はアーカイブ関連のデータ処理を、端末内とユーザーが選んだ保存先の中で行います。",
+  privacy_data_title: "2. 処理するデータの種類",
+  privacy_delete_text: "PhotoHarbor がローカル写真を自動削除することはありません。proof を通過した項目だけが Safe Delete の確認対象になります。",
+  privacy_diag_text: "診断書き出しは、接続、アップロード、proof、プレビュー、Safe Delete の問題を切り分けるためのものです。",
+  privacy_diag_title: "6. 診断、ログ、サポート",
+  privacy_dropbox_link: "Dropbox Developer Terms",
+  privacy_dropbox_text: "Dropbox の認可は公式の認証フローで行われます。PhotoHarbor は Dropbox のログインパスワードを収集しません。",
+  privacy_effective_date: "2026年6月8日",
+  privacy_effective_label: "発効日",
+  privacy_google_link: "Google API ユーザーデータポリシー",
+  privacy_google_text: "PhotoHarbor は Google Drive API の利用時に Google API Services User Data Policy と Limited Use 要件を守ります。",
+  privacy_intro: "このポリシーでは、PhotoHarbor が写真、動画、保存先認証情報、クラウド認可、診断情報、サポート依頼をどのように扱うかを説明します。",
+  privacy_no_active_collection_text: "PhotoHarbor は、バックグラウンドタスク、サイト、開発者サーバー、またはホスト型サービスを通じて、個人情報、写真、動画、認証情報、トークン、秘密鍵などの機密データを能動的に収集しません。",
+  privacy_no_active_collection_title: "個人情報を能動的に収集しません",
+  privacy_not_scope_label: "対象外",
+  privacy_not_scope_text: "ユーザー自身が選んだ NAS、Mac / Windows 共有、サードパーティクラウドアカウント、各プラットフォームのサイトとその利用規約。",
+  privacy_purchase_text: "購入、返金、支払い方法、請求情報は Apple App Store / StoreKit が処理します。",
+  privacy_purpose_text: "GDPR、UK GDPR などが適用される地域では、PhotoHarbor は通常、ユーザーが求めた機能の提供、同意、正当な利益、法的義務に基づいて限定的なデータを処理します。",
+  privacy_purpose_title: "3. 目的と法的根拠",
+  privacy_retention_text: "PhotoHarbor がローカル写真を自動削除することはありません。現在の proof 戦略を満たし、確認を通過した項目だけが Safe Delete 候補になります。",
+  privacy_retention_title: "7. 保持、削除、Safe Delete の境界",
+  privacy_rights_text: "地域によっては、アクセス、訂正、削除、処理制限、同意撤回、データポータビリティ、異議申立て、苦情申立てなどの権利があります。",
+  privacy_rights_title: "8. ユーザーの管理と権利",
+  privacy_sale_note: "PhotoHarbor は個人情報を販売せず、行動ターゲティング広告のために共有せず、写真、クラウド内容、診断データに基づくプロファイリングや自動意思決定も行いません。",
+  privacy_scope_label: "適用範囲",
+  privacy_scope_text: "このポリシーは、PhotoHarbor の iOS / iPadOS アプリ、共有拡張、サイト、サポート対応に適用されます。",
+  privacy_scope_title: "1. 適用範囲と管理者",
+  privacy_scope_value: "PhotoHarbor アプリと公式サイト",
+  privacy_security_text: "PhotoHarbor は iOS Keychain、システムの写真権限、HTTPS、OAuth、PKCE、認可範囲の制限、診断の匿名化を使ってリスクを下げます。",
+  privacy_security_title: "10. セキュリティ対策と越境移転",
+  privacy_summary_1_text: "アプリは、あなたが選んだ写真や動画を読み取り、設定した保存先へアップロードします。",
+  privacy_summary_1_title: "写真はあなたの保存先へ",
+  privacy_summary_2_text: "NAS、SFTP、WebDAV の認証情報とクラウドトークンは iOS Keychain に保存されます。",
+  privacy_summary_2_title: "認証情報は端末の安全領域へ",
+  privacy_summary_3_text: "PhotoHarbor は個人情報を販売せず、広告プロファイリングにも使いません。",
+  privacy_summary_3_title: "販売しない、広告追跡に使わない",
+  privacy_summary_4_text: "ローカルコピーは自動削除されません。Safe Delete には proof、再確認、最終確認が必要です。",
+  privacy_summary_4_title: "削除は必ずユーザー確認",
+  privacy_summary_text: "PhotoHarbor の中心設計はローカル優先とユーザー管理です。写真は、あなたが選んだ NAS、共有フォルダ、WebDAV、SFTP、またはサードパーティクラウドへ保存されます。",
+  privacy_summary_title: "概要",
+  privacy_title: "プライバシーポリシー",
+  privacy_toc_changes: "変更と連絡先",
+  privacy_toc_children: "子どものプライバシー",
+  privacy_toc_cloud: "サードパーティクラウド",
+  privacy_toc_data: "処理するデータ",
+  privacy_toc_diag: "診断とサポート",
+  privacy_toc_purposes: "目的と根拠",
+  privacy_toc_retention: "保持と削除",
+  privacy_toc_rights: "ユーザーの権利",
+  privacy_toc_scope: "適用範囲",
+  privacy_toc_security: "セキュリティ対策",
+  privacy_toc_summary: "概要",
+  privacy_toc_website_purchase: "サイトと購入",
+  privacy_website_purchase_title: "5. サイト、Cookie、App Store 購入",
+  support_a1: "いいえ。削除は Safe Delete の確認後に、ユーザーが明示的に実行したときだけ行われます。",
+  support_a2: "いいえ。削除確認に進むには、リモート可読性 proof が完了し、ブロッカーがない必要があります。",
+  support_a3: "既定ではできません。リモート発見項目にはアーカイブ proof がありません。",
+  support_card_1: "保存先の追加に失敗",
+  support_card_1_text: "アドレス、ポート、アカウント権限、対象フォルダの読み書き可否を確認してください。",
+  support_card_2: "アップロードが停止または失敗",
+  support_card_2_text: "ネットワーク方針、Wi-Fi 設定、クラウド認可、タスク詳細の失敗項目を確認してください。",
+  support_card_3: "Safe Delete が使えない",
+  support_card_3_text: "proof 状態とブロッカーの理由を確認してください。失敗項目は削除に進めません。",
+  support_card_4: "プレビューまたはサムネイルの問題",
+  support_card_4_text: "リモートライブラリはまずキャッシュとネイティブサムネイルを使います。必要なら再スキャンか診断書き出しを行ってください。",
+  support_card_5: "クラウド認可の問題",
+  support_card_5_text: "再認可の前に、プロバイダ、アカウント、選択したフォルダを確認してください。",
+  support_card_6: "診断を書き出す",
+  support_card_6_text: "設定から、タスク状態やエラー種別を示す匿名化 JSON を生成できます。",
+  support_contact_text: "問題の内容、保存先の種類、発生時刻、匿名化した診断ファイルを送ってください。より早く調査できます。",
+  support_contact_title: "サポートへ連絡",
+  support_email: "support@showleafy.com",
+  support_faq_title: "よくある質問",
+  support_intro: "接続、アップロード、proof、Safe Delete に問題が出たら、まず影響範囲を確認し、次の一手を整理しましょう。",
+  support_q1: "PhotoHarbor は写真を自動削除しますか？",
+  support_q2: "アップロード完了は削除してよいことを意味しますか？",
+  support_q3: "リモートで見つかった写真はローカル削除の根拠になりますか？",
+  support_title: "アーカイブの流れを一緒に閉じましょう",
+  terms_acceptance_title: "1. 条項への同意と適用範囲",
+  terms_availability_title: "9. 提供状況、更新、終了",
+  terms_changes_title: "11. 変更、適用ルール、連絡先",
+  terms_contact_label: "連絡先",
+  terms_effective_date: "2026年6月14日",
+  terms_effective_label: "発効日",
+  terms_intro: "この利用規約は、PhotoHarbor アプリ、共有拡張、サイト、および関連サポートサービスの利用に適用されるルールと責任範囲を説明します。",
+  terms_permissions_title: "5. 権限、認証情報、プライバシー",
+  terms_product_label: "製品",
+  terms_product_text: "PhotoHarbor iOS / iPadOS アプリ、共有拡張、サイト、および関連サポートサービス。",
+  terms_provider_label: "提供者",
+  terms_purchases_title: "7. トライアル、購入、返金",
+  terms_responsibilities_title: "3. ユーザーの責任",
+  terms_safe_delete_title: "6. アーカイブ proof、バックアップ、Safe Delete",
+  terms_service_title: "2. サービス内容",
+  terms_summary_1_text: "ファイルは、設定した NAS、共有フォルダ、WebDAV、SFTP、またはサードパーティクラウドに保存されます。",
+  terms_summary_1_title: "保存先はあなたが選ぶ",
+  terms_summary_2_text: "クラウドアクセスには認可が必要で、アプリまたは各サービスのアカウントから取り消せます。",
+  terms_summary_2_title: "認可はあなたが管理する",
+  terms_summary_3_text: "Apple、Baidu Netdisk、その他ストレージサービスには各社の規約が適用されます。",
+  terms_summary_3_title: "第三者のルールも有効",
+  terms_summary_4_text: "重要なデータは、1台の端末、1つのクラウド、1回の proof に依存しないでください。",
+  terms_summary_4_title: "大切な内容にはバックアップが必要",
+  terms_summary_commitment_text: "Safe Delete とアーカイブ proof は誤削除リスクを下げますが、独立したバックアップやストレージ保守の代わりにはなりません。",
+  terms_summary_commitment_title: "PhotoHarbor が写真を自動削除することはありません",
+  terms_summary_text: "PhotoHarbor は、あなたが選んだ保存先へ写真と動画をアーカイブし、閲覧できるリモートメディアライブラリを作ります。",
+  terms_summary_title: "重要な概要",
+  terms_third_parties_title: "4. サードパーティストレージとプラットフォーム",
+  terms_title: "利用規約",
+  terms_toc_acceptable_use: "利用制限",
+  terms_toc_acceptance: "同意",
+  terms_toc_availability: "提供状況",
+  terms_toc_changes: "変更と連絡先",
+  terms_toc_disclaimer: "責任範囲",
+  terms_toc_permissions: "権限とデータ",
+  terms_toc_purchases: "購入と返金",
+  terms_toc_responsibilities: "ユーザー責任",
+  terms_toc_safe_delete: "アーカイブと削除",
+  terms_toc_service: "サービス内容",
+  terms_toc_summary: "重要な概要",
+  terms_toc_third_parties: "第三者サービス"
+};
+
+PH_TRANSLATIONS.de = {
+  ...PH_TRANSLATIONS.en,
+  aria_core_capabilities: "Zentrale Funktionen",
+  aria_guide_sections: "Abschnitte der Anleitung",
+  aria_policy_metadata: "Richtlinieninformationen",
+  aria_primary_nav: "Hauptnavigation",
+  aria_privacy_sections: "Abschnitte zum Datenschutz",
+  aria_privacy_summary: "Datenschutz-Zusammenfassung",
+  aria_supported_storage_targets: "Unterstuetzte Speicherziele",
+  footer_contact: "Kontakt",
+  footer_docs: "Dokumente",
+  footer_intro: "Archiviere iPhone-Fotos in deinen eigenen Speicher und durchsuche, spiele, teile und stelle sie spaeter in einer privaten Mediathek wieder her.",
+  footer_privacy_note: "PhotoHarbor hostet ueber diese Website weder deine Fotos noch deine Zugangsdaten.",
+  footer_product: "Produkt",
+  guide_delete_text: "Oeffne Safe Delete, pruefe Kandidaten, Proof und Blocker, fuehre bei Bedarf eine erneute Pruefung aus und bestaetige dann doppelt, bevor lokale Kopien geloescht werden.",
+  guide_delete_title: "Safe Delete",
+  guide_intro: "So laeuft dein erster PhotoHarbor-Workflow ab: Ziel hinzufuegen, Fotos auswaehlen, auf Proof warten, Blocker behandeln und dann sicher loeschen.",
+  guide_library_text: "Durchsuche Remote-Medien in der Timeline. Du kannst sie vorab ansehen, teilen oder zurueck aufs iPhone speichern, aber zwischengespeicherte Vorschauen ersetzen niemals die Originale.",
+  guide_library_title: "Durchsuchen und Wiederherstellen",
+  guide_prepare_text: "Bereite ein erreichbares NAS, eine Mac-/Windows-Freigabe, WebDAV, SFTP oder ein Cloud-Ziel vor und erteile PhotoHarbor in iOS Zugriff auf Fotos.",
+  guide_prepare_title: "Vorbereiten",
+  guide_proof_text: "Ein Task durchlaeuft Upload, Upload-Bestaetigung, Commit, Vorschau und abschliessenden Archiv-Proof. Nur Elemente mit abgeschlossenem Proof sind fuer Safe Delete geeignet.",
+  guide_proof_title: "Auf Archiv-Proof warten",
+  guide_target_text: "Fuege unter Targets ein Ziel hinzu und schliesse die Verbindungspruefung ab. Cloud-Ziele brauchen die OAuth-Freigabe des Anbieters und einen ausgewaehlten Archivordner.",
+  guide_target_title: "Speicherziel hinzufuegen",
+  guide_task_text: "Waehle in Archive Ziel, Remote-Ordner, Konfliktstrategie sowie Fotos oder Videos. Danach landet der Task in der Hintergrundwarteschlange.",
+  guide_task_title: "Archivierungs-Task erstellen",
+  guide_title: "Von der ersten Archivierung bis zum sicheren Freigeben von Speicher",
+  guide_toc_1: "Vorbereiten",
+  guide_toc_2: "Ziel hinzufuegen",
+  guide_toc_3: "Task erstellen",
+  guide_toc_4: "Auf Proof warten",
+  guide_toc_5: "Safe Delete",
+  guide_toc_6: "Durchsuchen und Wiederherstellen",
+  guide_visual_note: "Spaeter durch zusammenhaengende Screenshots fuer Zielauswahl, Archiv-Task, Proof und Safe Delete ersetzen.",
+  guide_visual_title: "Platzhalter fuer Workflow-Screenshots",
+  home_archive_note_1: "Archivierung im Hintergrund",
+  home_archive_note_2: "Fortschritt klar sichtbar",
+  home_archive_note_3: "Pausieren und fortsetzen",
+  home_archive_text: "Sobald du Fotos und Speicherziel ausgewaehlt hast, arbeitet PhotoHarbor die Archivierungsaufgabe geordnet im Hintergrund ab. Du kannst den Gesamtfortschritt und den aktuellen Zustand jederzeit sehen sowie bei Bedarf pausieren oder fortsetzen.",
+  home_archive_title: "Fotos auswaehlen, den Rest im Hintergrund erledigen lassen.",
+  home_archive_visual_alt: "PhotoHarbor-Archivliste mit Gesamtfortschritt, Status sowie Pausieren- und Fortsetzen-Aktionen",
+  home_capability_1: "Archivieren",
+  home_capability_2: "Durchsuchen",
+  home_capability_3: "Abspielen",
+  home_capability_4: "Wiederherstellen",
+  home_capability_5: "Speicher freigeben",
+  home_cta_primary: "PhotoHarbor holen",
+  home_cta_secondary: "Funktionen ansehen",
+  home_delete_link: "Sicheres Freigeben von Speicher verstehen",
+  home_delete_text: "Nur Elemente mit abgeschlossenem Archiv-Proof gelangen in Safe Delete. Du kannst Blocker pruefen, bei Bedarf erneut verifizieren und im letzten Schritt selbst bestaetigen. PhotoHarbor loescht deine lokalen Fotos nie automatisch.",
+  home_delete_title: "Erst bestaetigen, wenn wirklich Speicher frei werden soll.",
+  home_delete_visual_alt: "Screenshot der Safe-Delete-Bestaetigung in PhotoHarbor",
+  home_details_intro: "Stabilere Uploads, entspannteres Netzwerk, mehr Privatsphaere und flüssigeres Remote-Browsing.",
+  home_details_title: "Etwas weniger Aufwand, etwas mehr Ruhe fuer deine Fotos.",
+  home_final_cta: "PhotoHarbor holen",
+  home_final_support: "Support kontaktieren",
+  home_final_text: "Beginne mit der Archivierung und baue dir Schritt fuer Schritt eine private Fotobibliothek auf, die du selbst kontrollierst.",
+  home_final_title: "Gib deinen Fotos ein Zuhause auf deinem eigenen Speicher.",
+  home_intro: "Archiviere Fotos und Videos auf NAS, Mac-/Windows-Freigaben oder in die Cloud und durchsuche, spiele, teile und stelle sie spaeter in einer privaten Mediathek wieder her. Lokalen Speicher gibst du erst frei, wenn du ihn wirklich brauchst.",
+  home_library_text: "PhotoHarbor erstellt eine durchsuchbare Mediathek fuer entfernte Fotos. Finde Erinnerungen nach Album, Ordner, Jahr, Monat oder Tag und lade im aktuellen Ordner direkt weiter hoch.",
+  home_library_title: "Die eigene Fotobibliothek kann vertraut und angenehm bleiben.",
+  home_library_visual_alt: "PhotoHarbor zeigt die Remote-Mediathek als Raster und Monatsansicht auf iPad und iPhone",
+  home_page_title: "PhotoHarbor",
+  home_share_note_1: "Systemweites Teilen",
+  home_share_note_2: "Remote-Ordner waehlen",
+  home_share_note_3: "Direkt speichern",
+  home_share_text: "Waehle in Fotos, Dateien oder anderen Apps mit iOS-Teilen Bilder und Videos aus, waehle PhotoHarbor und bestimme Zielverbindung sowie Ordner. Ohne vorheriges Sichern aufs iPhone wird direkt in dein NAS, deinen freigegebenen Ordner oder deine Cloud hochgeladen.",
+  home_share_title: "Direkt aus dem Teilen-Menue in deinen eigenen Speicher.",
+  home_share_visual_alt: "Bilder und Videos werden ueber das System-Teilen-Menue in einen Remote-Ordner von PhotoHarbor gespeichert",
+  home_storage_baidu: "Baidu Netdisk",
+  home_storage_cloud: "Vom Nutzer autorisierter Cloud-Ordner",
+  home_storage_nas: "NAS sowie Mac-/Windows-Freigaben",
+  home_storage_note: "PhotoHarbor kann native Vorschaubilder von QNAP-, Synology- und FnOS-NAS direkt verwenden, um entfernte Mediatheken schneller zu laden. Gleichzeitig sorgt die gemeinsame Vorschau-Logik fuer ein konsistentes Browserlebnis.",
+  home_storage_roadmap: "Wir bauen Unterstuetzung fuer weitere Protokolle und Cloud-Dienste aus, damit mehr bestehender Speicher in dieselbe private Mediathek eingebunden werden kann.",
+  home_storage_sftp: "Per Passwort oder privatem Schluessel",
+  home_storage_text: "Dein NAS zu Hause, Mac-/Windows-Freigaben oder haeufig genutzte Cloud-Dienste koennen zu Archivzielen fuer PhotoHarbor werden. Du waehlst einfach an einer Stelle aus, wohin deine Fotos sollen.",
+  home_storage_title: "Dein Speicher muss nicht nur aus einer Option bestehen.",
+  home_storage_webdav: "Selbst betriebener oder externer Speicher",
+  home_thumbnail_note_1: "Vorschaubilder automatisch erzeugen",
+  home_thumbnail_note_2: "Serverseitige Miniaturen wiederverwenden",
+  home_thumbnail_note_3: "Schaerfere Vorschau nur bei Bedarf",
+  home_thumbnail_text: "PhotoHarbor erzeugt und cached Vorschaubilder fuer entfernte Medien und nutzt bevorzugt vorhandene Miniaturen von unterstuetzten Clouds und NAS-Systemen. Beim Oeffnen einzelner Fotos wird erst dann eine schaerfere Vorschau geladen, wenn sie wirklich gebraucht wird.",
+  home_thumbnail_title: "Auch entfernte Fotos fuehlen sich wie lokal an.",
+  home_thumbnail_visual_alt: "PhotoHarbor zeigt ein Raster mit Remote-Vorschaubildern und eine einzelne hochaufloesende Vorschau",
+  home_title: "Bringe iPhone-Fotos zurueck in deinen eigenen Speicher",
+  home_visual_alt: "PhotoHarbor beim Durchsuchen einer entfernten Mediathek auf iPad und iPhone",
+  language_picker_label: "Website-Sprache",
+  meta_guide_description: "PhotoHarbor-Anleitung fuer erste Archivierung, Proof, Safe Delete und Wiederherstellung.",
+  meta_home_description: "PhotoHarbor macht aus deinem eigenen Speicher eine private Fotobibliothek zum Archivieren, Durchsuchen, Abspielen, Wiederherstellen und sicheren Freigeben von iPhone-Speicher.",
+  meta_privacy_description: "PhotoHarbor-Datenschutzerklaerung zu Fotozugriff, Speicherzielen, Cloud-Freigaben, Diagnose, Aufbewahrung und Nutzerrechten.",
+  meta_support_description: "PhotoHarbor-Support und Fehlerbehebung.",
+  meta_terms_description: "PhotoHarbor-Nutzungsbedingungen zu Produktnutzung, Speicherzielen, Cloud-Freigabe, Safe Delete, Kaeufen und Nutzerverantwortung.",
+  nav_cta: "App holen",
+  nav_guide: "Anleitung",
+  nav_home: "Start",
+  nav_privacy: "Datenschutz",
+  nav_support: "Support",
+  nav_terms: "Bedingungen",
+  privacy_changes_title: "11. Aenderungen und Kontakt",
+  privacy_children_title: "9. Datenschutz fuer Kinder",
+  privacy_cloud_title: "4. Cloud-Dienste und externe Services",
+  privacy_contact_label: "Kontakt",
+  privacy_data_title: "2. Welche Daten wir verarbeiten",
+  privacy_diag_title: "6. Diagnose, Logs und Support",
+  privacy_effective_date: "8. Juni 2026",
+  privacy_effective_label: "Gueltig ab",
+  privacy_intro: "Diese Richtlinie erklaert, wie PhotoHarbor Fotos, Videos, Speicherziel-Zugangsdaten, Cloud-Freigaben, Diagnosedaten und Supportanfragen verarbeitet.",
+  privacy_no_active_collection_title: "Keine aktive Sammlung personenbezogener Daten",
+  privacy_scope_label: "Geltungsbereich",
+  privacy_scope_title: "1. Geltungsbereich und Verantwortliche",
+  privacy_scope_value: "PhotoHarbor App und Website",
+  privacy_summary_title: "Zusammenfassung",
+  privacy_title: "Datenschutzerklaerung",
+  privacy_toc_changes: "Aenderungen und Kontakt",
+  privacy_toc_children: "Datenschutz fuer Kinder",
+  privacy_toc_cloud: "Cloud-Dienste",
+  privacy_toc_data: "Verarbeitete Daten",
+  privacy_toc_diag: "Diagnose und Support",
+  privacy_toc_purposes: "Zwecke und Grundlage",
+  privacy_toc_retention: "Aufbewahrung und Loeschung",
+  privacy_toc_rights: "Nutzerrechte",
+  privacy_toc_scope: "Geltungsbereich",
+  privacy_toc_security: "Sicherheitsmassnahmen",
+  privacy_toc_summary: "Zusammenfassung",
+  privacy_toc_website_purchase: "Website und Kaeufe",
+  privacy_website_purchase_title: "5. Website, Cookies und App-Store-Kaeufe",
+  support_a1: "Nein. Geloescht wird nur nach Safe-Delete-Pruefung und ausdruecklicher Bestaetigung durch den Nutzer.",
+  support_a2: "Nein. Erst wenn der Proof fuer die Lesbarkeit der Remote-Kopie abgeschlossen ist und keine Blocker mehr bestehen, kann die Loeschpruefung beginnen.",
+  support_a3: "Standardmaessig nein. Remote gefundene Elemente haben keinen Archiv-Proof und koennen nicht als sichere Loeschkandidaten dargestellt werden.",
+  support_card_1: "Ziel konnte nicht hinzugefuegt werden",
+  support_card_1_text: "Pruefe Adresse, Port, Kontoberechtigung und Lese-/Schreibzugriff auf den Zielordner.",
+  support_card_2: "Upload pausiert oder fehlgeschlagen",
+  support_card_2_text: "Pruefe Netzwerkregeln, WLAN-Einstellungen, Cloud-Freigabe und fehlgeschlagene Elemente in den Task-Details.",
+  support_card_3: "Safe Delete nicht verfuegbar",
+  support_card_3_text: "Pruefe Proof-Status und Blocker. Fehlgeschlagene Elemente duerfen nicht weiter geloescht werden.",
+  support_card_4: "Problem mit Vorschau oder Thumbnail",
+  support_card_4_text: "Die Remote-Mediathek nutzt zuerst Cache und native Vorschaubilder. Falls noetig, neu scannen oder Diagnose exportieren.",
+  support_card_5: "Problem mit Cloud-Freigabe",
+  support_card_5_text: "Vor einer erneuten Freigabe bitte Anbieter, Konto und gewaehlten Ordner bestaetigen.",
+  support_card_6: "Diagnose exportieren",
+  support_card_6_text: "In den Einstellungen kann ein bereinigter JSON-Bericht zu Task-Status und Fehlerkategorien erzeugt werden.",
+  support_contact_text: "Sende eine kurze Problembeschreibung, den Zieltyp, die Uhrzeit des Vorfalls und bereinigte Diagnosedaten, damit wir schneller helfen koennen.",
+  support_contact_title: "Support kontaktieren",
+  support_faq_title: "FAQ",
+  support_intro: "Wenn es bei Verbindung, Upload, Proof oder Safe Delete hakt, pruefe zuerst die Auswirkungen und gehe dann den naechsten Schritt gezielt an.",
+  support_q1: "Loescht PhotoHarbor Fotos automatisch?",
+  support_q2: "Bedeutet abgeschlossener Upload, dass geloescht werden kann?",
+  support_q3: "Koennen remote gefundene Fotos als Loeschbeweis dienen?",
+  support_title: "Lass uns den Archivierungsablauf gemeinsam schliessen",
+  terms_acceptance_title: "1. Zustimmung und Geltungsbereich",
+  terms_availability_title: "9. Verfuegbarkeit, Updates und Beendigung",
+  terms_changes_title: "11. Aenderungen, geltende Regeln und Kontakt",
+  terms_contact_label: "Kontakt",
+  terms_effective_date: "14. Juni 2026",
+  terms_effective_label: "Gueltig ab",
+  terms_intro: "Diese Bedingungen beschreiben die Regeln, Verantwortlichkeiten und wichtigen Grenzen fuer die Nutzung der PhotoHarbor-App, der Share Extension, der Website und der zugehoerigen Support-Services.",
+  terms_permissions_title: "5. Berechtigungen, Zugangsdaten und Datenschutz",
+  terms_product_label: "Produkt",
+  terms_product_text: "PhotoHarbor iOS / iPadOS App, Share Extension, Website und zugehoerige Support-Services.",
+  terms_provider_label: "Anbieter",
+  terms_purchases_title: "7. Testversionen, Kaeufe und Erstattungen",
+  terms_responsibilities_title: "3. Verantwortung des Nutzers",
+  terms_safe_delete_title: "6. Archiv-Proof, Backups und Safe Delete",
+  terms_service_title: "2. Der Dienst",
+  terms_summary_1_title: "Du waehlst den Speicher",
+  terms_summary_2_title: "Du kontrollierst die Freigabe",
+  terms_summary_3_title: "Regeln Dritter gelten weiter",
+  terms_summary_4_title: "Wichtige Inhalte brauchen Backups",
+  terms_summary_commitment_title: "PhotoHarbor loescht deine Fotos nie automatisch",
+  terms_summary_title: "Wichtige Zusammenfassung",
+  terms_third_parties_title: "4. Speicher Dritter und Plattformdienste",
+  terms_title: "Nutzungsbedingungen",
+  terms_toc_acceptable_use: "Nutzungsregeln",
+  terms_toc_acceptance: "Zustimmung",
+  terms_toc_availability: "Verfuegbarkeit",
+  terms_toc_changes: "Aenderungen und Kontakt",
+  terms_toc_disclaimer: "Haftungsgrenzen",
+  terms_toc_permissions: "Berechtigungen und Daten",
+  terms_toc_purchases: "Kaeufe und Erstattungen",
+  terms_toc_responsibilities: "Nutzerverantwortung",
+  terms_toc_safe_delete: "Archivierung und Loeschung",
+  terms_toc_service: "Dienstinhalt",
+  terms_toc_summary: "Wichtige Zusammenfassung",
+  terms_toc_third_parties: "Drittanbieter"
+};
+
+function normalizeLanguage(language) {
+  if (!language) return null;
+  const value = String(language).trim();
+  const lower = value.toLowerCase();
+  if (lower === "zh") return "zh-Hans";
+  if (lower === "en") return "en";
+  if (lower === "ja") return "ja";
+  if (lower === "de") return "de";
+  if (lower === "zh-hant" || lower === "zh-tw" || lower === "zh-hk" || lower === "zh-mo") return "zh-Hant";
+  if (lower === "zh-hans" || lower.startsWith("zh-cn") || lower.startsWith("zh-sg")) return "zh-Hans";
+  if (lower.startsWith("en-")) return "en";
+  if (lower.startsWith("ja-")) return "ja";
+  if (lower.startsWith("de-")) return "de";
+  if (lower.startsWith("zh-")) return "zh-Hans";
+  return PH_TRANSLATIONS[value] ? value : null;
+}
+
+function detectBrowserLanguage() {
+  const candidates = [
+    ...(navigator.languages || []),
+    navigator.language,
+    navigator.userLanguage
+  ].filter(Boolean);
+
+  for (const candidate of candidates) {
+    const normalized = normalizeLanguage(candidate);
+    if (normalized) return normalized;
+  }
+  return "zh-Hans";
+}
+
+function getTranslation(lang, key) {
+  const locale = PH_TRANSLATIONS[lang] || PH_TRANSLATIONS.en;
+  return locale[key] ?? PH_TRANSLATIONS.en[key] ?? PH_TRANSLATIONS["zh-Hans"][key] ?? "";
+}
+
 function applyLanguage(language) {
-  const lang = PH_TRANSLATIONS[language] ? language : "zh";
-  document.documentElement.lang = lang === "zh" ? "zh-Hans" : "en";
+  const lang = normalizeLanguage(language) || "zh-Hans";
+  document.documentElement.lang = lang;
+
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.getAttribute("data-i18n");
-    const value = PH_TRANSLATIONS[lang][key];
+    const value = getTranslation(lang, key);
     if (value) node.textContent = value;
   });
+
   document.querySelectorAll("[data-i18n-title]").forEach((node) => {
     const key = node.getAttribute("data-i18n-title");
-    const value = PH_TRANSLATIONS[lang][key];
+    const value = getTranslation(lang, key);
     if (value) node.setAttribute("title", value);
   });
+
   document.querySelectorAll("[data-i18n-alt]").forEach((node) => {
     const key = node.getAttribute("data-i18n-alt");
-    const value = PH_TRANSLATIONS[lang][key];
+    const value = getTranslation(lang, key);
     if (value) node.setAttribute("alt", value);
   });
+
   document.querySelectorAll("[data-i18n-aria-label]").forEach((node) => {
     const key = node.getAttribute("data-i18n-aria-label");
-    const value = PH_TRANSLATIONS[lang][key];
+    const value = getTranslation(lang, key);
     if (value) node.setAttribute("aria-label", value);
   });
+
+  document.querySelectorAll("[data-i18n-content]").forEach((node) => {
+    const key = node.getAttribute("data-i18n-content");
+    const value = getTranslation(lang, key);
+    if (value) node.setAttribute("content", value);
+  });
+
   document.querySelectorAll("[data-lang-src-zh][data-lang-src-en]").forEach((node) => {
-    const source = lang === "en" ? node.dataset.langSrcEn : node.dataset.langSrcZh;
+    const source = lang === "zh-Hans" || lang === "zh-Hant" ? node.dataset.langSrcZh : node.dataset.langSrcEn;
     if (source && node.getAttribute("src") !== source) node.setAttribute("src", source);
   });
-  document.querySelectorAll(".lang-option").forEach((button) => {
-    const isActive = button.dataset.lang === lang;
-    button.classList.toggle("is-active", isActive);
-    button.setAttribute("aria-pressed", String(isActive));
+
+  document.querySelectorAll(".lang-select").forEach((select) => {
+    if (select.value !== lang) select.value = lang;
   });
+
   const titleKey = document.body.dataset.titleKey;
-  if (titleKey && PH_TRANSLATIONS[lang][titleKey]) {
-    document.title = `${PH_TRANSLATIONS[lang][titleKey]} | PhotoHarbor`;
+  const titleValue = titleKey ? getTranslation(lang, titleKey) : "";
+  if (titleValue) {
+    document.title = titleValue === "PhotoHarbor" ? "PhotoHarbor" : `${titleValue} | PhotoHarbor`;
   }
+
   localStorage.setItem("ph-lang", lang);
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-  const savedLanguage = localStorage.getItem("ph-lang");
-  const initial = savedLanguage || ((navigator.language || "").toLowerCase().startsWith("en") ? "en" : "zh");
+  const savedLanguage = normalizeLanguage(localStorage.getItem("ph-lang"));
+  const initial = savedLanguage || detectBrowserLanguage();
   applyLanguage(initial);
-  document.querySelectorAll(".lang-option").forEach((button) => {
-    button.addEventListener("click", () => applyLanguage(button.dataset.lang));
+
+  document.querySelectorAll(".lang-select").forEach((select) => {
+    select.addEventListener("change", (event) => applyLanguage(event.target.value));
   });
 
   const revealItems = document.querySelectorAll(".reveal");
