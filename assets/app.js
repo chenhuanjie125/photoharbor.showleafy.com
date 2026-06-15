@@ -308,8 +308,8 @@ const PH_TRANSLATIONS = {
     terms_changes_title: "11. 条款变更、适用规则与联系",
     terms_changes_text: "产品、购买方式、第三方集成或法律要求发生变化时，我们可能更新本条款并修改页面生效日期。重大变化会在合理可行时通过 App 或官网提示。继续使用更新后的服务表示你接受修订后的条款。",
     terms_dispute_text: "本条款适用法律按用户所在地和服务提供方依法适用的规则确定，且不影响用户依法享有的强制性保护。发生争议时，建议先通过 support@showleafy.com 联系，我们会尝试以合理方式解决。",
-    support_title: "我们一起把归档链路收口",
-    support_intro: "如果连接、上传、证明或 Safe Delete 出现问题，先看影响范围，再按步骤处理。需要帮助时请联系 support@showleafy.com。",
+    support_title: "支持与故障排查",
+    support_intro: "如果添加目标、上传、预览或 Safe Delete 遇到问题，先查看常见排查步骤。需要人工帮助时，请联系 support@showleafy.com。",
     support_contact_title: "联系支持",
     support_contact_text: "发送问题描述、目标类型、发生时间和脱敏诊断文件，我们会更快定位。",
     support_email: "support@showleafy.com",
@@ -664,8 +664,8 @@ const PH_TRANSLATIONS = {
     terms_changes_title: "11. Changes, Applicable Rules, and Contact",
     terms_changes_text: "We may update these terms and the effective date when the product, purchase model, third-party integrations, or legal requirements change. Material changes will be communicated through the app or website where reasonably practical. Continuing to use the updated service means you accept the revised terms.",
     terms_dispute_text: "Applicable law is determined by the rules lawfully applying to the user's location and the service provider, without affecting mandatory user protections. For a dispute, contact support@showleafy.com first so we can try to resolve it reasonably.",
-    support_title: "Let’s close the archive loop together",
-    support_intro: "If connection, upload, proof, or Safe Delete runs into trouble, check the impact first, then follow a clear next step. For help, contact support@showleafy.com.",
+    support_title: "Support and Troubleshooting",
+    support_intro: "If adding a target, uploading, previewing, or Safe Delete runs into trouble, start with the common troubleshooting steps below. If you need help, contact support@showleafy.com.",
     support_contact_title: "Contact support",
     support_contact_text: "Send a short description, target type, time of issue, and redacted diagnostics so we can investigate faster.",
     support_email: "support@showleafy.com",
@@ -721,6 +721,9 @@ Object.assign(PH_TRANSLATIONS.zh, {
   aria_privacy_sections: "隐私章节",
   aria_privacy_summary: "隐私摘要",
   aria_supported_storage_targets: "支持的存储目标",
+  aria_terms_metadata: "条款信息",
+  aria_terms_sections: "条款章节",
+  aria_terms_summary: "条款摘要",
   home_page_title: "PhotoHarbor",
   language_option_de: "Deutsch",
   language_option_en: "English",
@@ -743,6 +746,9 @@ Object.assign(PH_TRANSLATIONS.en, {
   aria_privacy_sections: "Privacy sections",
   aria_privacy_summary: "Privacy summary",
   aria_supported_storage_targets: "Supported storage targets",
+  aria_terms_metadata: "Terms metadata",
+  aria_terms_sections: "Terms sections",
+  aria_terms_summary: "Terms summary",
   home_page_title: "PhotoHarbor",
   language_option_de: "Deutsch",
   language_option_en: "English",
@@ -893,6 +899,9 @@ PH_TRANSLATIONS["zh-Hant"] = {
   aria_privacy_sections: "隱私章節",
   aria_privacy_summary: "隱私摘要",
   aria_supported_storage_targets: "支援的儲存目標",
+  aria_terms_metadata: "條款資訊",
+  aria_terms_sections: "條款章節",
+  aria_terms_summary: "條款摘要",
   home_page_title: "PhotoHarbor",
   language_picker_label: "網站語言",
   meta_home_description: "PhotoHarbor 把你掌控的儲存變成一個可歸檔、可瀏覽、可播放、可回復，並可安全釋放 iPhone 空間的私人照片庫。",
@@ -908,6 +917,9 @@ PH_TRANSLATIONS.ja = {
   aria_privacy_sections: "プライバシーの各セクション",
   aria_privacy_summary: "プライバシー概要",
   aria_supported_storage_targets: "対応ストレージ先",
+  aria_terms_metadata: "利用規約の情報",
+  aria_terms_sections: "利用規約の各セクション",
+  aria_terms_summary: "利用規約の概要",
   footer_contact: "連絡先",
   footer_docs: "ドキュメント",
   footer_intro: "iPhone の写真を自分の保存先へアーカイブし、プライベートなメディアライブラリで閲覧、再生、共有、復元を続けられます。",
@@ -1083,11 +1095,11 @@ PH_TRANSLATIONS.ja = {
   support_contact_title: "サポートへ連絡",
   support_email: "support@showleafy.com",
   support_faq_title: "よくある質問",
-  support_intro: "接続、アップロード、proof、Safe Delete に問題が出たら、まず影響範囲を確認し、次の一手を整理しましょう。",
+  support_intro: "保存先の追加、アップロード、プレビュー、Safe Delete で問題が起きたら、まず下の一般的な対処手順を確認してください。サポートが必要な場合は support@showleafy.com までご連絡ください。",
   support_q1: "PhotoHarbor は写真を自動削除しますか？",
   support_q2: "アップロード完了は削除してよいことを意味しますか？",
   support_q3: "リモートで見つかった写真はローカル削除の根拠になりますか？",
-  support_title: "アーカイブの流れを一緒に閉じましょう",
+  support_title: "サポートとトラブルシューティング",
   terms_acceptance_title: "1. 条項への同意と適用範囲",
   terms_availability_title: "9. 提供状況、更新、終了",
   terms_changes_title: "11. 変更、適用ルール、連絡先",
@@ -1140,6 +1152,9 @@ PH_TRANSLATIONS.de = {
   aria_privacy_sections: "Abschnitte zum Datenschutz",
   aria_privacy_summary: "Datenschutz-Zusammenfassung",
   aria_supported_storage_targets: "Unterstuetzte Speicherziele",
+  aria_terms_metadata: "Informationen zu den Nutzungsbedingungen",
+  aria_terms_sections: "Abschnitte der Nutzungsbedingungen",
+  aria_terms_summary: "Zusammenfassung der Nutzungsbedingungen",
   footer_contact: "Kontakt",
   footer_docs: "Dokumente",
   footer_intro: "Archiviere iPhone-Fotos in deinen eigenen Speicher und durchsuche, spiele, teile und stelle sie spaeter in einer privaten Mediathek wieder her.",
@@ -1276,11 +1291,11 @@ PH_TRANSLATIONS.de = {
   support_contact_text: "Sende eine kurze Problembeschreibung, den Zieltyp, die Uhrzeit des Vorfalls und bereinigte Diagnosedaten, damit wir schneller helfen koennen.",
   support_contact_title: "Support kontaktieren",
   support_faq_title: "FAQ",
-  support_intro: "Wenn es bei Verbindung, Upload, Proof oder Safe Delete hakt, pruefe zuerst die Auswirkungen und gehe dann den naechsten Schritt gezielt an.",
+  support_intro: "Wenn beim Hinzufuegen eines Ziels, beim Upload, bei der Vorschau oder bei Safe Delete Probleme auftreten, beginne mit den unten stehenden allgemeinen Schritten zur Fehlerbehebung. Wenn du Hilfe brauchst, schreibe an support@showleafy.com.",
   support_q1: "Loescht PhotoHarbor Fotos automatisch?",
   support_q2: "Bedeutet abgeschlossener Upload, dass geloescht werden kann?",
   support_q3: "Koennen remote gefundene Fotos als Loeschbeweis dienen?",
-  support_title: "Lass uns den Archivierungsablauf gemeinsam schliessen",
+  support_title: "Support und Fehlerbehebung",
   terms_acceptance_title: "1. Zustimmung und Geltungsbereich",
   terms_availability_title: "9. Verfuegbarkeit, Updates und Beendigung",
   terms_changes_title: "11. Aenderungen, geltende Regeln und Kontakt",
@@ -1617,6 +1632,15 @@ function detectBrowserLanguage() {
   return "zh-Hans";
 }
 
+function queryLanguagePreference() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    return normalizeLanguage(params.get("lang"));
+  } catch (_) {
+    return null;
+  }
+}
+
 function getTranslation(lang, key) {
   const locale = PH_TRANSLATIONS[lang] || PH_TRANSLATIONS.en;
   return locale[key] ?? PH_TRANSLATIONS.en[key] ?? PH_TRANSLATIONS["zh-Hans"][key] ?? "";
@@ -1675,8 +1699,9 @@ function applyLanguage(language) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  const queryLanguage = queryLanguagePreference();
   const savedLanguage = normalizeLanguage(localStorage.getItem("ph-lang"));
-  const initial = savedLanguage || detectBrowserLanguage();
+  const initial = queryLanguage || savedLanguage || detectBrowserLanguage();
   applyLanguage(initial);
 
   document.querySelectorAll(".lang-select").forEach((select) => {
