@@ -94,6 +94,7 @@ button {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  min-height: 44px;
   font-weight: 700;
   letter-spacing: 0;
   white-space: nowrap;
@@ -115,12 +116,17 @@ button {
 }
 
 .nav-links a {
+  display: inline-flex;
+  flex: 0 0 auto;
+  align-items: center;
+  min-height: 44px;
   padding: 10px 12px;
   color: var(--ph-color-text-muted);
   border-radius: var(--ph-radius-pill);
   font-size: 14px;
   font-weight: 600;
   transition: color 180ms var(--ph-ease), background 180ms var(--ph-ease);
+  white-space: nowrap;
 }
 
 .nav-links a:hover,
@@ -151,7 +157,7 @@ button {
   position: relative;
   display: inline-flex;
   align-items: center;
-  min-height: 40px;
+  min-height: 44px;
   padding: 0 14px 0 12px;
   border: 1px solid var(--ph-color-border);
   border-radius: var(--ph-radius-pill);
@@ -169,7 +175,7 @@ button {
 
 .lang-select {
   min-width: 116px;
-  min-height: 38px;
+  min-height: 42px;
   padding: 0 2px 0 0;
   color: var(--ph-color-text);
   border: 0;
@@ -2190,10 +2196,12 @@ html[lang="en"] .detail-card p {
 .page-content {
   display: grid;
   gap: 24px;
+  min-width: 0;
 }
 
 .page-section {
   padding: 30px;
+  min-width: 0;
   border: 1px solid rgba(220, 232, 250, 0.86);
   border-radius: 28px;
   background: rgba(255, 255, 255, 0.86);
@@ -2662,6 +2670,9 @@ html[lang="en"] .detail-card p {
   }
 
   .legal-table {
+    display: block;
+    width: 100%;
+    max-width: 100%;
     overflow-x: auto;
   }
 
