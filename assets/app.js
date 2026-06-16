@@ -1668,6 +1668,94 @@ function updateLanguageSelectWidth(select) {
   select.style.setProperty("--lang-select-width", `${Math.ceil(measurer.getBoundingClientRect().width) + 4}px`);
 }
 
+function closeLanguageMenu(switcher) {
+  const button = switcher.querySelector(".lang-button");
+  switcher.classList.remove("is-open");
+  if (button) button.setAttribute("aria-expanded", "false");
+}
+
+function syncLanguageControl(select) {
+  updateLanguageSelectWidth(select);
+
+  const switcher = select.closest(".lang-switch");
+  if (!switcher) return;
+
+  const selectedText = select.selectedOptions[0]?.textContent?.trim() || select.value;
+  const button = switcher.querySelector(".lang-button");
+  if (button) {
+    button.textContent = selectedText;
+    button.setAttribute("aria-label", select.getAttribute("aria-label") || "Website language");
+  }
+
+  switcher.querySelectorAll("[data-lang-option]").forEach((optionButton) => {
+    optionButton.setAttribute("aria-selected", optionButton.dataset.langValue === select.value ? "true" : "false");
+  });
+}
+
+function enhanceLanguageSelect(select) {
+  const switcher = select.closest(".lang-switch");
+  if (!switcher || switcher.classList.contains("is-enhanced")) return;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "lang-button";
+  button.setAttribute("aria-haspopup", "listbox");
+  button.setAttribute("aria-expanded", "false");
+  button.setAttribute("aria-label", select.getAttribute("aria-label") || "Website language");
+
+  const menu = document.createElement("div");
+  menu.className = "lang-menu";
+  menu.setAttribute("role", "listbox");
+
+  Array.from(select.options).forEach((option) => {
+    const optionButton = document.createElement("button");
+    optionButton.type = "button";
+    optionButton.setAttribute("role", "option");
+    optionButton.dataset.langOption = "";
+    optionButton.dataset.langValue = option.value;
+    if (option.dataset.i18n) optionButton.dataset.i18n = option.dataset.i18n;
+    optionButton.textContent = option.textContent;
+    optionButton.addEventListener("click", () => {
+      applyLanguage(option.value);
+      closeLanguageMenu(switcher);
+      button.focus();
+    });
+    optionButton.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        closeLanguageMenu(switcher);
+        button.focus();
+      }
+    });
+    menu.appendChild(optionButton);
+  });
+
+  button.addEventListener("click", () => {
+    const willOpen = !switcher.classList.contains("is-open");
+    document.querySelectorAll(".lang-switch.is-open").forEach(closeLanguageMenu);
+    switcher.classList.toggle("is-open", willOpen);
+    button.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  });
+
+  button.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      closeLanguageMenu(switcher);
+      return;
+    }
+    if (event.key === "ArrowDown" || event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      switcher.classList.add("is-open");
+      button.setAttribute("aria-expanded", "true");
+      switcher.querySelector('[data-lang-option][aria-selected="true"]')?.focus();
+    }
+  });
+
+  switcher.insertBefore(button, select);
+  switcher.appendChild(menu);
+  switcher.classList.add("is-enhanced");
+  syncLanguageControl(select);
+}
+
 function applyLanguage(language) {
   const lang = normalizeLanguage(language) || "zh-Hans";
   document.documentElement.lang = lang;
@@ -1709,7 +1797,7 @@ function applyLanguage(language) {
 
   document.querySelectorAll(".lang-select").forEach((select) => {
     if (select.value !== lang) select.value = lang;
-    updateLanguageSelectWidth(select);
+    syncLanguageControl(select);
   });
 
   const titleKey = document.body.dataset.titleKey;
@@ -1725,10 +1813,17 @@ document.addEventListener("DOMContentLoaded", () => {
   const queryLanguage = queryLanguagePreference();
   const savedLanguage = normalizeLanguage(localStorage.getItem("ph-lang"));
   const initial = queryLanguage || savedLanguage || detectBrowserLanguage();
+  document.querySelectorAll(".lang-select").forEach(enhanceLanguageSelect);
   applyLanguage(initial);
 
   document.querySelectorAll(".lang-select").forEach((select) => {
     select.addEventListener("change", (event) => applyLanguage(event.target.value));
+  });
+
+  document.addEventListener("click", (event) => {
+    document.querySelectorAll(".lang-switch.is-open").forEach((switcher) => {
+      if (!switcher.contains(event.target)) closeLanguageMenu(switcher);
+    });
   });
 
   const revealItems = document.querySelectorAll(".reveal");
