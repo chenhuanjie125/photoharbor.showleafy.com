@@ -1646,6 +1646,28 @@ function getTranslation(lang, key) {
   return locale[key] ?? PH_TRANSLATIONS.en[key] ?? PH_TRANSLATIONS["zh-Hans"][key] ?? "";
 }
 
+function updateLanguageSelectWidth(select) {
+  const selectedText = select.selectedOptions[0]?.textContent?.trim() || select.value;
+  const measurer = updateLanguageSelectWidth.measurer || document.createElement("span");
+  const styles = window.getComputedStyle(select);
+
+  if (!updateLanguageSelectWidth.measurer) {
+    measurer.setAttribute("aria-hidden", "true");
+    Object.assign(measurer.style, {
+      position: "absolute",
+      visibility: "hidden",
+      whiteSpace: "nowrap",
+      pointerEvents: "none",
+    });
+    document.body.appendChild(measurer);
+    updateLanguageSelectWidth.measurer = measurer;
+  }
+
+  measurer.style.font = styles.font;
+  measurer.textContent = selectedText;
+  select.style.setProperty("--lang-select-width", `${Math.ceil(measurer.getBoundingClientRect().width) + 4}px`);
+}
+
 function applyLanguage(language) {
   const lang = normalizeLanguage(language) || "zh-Hans";
   document.documentElement.lang = lang;
@@ -1687,6 +1709,7 @@ function applyLanguage(language) {
 
   document.querySelectorAll(".lang-select").forEach((select) => {
     if (select.value !== lang) select.value = lang;
+    updateLanguageSelectWidth(select);
   });
 
   const titleKey = document.body.dataset.titleKey;
