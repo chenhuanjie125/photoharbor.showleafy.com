@@ -2348,6 +2348,19 @@ html[lang="en"] .detail-card p {
   box-shadow: none;
 }
 
+.legal-hero-card h1,
+.legal-primary-commitment strong,
+.legal-summary-grid strong,
+.legal-meta em {
+  overflow-wrap: anywhere;
+  word-break: normal;
+  hyphens: auto;
+}
+
+.legal-hero-card h1 {
+  text-wrap: pretty;
+}
+
 .legal-hero-card .eyebrow {
   color: var(--ph-color-primary);
 }
@@ -2953,6 +2966,19 @@ html[lang="en"] .detail-card p {
 
   .legal-section p {
     font-size: 15px;
+  }
+
+  .legal-hero-card h1 {
+    font-size: clamp(30px, 9vw, 40px);
+    line-height: 1.12;
+    text-wrap: pretty;
+  }
+
+  .legal-primary-commitment strong,
+  .legal-summary-grid strong,
+  .legal-meta em {
+    font-size: 14px;
+    line-height: 1.4;
   }
 
   .legal-summary-grid,
