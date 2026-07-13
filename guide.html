@@ -610,6 +610,45 @@
                     <li><strong>后台继续补齐</strong><span>剩余照片和视频的缩略图继续在后台生成；你可以离开目标详情页，正常使用 App。</span></li>
                   </ol>
 
+                  <section class="target-thumbnail-optimizations" aria-labelledby="target-thumbnail-optimizations-title">
+                    <div class="target-thumbnail-heading">
+                      <span aria-hidden="true">⚡</span>
+                      <div>
+                        <p>更快显示已有媒体</p>
+                        <h4 id="target-thumbnail-optimizations-title">针对不同存储的缩略图优化</h4>
+                      </div>
+                    </div>
+                    <p class="target-thumbnail-intro">PhotoHarbor 会根据目标类型，优先使用存储服务已经准备好的小图，减少为显示媒体库而读取完整照片或视频。整个过程自动完成，无需手动设置。</p>
+                    <div class="target-thumbnail-optimization-grid">
+                      <article>
+                        <span class="target-thumbnail-kind">云盘</span>
+                        <h5>Google Drive、Dropbox、OneDrive 和百度网盘</h5>
+                        <p>优先使用网盘已经准备好的小图；如果服务暂时没有提供，App 会自动改用通用方式生成浏览用缩略图。</p>
+                      </article>
+                      <article>
+                        <span class="target-thumbnail-kind">NAS</span>
+                        <h5>群晖 NAS</h5>
+                        <p>识别到群晖设备后，优先读取设备已经生成的照片和视频小图；没有可用小图时自动改用通用方式。</p>
+                      </article>
+                      <article>
+                        <span class="target-thumbnail-kind">NAS</span>
+                        <h5>威联通 NAS</h5>
+                        <p>识别到威联通设备后，优先读取设备文件服务中已有的小图，减少重复读取较大的远端原文件。</p>
+                      </article>
+                      <article>
+                        <span class="target-thumbnail-kind">NAS</span>
+                        <h5>飞牛 NAS</h5>
+                        <p>对于已由飞牛相册管理的目录，优先使用飞牛相册准备的小图；其他目录仍会自动改用通用方式。</p>
+                      </article>
+                    </div>
+                    <div class="target-thumbnail-benefits" aria-label="缩略图优化的共同特点">
+                      <span>无需手动设置</span>
+                      <span>不可用时自动切换</span>
+                      <span>不会修改远端原文件</span>
+                    </div>
+                    <p class="target-thumbnail-boundary">这些优化只影响媒体库的显示速度，不改变目标保存结果、照片和视频原件，也不改变后续的安全删除判断。</p>
+                  </section>
+
                   <div class="target-option-grid target-bootstrap-status-grid">
                     <article><h4>正在扫描文件夹</h4><p>App 正在确认目录结构。此时目录数会先增加，媒体数量可能仍然较少。</p></article>
                     <article><h4>正在发现媒体</h4><p>App 已开始识别照片和视频，媒体数量会持续更新，不必停留在当前页面等待。</p></article>
