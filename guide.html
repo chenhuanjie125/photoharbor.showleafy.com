@@ -58,28 +58,28 @@
         <div class="page-grid">
           <aside class="toc" aria-label="Guide sections" data-i18n-aria-label="aria_guide_sections">
             <a href="#prepare" data-i18n="guide_toc_1">准备工作</a>
-            <details class="toc-submenu" data-locale-only="zh-Hans" data-guide-nav-group="prepare" open>
-              <summary>准备工作目录</summary>
-              <nav class="toc-subnav" aria-label="准备工作目录">
-                <a href="#prepare-storage">选择存储方式</a>
-                <a href="#prepare-device">准备 NAS 或电脑</a>
-                <a href="#prepare-connection">准备连接信息</a>
-                <a href="#prepare-permissions">授予系统权限</a>
-                <a href="#prepare-network">检查网络与上传设置</a>
-                <a href="#prepare-checklist">完成归档前检查</a>
+            <details class="toc-submenu" data-guide-nav-group="prepare" open>
+              <summary data-i18n="guide_prepare_menu_title">准备工作目录</summary>
+              <nav class="toc-subnav" aria-label="准备工作目录" data-i18n-aria-label="guide_prepare_menu_title">
+                <a href="#prepare-storage" data-i18n="guide_prepare_menu_storage">选择存储方式</a>
+                <a href="#prepare-device" data-i18n="guide_prepare_menu_device">准备 NAS 或电脑</a>
+                <a href="#prepare-connection" data-i18n="guide_prepare_menu_connection">准备连接信息</a>
+                <a href="#prepare-permissions" data-i18n="guide_prepare_menu_permissions">授予系统权限</a>
+                <a href="#prepare-network" data-i18n="guide_prepare_menu_network">检查网络与上传设置</a>
+                <a href="#prepare-checklist" data-i18n="guide_prepare_menu_checklist">完成归档前检查</a>
               </nav>
             </details>
             <a href="#target" data-i18n="guide_toc_2">添加目标</a>
-            <details class="toc-submenu" data-locale-only="zh-Hans" data-guide-nav-group="target" open>
-              <summary>添加目标目录</summary>
-              <nav class="toc-subnav" aria-label="添加目标目录">
-                <a href="#target-entry">进入添加页面</a>
-                <a href="#target-type">选择目标类型</a>
-                <a href="#target-server">填写服务器信息</a>
-                <a href="#target-cloud">完成云盘授权</a>
-                <a href="#target-options">确认特殊设置</a>
-                <a href="#target-check">检查并保存</a>
-                <a href="#target-after-save">确认建库状态</a>
+            <details class="toc-submenu" data-guide-nav-group="target" open>
+              <summary data-i18n="guide_target_menu_title">添加目标目录</summary>
+              <nav class="toc-subnav" aria-label="添加目标目录" data-i18n-aria-label="guide_target_menu_title">
+                <a href="#target-entry" data-i18n="guide_target_menu_entry">进入添加页面</a>
+                <a href="#target-type" data-i18n="guide_target_menu_type">选择目标类型</a>
+                <a href="#target-server" data-i18n="guide_target_menu_server">填写服务器信息</a>
+                <a href="#target-cloud" data-i18n="guide_target_menu_cloud">完成云盘授权</a>
+                <a href="#target-options" data-i18n="guide_target_menu_options">确认特殊设置</a>
+                <a href="#target-check" data-i18n="guide_target_menu_check">检查并保存</a>
+                <a href="#target-after-save" data-i18n="guide_target_menu_after_save">确认建库状态</a>
               </nav>
             </details>
             <a href="#task" data-i18n="guide_toc_3">创建任务</a>
@@ -92,7 +92,7 @@
               <h2 data-i18n="guide_prepare_title">准备工作</h2>
               <p data-i18n="guide_prepare_text" data-locale-except="zh-Hans">准备一个可访问的 NAS、Mac / Windows 共享文件夹、WebDAV、SFTP 或云盘目标，并在 iOS 中授予 PhotoHarbor 照片访问权限。</p>
 
-              <div class="prepare-guide" data-locale-only="zh-Hans">
+              <div class="prepare-guide" id="prepare-guide-detail" data-locale-only="zh-Hans">
                 <div class="prepare-intro">
                   <p>完成以下准备后，再进入“添加存储目标”。第一次使用时，建议让 iPhone 或 iPad 与 NAS、Mac 或 Windows 电脑连接到同一个 Wi‑Fi，并优先使用 SMB。</p>
                   <p>PhotoHarbor 不要求你先把照片复制到电脑，也不要求把家中的 NAS 暴露到公网。App 只有在所选远端文件夹通过连接、写入、浏览和轻量读取检查后，才会把它保存为可用目标；本机照片也不会被自动删除。</p>
@@ -376,7 +376,7 @@
               <h2 data-i18n="guide_target_title">添加存储目标</h2>
               <p data-i18n="guide_target_text" data-locale-except="zh-Hans">在 Targets 中添加目标并完成连接检查。云盘目标需要通过对应平台 OAuth 授权，并选择用于归档的文件夹。</p>
 
-              <div class="target-guide" data-locale-only="zh-Hans">
+              <div class="target-guide" id="target-guide-detail" data-locale-only="zh-Hans">
                 <div class="prepare-intro">
                   <p>存储目标是 PhotoHarbor 用来归档照片和视频的远端位置。添加前请先完成“准备工作”，确认目标目录可以连接并具有读写权限。</p>
                   <p>基础版可以配置 1 个可写目标；完整版或完整试用期可以配置多个目标。达到数量上限时，App 会先显示升级提示，不会进入添加表单。</p>

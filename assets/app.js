@@ -340,6 +340,21 @@ const PH_TRANSLATIONS = {
     guide_toc_4: "等待 proof",
     guide_toc_5: "安全删除",
     guide_toc_6: "浏览与恢复",
+    guide_prepare_menu_title: "准备工作目录",
+    guide_prepare_menu_storage: "选择存储方式",
+    guide_prepare_menu_device: "准备 NAS 或电脑",
+    guide_prepare_menu_connection: "准备连接信息",
+    guide_prepare_menu_permissions: "授予系统权限",
+    guide_prepare_menu_network: "检查网络与上传设置",
+    guide_prepare_menu_checklist: "完成归档前检查",
+    guide_target_menu_title: "添加目标目录",
+    guide_target_menu_entry: "进入添加页面",
+    guide_target_menu_type: "选择目标类型",
+    guide_target_menu_server: "填写服务器信息",
+    guide_target_menu_cloud: "完成云盘授权",
+    guide_target_menu_options: "确认特殊设置",
+    guide_target_menu_check: "检查并保存",
+    guide_target_menu_after_save: "确认建库状态",
     guide_prepare_title: "准备工作",
     guide_prepare_text: "准备一个可访问的 NAS、Mac / Windows 共享文件夹、WebDAV、SFTP 或云盘目标，并在 iOS 中授予 PhotoHarbor 照片访问权限。",
     guide_target_title: "添加存储目标",
@@ -697,6 +712,21 @@ const PH_TRANSLATIONS = {
     guide_toc_4: "Wait for proof",
     guide_toc_5: "Safe Delete",
     guide_toc_6: "Browse and restore",
+    guide_prepare_menu_title: "Preparation guide",
+    guide_prepare_menu_storage: "Choose storage",
+    guide_prepare_menu_device: "Prepare a NAS or computer",
+    guide_prepare_menu_connection: "Prepare connection details",
+    guide_prepare_menu_permissions: "Grant system permissions",
+    guide_prepare_menu_network: "Check network and upload settings",
+    guide_prepare_menu_checklist: "Final archive check",
+    guide_target_menu_title: "Add-target guide",
+    guide_target_menu_entry: "Open the add screen",
+    guide_target_menu_type: "Choose target type",
+    guide_target_menu_server: "Enter server details",
+    guide_target_menu_cloud: "Authorize cloud storage",
+    guide_target_menu_options: "Review special settings",
+    guide_target_menu_check: "Check and save",
+    guide_target_menu_after_save: "Confirm library setup",
     guide_prepare_title: "Prepare",
     guide_prepare_text: "Prepare a reachable NAS, Mac or Windows share, WebDAV, SFTP, or cloud drive target, and grant PhotoHarbor Photos access in iOS.",
     guide_target_title: "Add a storage target",
@@ -904,6 +934,21 @@ PH_TRANSLATIONS["zh-Hant"] = {
   aria_terms_metadata: "條款資訊",
   aria_terms_sections: "條款章節",
   aria_terms_summary: "條款摘要",
+  guide_prepare_menu_title: "準備工作目錄",
+  guide_prepare_menu_storage: "選擇儲存方式",
+  guide_prepare_menu_device: "準備 NAS 或電腦",
+  guide_prepare_menu_connection: "準備連線資訊",
+  guide_prepare_menu_permissions: "授予系統權限",
+  guide_prepare_menu_network: "檢查網路與上傳設定",
+  guide_prepare_menu_checklist: "完成歸檔前檢查",
+  guide_target_menu_title: "新增目標目錄",
+  guide_target_menu_entry: "進入新增頁面",
+  guide_target_menu_type: "選擇目標類型",
+  guide_target_menu_server: "填寫伺服器資訊",
+  guide_target_menu_cloud: "完成雲端硬碟授權",
+  guide_target_menu_options: "確認特殊設定",
+  guide_target_menu_check: "檢查並儲存",
+  guide_target_menu_after_save: "確認建庫狀態",
   home_page_title: "PhotoHarbor",
   language_picker_label: "網站語言",
   meta_home_description: "PhotoHarbor 把你掌控的儲存變成一個可歸檔、可瀏覽、可播放、可回復，並可安全釋放 iPhone 空間的私人照片庫。",
@@ -1338,6 +1383,21 @@ PH_TRANSLATIONS.de = {
 };
 
 Object.assign(PH_TRANSLATIONS.ja, {
+  guide_prepare_menu_title: "準備ガイド",
+  guide_prepare_menu_storage: "保存方法を選ぶ",
+  guide_prepare_menu_device: "NAS またはコンピュータを準備",
+  guide_prepare_menu_connection: "接続情報を準備",
+  guide_prepare_menu_permissions: "システム権限を許可",
+  guide_prepare_menu_network: "ネットワークとアップロード設定を確認",
+  guide_prepare_menu_checklist: "アーカイブ開始前の確認",
+  guide_target_menu_title: "保存先追加ガイド",
+  guide_target_menu_entry: "追加画面を開く",
+  guide_target_menu_type: "保存先の種類を選ぶ",
+  guide_target_menu_server: "サーバー情報を入力",
+  guide_target_menu_cloud: "クラウドストレージを認可",
+  guide_target_menu_options: "特別な設定を確認",
+  guide_target_menu_check: "確認して保存",
+  guide_target_menu_after_save: "ライブラリ準備を確認",
   guide_delete_title: "安全に削除する",
   guide_toc_5: "安全に削除",
   home_page_title: "PhotoHarbor",
@@ -1450,6 +1510,21 @@ Object.assign(PH_TRANSLATIONS.ja, {
 });
 
 Object.assign(PH_TRANSLATIONS.de, {
+  guide_prepare_menu_title: "Vorbereitungsleitfaden",
+  guide_prepare_menu_storage: "Speicherart waehlen",
+  guide_prepare_menu_device: "NAS oder Computer vorbereiten",
+  guide_prepare_menu_connection: "Verbindungsdaten vorbereiten",
+  guide_prepare_menu_permissions: "Systemberechtigungen erteilen",
+  guide_prepare_menu_network: "Netzwerk und Upload-Einstellungen pruefen",
+  guide_prepare_menu_checklist: "Pruefung vor der Archivierung",
+  guide_target_menu_title: "Leitfaden zum Hinzufuegen",
+  guide_target_menu_entry: "Hinzufuegen-Seite oeffnen",
+  guide_target_menu_type: "Zieltyp waehlen",
+  guide_target_menu_server: "Serverdaten eingeben",
+  guide_target_menu_cloud: "Cloud-Speicher autorisieren",
+  guide_target_menu_options: "Spezielle Einstellungen pruefen",
+  guide_target_menu_check: "Pruefen und speichern",
+  guide_target_menu_after_save: "Mediathekaufbau bestaetigen",
   guide_delete_title: "Sicher loeschen",
   guide_toc_5: "Sicher loeschen",
   home_page_title: "PhotoHarbor",
@@ -1854,10 +1929,106 @@ function syncGuideMenusForViewport() {
   });
 }
 
+let guideDetailOriginals;
+
+const localizedDetailedGuides = {
+  "zh-Hant": {
+    prepare: {
+      intro: ["完成以下準備後，再新增儲存目標。第一次使用時，建議讓 iPhone 或 iPad 與 NAS、Mac 或 Windows 電腦連到同一個 Wi-Fi，並優先使用 SMB。", "PhotoHarbor 會先確認遠端資料夾可連線、可寫入、可瀏覽且可輕量讀取，才儲存為目標；新增目標不會自動上傳或刪除本機照片。"],
+      sections: [
+        ["選擇儲存方式", "家庭 NAS、Windows 或 Mac 分享資料夾優先使用 SMB（通常為連接埠 445）。已有安全服務時可選 HTTPS WebDAV 或 SFTP；Google Drive、Dropbox、OneDrive 與百度網盤則在 App 內完成官方授權。異地連線請先接入 VPN，切勿把 SMB 445 直接暴露到網際網路。"],
+        ["準備 NAS 或電腦", "在 NAS、Mac 或 Windows 開啟檔案分享，建立專用歸檔資料夾，並為一般帳號授予建立、讀取、重新命名與刪除權限。記下裝置 IP、分享名稱、帳號和密碼；歸檔期間讓電腦與目標磁碟保持開機、在線。"],
+        ["準備連線資訊", "主機欄只填 IP 或網域名稱，不要把資料夾路徑寫入其中。請備妥連接埠、可讀寫的歸檔路徑、帳密，以及必要時的 SMB 網域或 SFTP 私鑰；憑據儲存在裝置 Keychain。"],
+        ["授予系統權限", "允許 PhotoHarbor 存取照片與本機網路。若使用有限照片存取，只能處理已授權的項目；開啟 iCloud 最佳化儲存空間時，首次大量歸檔前請保持網路、電量與本機暫存空間充足。"],
+        ["檢查網路與上傳設定", "「僅在 Wi-Fi 下上傳」預設開啟；只有行動網路時，任務會顯示等待 Wi-Fi，恢復 Wi-Fi 或有線網路後繼續。確認 iPhone/iPad 與目標位於同一 Wi-Fi 或可互通的 VPN，並避免啟用用戶端隔離的訪客網路。"],
+        ["完成歸檔前檢查", "確認目標顯示可用於歸檔、資料夾空間足夠，且連線、寫入、瀏覽與輕量預覽均已通過。上傳完成不代表可刪除：必須等待最終歸檔 proof 完成，項目才可進入 Safe Delete。"]
+      ]
+    },
+    target: {
+      intro: ["儲存目標是 PhotoHarbor 歸檔照片和影片的遠端位置。基本版可設定 1 個可寫目標；完整版或完整試用期間可設定多個。"],
+      sections: [
+        ["進入新增頁面", "開啟「目標」後點選右上角「+」，或使用空狀態中的新增按鈕。顯示名稱只用於在 App 內識別；儲存目標本身不會啟動上傳。"],
+        ["選擇目標類型", "SMB 適合家用 NAS 與電腦分享；WebDAV 適合已部署的 WebDAV/HTTPS 服務；SFTP 適合 SSH/SFTP 伺服器；雲端硬碟支援 Google Drive、Dropbox、OneDrive 和百度網盤。切換類型後請重新確認位址、連接埠、路徑和驗證方式。"],
+        ["填寫伺服器資訊", "SMB 通常使用 445；WebDAV 通常使用 HTTPS 443 或 HTTP 80；SFTP 通常使用 22。路徑必須可建立、讀取、重新命名及刪除；SFTP 支援密碼或 Ed25519/ECDSA 私鑰，WebDAV 優先 HTTPS。"],
+        ["完成雲端硬碟授權", "在官方授權頁登入，再在 App 內選擇或建立歸檔資料夾。Google Drive 僅管理 App 建立或你明確透過 Picker 授權的資料夾；切換帳號後，必須重新授權並再次選擇資料夾。"],
+        ["確認特殊設定", "家庭環境通常不需 SMB 網域；WebDAV 的 HTTP 只應用於完全可信的區域網路。百度網盤的轉碼影片播放只影響遠端播放方式，不影響上傳、proof 或 Safe Delete；可隨時切換帳號並重新選擇資料夾。"],
+        ["檢查並儲存", "PhotoHarbor 會驗證連線或雲端授權，並測試寫入、提交或重新命名、資料夾瀏覽與輕量讀取。結果可能為「可用於歸檔」、「可用於歸檔但部分能力受限」或失敗；失敗時請依訊息修正網路、帳密、權限、空間或協定。"],
+        ["確認建庫狀態", "儲存後若資料夾已有媒體，App 會先掃描目錄、找出照片與影片，優先準備封面和首批縮圖；達到可瀏覽條件後即可進入媒體庫，其餘縮圖會在背景繼續取得。網盤、群暉、威聯通和飛牛會在可用時使用其已準備的小圖加快顯示，否則自動改用通用方式；這不會修改遠端原檔，也不影響 proof。"]
+      ]
+    }
+  },
+  en: {
+    prepare: {
+      intro: ["Complete these preparations before adding a storage target. For a first setup, keep your iPhone or iPad and NAS, Mac, or Windows computer on the same Wi-Fi network and prefer SMB.", "PhotoHarbor saves a target only after its folder passes connection, write, browse, and lightweight-read checks. Adding a target never starts an upload or deletes local photos."],
+      sections: [
+        ["Choose storage", "SMB is the first choice for home NAS devices and Windows or Mac shares (usually port 445). Use HTTPS WebDAV or SFTP when you already operate a secure service; authorize Google Drive, Dropbox, OneDrive, or Baidu Netdisk inside the app. For remote access, connect to a VPN first—never expose SMB port 445 directly to the internet."],
+        ["Prepare a NAS or computer", "Enable file sharing, create a dedicated archive folder, and grant a standard account permission to create, read, rename, and delete files. Record the device IP, share name, username, and password; keep the computer and destination volume awake and online while archiving."],
+        ["Prepare connection details", "Enter only an IP address or hostname in the host field, not a folder path. Have the port, writable archive path, credentials, and, where needed, an SMB domain or SFTP private key ready. Credentials stay in the device Keychain."],
+        ["Grant system permissions", "Allow PhotoHarbor to access Photos and the local network. Limited Photos access processes only the items you have allowed. If Optimize iPhone Storage is enabled, keep a stable network, power, and enough temporary local space before a large first archive."],
+        ["Check network and upload settings", "Upload on Wi-Fi only is enabled by default. On cellular-only connectivity, a task waits for Wi-Fi and continues once Wi-Fi or wired networking returns. Keep the device and target on the same Wi-Fi or a mutually reachable VPN, and avoid guest Wi-Fi with client isolation."],
+        ["Final archive check", "Confirm that the target is available for archiving, has enough free space, and passed connection, write, browse, and lightweight-preview checks. Upload completion is not permission to delete: wait for final archive proof before Safe Delete."]
+      ]
+    },
+    target: {
+      intro: ["A storage target is the remote location where PhotoHarbor archives photos and videos. The basic edition can configure one writable target; the full edition or full trial can configure more."],
+      sections: [
+        ["Open the add screen", "Open Targets and tap +, or use the empty-state add button. The optional display name is only for recognition in the app. Saving a target does not start an upload."],
+        ["Choose target type", "Use SMB for home NAS and computer shares, WebDAV for an existing WebDAV or HTTPS service, SFTP for SSH/SFTP servers, or a cloud drive for Google Drive, Dropbox, OneDrive, and Baidu Netdisk. Recheck address, port, path, and authentication after changing type."],
+        ["Enter server details", "SMB usually uses 445, WebDAV uses HTTPS 443 or HTTP 80, and SFTP uses 22. The path must allow create, read, rename, and delete. SFTP supports a password or Ed25519/ECDSA private key; prefer HTTPS for WebDAV."],
+        ["Authorize cloud storage", "Sign in on the provider's official page, then choose or create an archive folder in the app. Google Drive manages only an app-created folder or one you explicitly grant through Picker. Switching accounts requires authorization and folder selection again."],
+        ["Review special settings", "Most home setups leave the SMB domain empty. Use HTTP WebDAV only on a fully trusted local network. Baidu transcoded video playback affects only remote playback, not upload, proof, or Safe Delete; you can switch accounts and select a folder again at any time."],
+        ["Check and save", "PhotoHarbor verifies the connection or cloud authorization, then tests writing, committing or renaming, folder browsing, and lightweight reads. A target can be ready, ready with limited capabilities, or fail; use the message to correct network, credentials, permissions, space, or protocol."],
+        ["Confirm library setup", "When the saved folder already contains media, the app scans folders and finds photos and videos, then prepares covers and the first thumbnails. You can browse once the library reaches its ready threshold while remaining thumbnails continue in the background. Cloud drives and supported Synology, QNAP, and fnOS NAS devices may use existing small images to display faster; otherwise PhotoHarbor falls back automatically. This never changes remote originals or proof."]
+      ]
+    }
+  },
+  ja: {
+    prepare: { intro: ["保存先を追加する前に、以下を準備します。初回は iPhone または iPad と NAS、Mac、Windows PC を同じ Wi-Fi に接続し、SMB を優先してください。", "PhotoHarbor は接続、書き込み、閲覧、軽量読み取りを確認できたフォルダだけを保存先にします。保存先の追加だけでアップロードやローカル写真の削除は始まりません。"], sections: [["保存方法を選ぶ", "家庭用 NAS や Windows/Mac 共有には SMB（通常 445）が最適です。安全なサービスがある場合は HTTPS WebDAV または SFTP を使えます。Google Drive、Dropbox、OneDrive、百度網盤はアプリ内で公式認可を完了します。外出先では先に VPN へ接続し、SMB 445 を直接インターネットへ公開しないでください。"], ["NAS またはコンピュータを準備", "ファイル共有を有効にし、専用のアーカイブフォルダを作成して、通常アカウントに作成・読み取り・名前変更・削除の権限を付与します。IP、共有名、ユーザー名、パスワードを控え、アーカイブ中はコンピュータと保存先ボリュームを起動したままにします。"], ["接続情報を準備", "ホスト欄には IP またはホスト名だけを入力し、フォルダパスは含めません。ポート、書き込み可能なパス、認証情報、必要に応じて SMB ドメインまたは SFTP 秘密鍵を準備します。認証情報は端末の Keychain に保存されます。"], ["システム権限を許可", "写真とローカルネットワークへのアクセスを許可します。写真への限定アクセスでは、許可済みの項目だけを処理できます。iPhone ストレージの最適化を使用している場合は、初回の大量アーカイブ前に安定したネットワーク、電源、十分な一時空き容量を確保してください。"], ["ネットワークとアップロード設定を確認", "「Wi-Fi 接続時のみアップロード」は初期状態で有効です。モバイル通信だけの場合は Wi-Fi 待機となり、Wi-Fi または有線ネットワークに戻ると続行します。端末と保存先を同じ Wi-Fi または相互到達可能な VPN に置き、クライアント分離されたゲスト Wi-Fi は避けます。"], ["アーカイブ開始前の確認", "保存先がアーカイブ可能と表示され、空き容量、接続、書き込み、閲覧、軽量プレビューの確認に通っていることを確認します。アップロード完了だけでは削除できません。Safe Delete の前に最終アーカイブ proof を待ってください。"]] },
+    target: { intro: ["保存先は、PhotoHarbor が写真と動画をアーカイブするリモートの場所です。基本版では書き込み可能な保存先を 1 つ、完全版または完全試用期間では複数設定できます。"], sections: [["追加画面を開く", "「保存先」を開いて右上の + をタップするか、空の画面の追加ボタンを使います。表示名はアプリ内での識別用です。保存先を保存してもアップロードは始まりません。"], ["保存先の種類を選ぶ", "家庭の NAS やコンピュータ共有には SMB、既存の WebDAV/HTTPS サービスには WebDAV、SSH/SFTP サーバーには SFTP、クラウドには Google Drive、Dropbox、OneDrive、百度網盤を選びます。種類を変更した後はアドレス、ポート、パス、認証方法を確認し直します。"], ["サーバー情報を入力", "SMB は通常 445、WebDAV は HTTPS 443 または HTTP 80、SFTP は 22 を使用します。パスには作成、読み取り、名前変更、削除が可能な権限が必要です。SFTP はパスワードまたは Ed25519/ECDSA 秘密鍵を使え、WebDAV は HTTPS を推奨します。"], ["クラウドストレージを認可", "各サービスの公式ページでログインし、アプリ内でアーカイブフォルダを選択または作成します。Google Drive はアプリ作成フォルダまたは Picker で明示的に許可したフォルダだけを管理します。アカウント変更後は認可とフォルダ選択をやり直します。"], ["特別な設定を確認", "家庭環境では SMB ドメインは通常空欄です。HTTP WebDAV は完全に信頼できるローカルネットワークだけで使います。百度のトランスコード動画再生はリモート再生だけに影響し、アップロード、proof、Safe Delete には影響しません。"], ["確認して保存", "接続またはクラウド認可を確認し、書き込み、コミットまたは名前変更、フォルダ閲覧、軽量読み取りをテストします。「アーカイブ可能」「一部機能が制限されるがアーカイブ可能」、または失敗となるため、表示に従ってネットワーク、認証情報、権限、空き容量、プロトコルを修正します。"], ["ライブラリ準備を確認", "保存先に既存メディアがある場合、アプリはフォルダをスキャンして写真・動画を見つけ、カバーと最初のサムネイルを準備します。閲覧可能な状態になればライブラリを開け、残りのサムネイルはバックグラウンドで続行します。クラウドと対応する Synology、QNAP、fnOS NAS では既存の小画像を使って高速表示でき、使えない場合は自動で通常方式に切り替わります。リモート原本や proof は変更しません。"]] }
+  },
+  de: {
+    prepare: { intro: ["Schliesse diese Vorbereitung ab, bevor du ein Speicherziel hinzufuegst. Fuer die erste Einrichtung sollten iPhone oder iPad und NAS, Mac oder Windows-PC im selben WLAN sein; SMB ist die erste Wahl.", "PhotoHarbor speichert ein Ziel erst nach Verbindungs-, Schreib-, Browse- und leichtem Lesecheck. Das Hinzufuegen eines Ziels startet weder Uploads noch das Loeschen lokaler Fotos."], sections: [["Speicherart waehlen", "SMB eignet sich fuer Heim-NAS sowie Windows- und Mac-Freigaben (meist Port 445). Nutze HTTPS WebDAV oder SFTP bei einem vorhandenen sicheren Dienst; Google Drive, Dropbox, OneDrive und Baidu Netdisk werden in der App offiziell autorisiert. Verbinde dich unterwegs zuerst per VPN und lege SMB 445 nie direkt ins Internet frei."], ["NAS oder Computer vorbereiten", "Aktiviere die Dateifreigabe, erstelle einen eigenen Archivordner und gib einem normalen Konto Erstellen-, Lesen-, Umbenennen- und Loeschrechte. Notiere IP, Freigabename, Benutzername und Passwort; Computer und Zielvolume muessen waehrend der Archivierung wach und online bleiben."], ["Verbindungsdaten vorbereiten", "Im Hostfeld steht nur IP-Adresse oder Hostname, kein Ordnerpfad. Halte Port, beschreibbaren Archivpfad, Zugangsdaten und bei Bedarf SMB-Domaene oder SFTP-Privatschluessel bereit. Zugangsdaten bleiben im Keychain des Geraets."], ["Systemberechtigungen erteilen", "Erlaube PhotoHarbor den Zugriff auf Fotos und das lokale Netzwerk. Bei eingeschraenktem Fotozugriff werden nur freigegebene Elemente verarbeitet. Bei optimiertem iPhone-Speicher brauchst du vor der ersten grossen Archivierung stabiles Netz, Strom und ausreichend lokalen Zwischenspeicher."], ["Netzwerk und Upload-Einstellungen pruefen", "Nur ueber WLAN hochladen ist standardmaessig aktiv. Bei reinem Mobilfunk wartet der Task auf WLAN und setzt bei WLAN oder kabelgebundenem Netz fort. Geraet und Ziel muessen im selben WLAN oder einem gegenseitig erreichbaren VPN liegen; vermeide Gast-WLAN mit Client-Isolation."], ["Pruefung vor der Archivierung", "Bestaetige, dass das Ziel zur Archivierung bereit ist, genug Speicher hat und Verbindung, Schreiben, Browsen und leichte Vorschau bestanden haben. Ein abgeschlossener Upload ist keine Loeschfreigabe: Warte vor Safe Delete auf den finalen Archiv-Proof."]] },
+    target: { intro: ["Ein Speicherziel ist der entfernte Ort, an dem PhotoHarbor Fotos und Videos archiviert. Die Basisversion kann ein beschreibbares Ziel konfigurieren; Vollversion oder vollstaendige Testphase mehrere."], sections: [["Hinzufuegen-Seite oeffnen", "Oeffne Ziele und tippe auf + oder nutze die Hinzufuegen-Schaltflaeche im Leerzustand. Der Anzeigename dient nur zur Erkennung in der App. Das Speichern eines Ziels startet keinen Upload."], ["Zieltyp waehlen", "SMB ist fuer Heim-NAS und Computerfreigaben, WebDAV fuer einen vorhandenen WebDAV-/HTTPS-Dienst, SFTP fuer SSH-/SFTP-Server und Cloud fuer Google Drive, Dropbox, OneDrive und Baidu Netdisk. Nach einem Typwechsel muessen Adresse, Port, Pfad und Anmeldung neu geprueft werden."], ["Serverdaten eingeben", "SMB nutzt meist 445, WebDAV HTTPS 443 oder HTTP 80 und SFTP 22. Der Pfad braucht Rechte zum Erstellen, Lesen, Umbenennen und Loeschen. SFTP unterstuetzt Passwort oder Ed25519-/ECDSA-Privatschluessel; fuer WebDAV wird HTTPS empfohlen."], ["Cloud-Speicher autorisieren", "Melde dich auf der offiziellen Seite des Anbieters an und waehle oder erstelle anschliessend einen Archivordner in der App. Google Drive verwaltet nur einen von der App erstellten oder explizit mit Picker freigegebenen Ordner. Nach einem Kontowechsel sind Autorisierung und Ordnerwahl erneut noetig."], ["Spezielle Einstellungen pruefen", "In Heimnetzen bleibt die SMB-Domaene normalerweise leer. HTTP WebDAV gehoert nur in ein vollstaendig vertrauenswuerdiges lokales Netzwerk. Die Baidu-Transkodierung fuer Video beeinflusst nur die Remote-Wiedergabe, nicht Upload, Proof oder Safe Delete."], ["Pruefen und speichern", "PhotoHarbor prueft Verbindung oder Cloud-Autorisierung sowie Schreiben, Commit oder Umbenennen, Ordner-Browsen und leichte Lesezugriffe. Ein Ziel kann bereit, mit eingeschraenkten Faehigkeiten bereit oder fehlgeschlagen sein; korrigiere danach Netzwerk, Zugangsdaten, Rechte, Speicher oder Protokoll."], ["Mediathekaufbau bestaetigen", "Enthaelt der gespeicherte Ordner bereits Medien, scannt die App die Ordner, findet Fotos und Videos und bereitet Cover sowie erste Miniaturen vor. Sobald die Mediathek browsebereit ist, kannst du sie oeffnen; weitere Miniaturen folgen im Hintergrund. Cloud-Speicher sowie unterstuetzte Synology-, QNAP- und fnOS-NAS koennen vorhandene kleine Bilder fuer eine schnellere Anzeige verwenden, sonst faellt PhotoHarbor automatisch auf die allgemeine Methode zurueck. Remote-Originale und Proof bleiben unveraendert."]] }
+  }
+};
+
+function renderLocalizedGuideDetail(language) {
+  const localized = localizedDetailedGuides[language];
+  const prepare = document.querySelector("#prepare-guide-detail");
+  const target = document.querySelector("#target-guide-detail");
+  if (!prepare || !target) return;
+
+  if (!guideDetailOriginals) {
+    guideDetailOriginals = { prepare: prepare.innerHTML, target: target.innerHTML };
+  }
+
+  const buildGuide = (guide, group) => [
+    `<div class="prepare-intro">${guide.intro.map((copy) => `<p>${copy}</p>`).join("")}</div>`,
+    ...guide.sections.map(([title, copy], index) => `<section class="prepare-subsection ${group === "target" ? "target-subsection" : ""}" id="${group === "prepare" ? ["prepare-storage", "prepare-device", "prepare-connection", "prepare-permissions", "prepare-network", "prepare-checklist"][index] : ["target-entry", "target-type", "target-server", "target-cloud", "target-options", "target-check", "target-after-save"][index]}" data-guide-section-group="${group}"><div class="prepare-section-heading"><span>${String(index + 1).padStart(2, "0")}</span><div><h3>${title}</h3></div></div><p class="prepare-section-copy">${copy}</p></section>`)
+  ].join("");
+
+  [
+    [prepare, "prepare"],
+    [target, "target"]
+  ].forEach(([container, group]) => {
+    const conciseCopy = container.closest(".page-section")?.querySelector(`p[data-i18n="guide_${group}_text"]`);
+    if (localized) {
+      container.innerHTML = buildGuide(localized[group], group);
+      container.hidden = false;
+      if (conciseCopy) conciseCopy.hidden = true;
+    } else {
+      container.innerHTML = guideDetailOriginals[group];
+      container.hidden = false;
+      if (conciseCopy) conciseCopy.hidden = true;
+    }
+  });
+}
+
 function applyLanguage(language) {
   const lang = normalizeLanguage(language) || "zh-Hans";
   document.documentElement.lang = lang;
   applyLocaleVisibility(lang);
+  renderLocalizedGuideDetail(lang);
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.getAttribute("data-i18n");
@@ -1927,6 +2098,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const savedLanguage = normalizeLanguage(localStorage.getItem("ph-lang"));
   const initial = queryLanguage || savedLanguage || detectBrowserLanguage();
   document.querySelectorAll(".lang-select").forEach(enhanceLanguageSelect);
+  renderLocalizedGuideDetail("zh-Hans");
   applyLanguage(initial);
 
   document.querySelectorAll(".lang-select").forEach((select) => {
