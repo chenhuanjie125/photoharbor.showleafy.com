@@ -353,7 +353,8 @@ const PH_TRANSLATIONS = {
     guide_library_title: "浏览与恢复",
     guide_library_text: "在 Timeline 浏览远端媒体库。你可以预览、分享或保存回 iPhone，但缓存预览不能替代原件。",
     guide_visual_title: "流程截图占位",
-    guide_visual_note: "后续替换为添加目标、归档任务、proof 和 Safe Delete 的连续截图"
+    guide_visual_note: "后续替换为添加目标、归档任务、proof 和 Safe Delete 的连续截图",
+    guide_visual_alt: "PhotoHarbor 媒体库浏览界面截图"
   },
   en: {
     nav_home: "Home",
@@ -709,7 +710,8 @@ const PH_TRANSLATIONS = {
     guide_library_title: "Browse and restore",
     guide_library_text: "Browse remote media in Timeline. You can preview, share, or save back to iPhone, but cached previews never replace originals.",
     guide_visual_title: "Workflow screenshot placeholder",
-    guide_visual_note: "Replace later with a continuous set of target setup, archive task, proof, and Safe Delete screenshots"
+    guide_visual_note: "Replace later with a continuous set of target setup, archive task, proof, and Safe Delete screenshots",
+    guide_visual_alt: "PhotoHarbor media library browsing screen"
   }
 };
 
@@ -947,6 +949,7 @@ PH_TRANSLATIONS.ja = {
   guide_toc_6: "閲覧と復元",
   guide_visual_note: "後で、保存先追加、アーカイブタスク、proof、Safe Delete の連続スクリーンショットに差し替えます。",
   guide_visual_title: "ワークフロー画像プレースホルダー",
+  guide_visual_alt: "PhotoHarbor のメディアライブラリ閲覧画面",
   home_archive_note_1: "バックグラウンドでアーカイブ",
   home_archive_note_2: "進捗が明確",
   home_archive_note_3: "一時停止して再開",
@@ -1182,6 +1185,7 @@ PH_TRANSLATIONS.de = {
   guide_toc_6: "Durchsuchen und Wiederherstellen",
   guide_visual_note: "Spaeter durch zusammenhaengende Screenshots fuer Zielauswahl, Archiv-Task, Proof und Safe Delete ersetzen.",
   guide_visual_title: "Platzhalter fuer Workflow-Screenshots",
+  guide_visual_alt: "PhotoHarbor Medienbibliothek im Durchsuchen-Modus",
   home_archive_note_1: "Archivierung im Hintergrund",
   home_archive_note_2: "Fortschritt klar sichtbar",
   home_archive_note_3: "Pausieren und fortsetzen",
@@ -1792,6 +1796,18 @@ function applyLanguage(language) {
 
   document.querySelectorAll("[data-lang-src-zh][data-lang-src-en]").forEach((node) => {
     const source = lang === "zh-Hans" || lang === "zh-Hant" ? node.dataset.langSrcZh : node.dataset.langSrcEn;
+    if (source && node.getAttribute("src") !== source) node.setAttribute("src", source);
+  });
+
+  const localizedSourceKey = {
+    "zh-Hans": "langSrcZhHans",
+    "zh-Hant": "langSrcZhHant",
+    en: "langSrcEn",
+    ja: "langSrcJa",
+    de: "langSrcDe"
+  }[lang];
+  document.querySelectorAll("[data-lang-src-zh-hans][data-lang-src-en]").forEach((node) => {
+    const source = localizedSourceKey ? node.dataset[localizedSourceKey] : node.dataset.langSrcEn;
     if (source && node.getAttribute("src") !== source) node.setAttribute("src", source);
   });
 

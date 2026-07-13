@@ -467,6 +467,16 @@ html[lang="en"] .hero h1 {
   font-size: 14px;
 }
 
+.guide-workflow-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 22px;
+  border: 1px solid rgba(10, 102, 232, 0.18);
+  border-radius: 28px;
+  box-shadow: var(--ph-shadow-media);
+}
+
 .hero-placeholder {
   position: absolute;
   inset: 28px;
