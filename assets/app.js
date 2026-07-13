@@ -1760,9 +1760,95 @@ function enhanceLanguageSelect(select) {
   syncLanguageControl(select);
 }
 
+let prepareNavigationObserver = null;
+
+function localeAttributeIncludes(value, language) {
+  return String(value || "")
+    .split(/[\s,]+/)
+    .filter(Boolean)
+    .includes(language);
+}
+
+function applyLocaleVisibility(language) {
+  document.querySelectorAll("[data-locale-only]").forEach((node) => {
+    node.hidden = !localeAttributeIncludes(node.dataset.localeOnly, language);
+  });
+  document.querySelectorAll("[data-locale-except]").forEach((node) => {
+    node.hidden = localeAttributeIncludes(node.dataset.localeExcept, language);
+  });
+}
+
+function setActivePrepareNavigation(sectionID) {
+  document.querySelectorAll(".toc-subnav a[href^='#prepare-']").forEach((link) => {
+    const isCurrent = link.getAttribute("href") === `#${sectionID}`;
+    link.classList.toggle("is-current", isCurrent);
+    if (isCurrent) {
+      link.setAttribute("aria-current", "location");
+    } else {
+      link.removeAttribute("aria-current");
+    }
+  });
+}
+
+function refreshPrepareNavigation() {
+  if (prepareNavigationObserver) {
+    prepareNavigationObserver.disconnect();
+    prepareNavigationObserver = null;
+  }
+
+  const menu = document.querySelector(".toc-submenu");
+  const sections = Array.from(document.querySelectorAll(".prepare-subsection[id]"));
+  if (!menu || menu.hidden || !sections.length) {
+    setActivePrepareNavigation("");
+    return;
+  }
+
+  const hashSection = sections.find((section) => `#${section.id}` === window.location.hash);
+  setActivePrepareNavigation((hashSection || sections[0]).id);
+
+  if (!("IntersectionObserver" in window)) return;
+
+  const visibleSections = new Map();
+  prepareNavigationObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        visibleSections.set(entry.target.id, entry.boundingClientRect.top);
+      } else {
+        visibleSections.delete(entry.target.id);
+      }
+    });
+
+    const active = Array.from(visibleSections.entries())
+      .sort((left, right) => Math.abs(left[1]) - Math.abs(right[1]))[0];
+    if (active) setActivePrepareNavigation(active[0]);
+  }, {
+    rootMargin: "-18% 0px -62% 0px",
+    threshold: [0, 0.05, 0.2]
+  });
+  sections.forEach((section) => prepareNavigationObserver.observe(section));
+}
+
+function syncPrepareMenuForViewport() {
+  const menu = document.querySelector(".toc-submenu");
+  if (!menu) return;
+
+  const compact = window.matchMedia("(max-width: 980px)").matches;
+  if (!compact) {
+    menu.open = true;
+    delete menu.dataset.compactInitialized;
+    return;
+  }
+
+  if (!menu.dataset.compactInitialized) {
+    menu.open = false;
+    menu.dataset.compactInitialized = "true";
+  }
+}
+
 function applyLanguage(language) {
   const lang = normalizeLanguage(language) || "zh-Hans";
   document.documentElement.lang = lang;
+  applyLocaleVisibility(lang);
 
   document.querySelectorAll("[data-i18n]").forEach((node) => {
     const key = node.getAttribute("data-i18n");
@@ -1823,6 +1909,8 @@ function applyLanguage(language) {
   }
 
   localStorage.setItem("ph-lang", lang);
+  syncPrepareMenuForViewport();
+  refreshPrepareNavigation();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1835,6 +1923,9 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".lang-select").forEach((select) => {
     select.addEventListener("change", (event) => applyLanguage(event.target.value));
   });
+
+  const prepareMenuMedia = window.matchMedia("(max-width: 980px)");
+  prepareMenuMedia.addEventListener?.("change", syncPrepareMenuForViewport);
 
   document.addEventListener("click", (event) => {
     document.querySelectorAll(".lang-switch.is-open").forEach((switcher) => {

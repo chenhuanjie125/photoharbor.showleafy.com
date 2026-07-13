@@ -11,7 +11,7 @@
     <title>使用说明 | PhotoHarbor</title>
     <link rel="icon" href="assets/app-icon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
-    <link rel="stylesheet" href="assets/styles.css?v=20260617delegalfix">
+    <link rel="stylesheet" href="assets/styles.css?v=20260713prepareguide">
   </head>
   <body data-title-key="guide_title">
     <header class="site-header">
@@ -58,6 +58,17 @@
         <div class="page-grid">
           <aside class="toc" aria-label="Guide sections" data-i18n-aria-label="aria_guide_sections">
             <a href="#prepare" data-i18n="guide_toc_1">准备工作</a>
+            <details class="toc-submenu" data-locale-only="zh-Hans" open>
+              <summary>准备工作目录</summary>
+              <nav class="toc-subnav" aria-label="准备工作目录">
+                <a href="#prepare-storage">选择存储方式</a>
+                <a href="#prepare-device">准备 NAS 或电脑</a>
+                <a href="#prepare-connection">准备连接信息</a>
+                <a href="#prepare-permissions">授予系统权限</a>
+                <a href="#prepare-network">检查网络与上传设置</a>
+                <a href="#prepare-checklist">完成归档前检查</a>
+              </nav>
+            </details>
             <a href="#target" data-i18n="guide_toc_2">添加目标</a>
             <a href="#task" data-i18n="guide_toc_3">创建任务</a>
             <a href="#proof" data-i18n="guide_toc_4">等待 proof</a>
@@ -67,7 +78,287 @@
           <div class="page-content">
             <section class="page-section" id="prepare">
               <h2 data-i18n="guide_prepare_title">准备工作</h2>
-              <p data-i18n="guide_prepare_text">准备一个可访问的 NAS、Mac / Windows 共享文件夹、WebDAV、SFTP 或云盘目标，并在 iOS 中授予 PhotoHarbor 照片访问权限。</p>
+              <p data-i18n="guide_prepare_text" data-locale-except="zh-Hans">准备一个可访问的 NAS、Mac / Windows 共享文件夹、WebDAV、SFTP 或云盘目标，并在 iOS 中授予 PhotoHarbor 照片访问权限。</p>
+
+              <div class="prepare-guide" data-locale-only="zh-Hans">
+                <div class="prepare-intro">
+                  <p>完成以下准备后，再进入“添加存储目标”。第一次使用时，建议让 iPhone 或 iPad 与 NAS、Mac 或 Windows 电脑连接到同一个 Wi‑Fi，并优先使用 SMB。</p>
+                  <p>PhotoHarbor 不要求你先把照片复制到电脑，也不要求把家中的 NAS 暴露到公网。App 只有在所选远端文件夹通过连接、写入、浏览和轻量读取检查后，才会把它保存为可用目标；本机照片也不会被自动删除。</p>
+                </div>
+
+                <div class="prepare-check-card prepare-quick-check">
+                  <div class="prepare-card-heading">
+                    <span class="prepare-step-mark" aria-hidden="true">✓</span>
+                    <div>
+                      <h3>开始前快速检查</h3>
+                      <p>先确认下面七项，可以减少第一次连接时的反复排查。</p>
+                    </div>
+                  </div>
+                  <ul class="prepare-check-list">
+                    <li>已准备一个专门存放照片和视频的远端文件夹。</li>
+                    <li>远端剩余空间足够容纳本次归档内容。</li>
+                    <li>知道服务器地址、端口、文件夹路径、用户名和密码，或已经准备好云盘账号。</li>
+                    <li>iPhone/iPad 能访问目标所在网络；异地连接时已经接入 VPN。</li>
+                    <li>已允许 PhotoHarbor 访问需要归档的照片。</li>
+                    <li>已确认“仅在 Wi‑Fi 网络下上传”是否符合当前需求。</li>
+                    <li>在 PhotoHarbor 显示归档 proof 完成前，不手动删除本机原件。</li>
+                  </ul>
+                </div>
+
+                <section class="prepare-subsection" id="prepare-storage">
+                  <div class="prepare-section-heading">
+                    <span>01</span>
+                    <div>
+                      <p>先确定连接方式</p>
+                      <h3>选择存储方式</h3>
+                    </div>
+                  </div>
+                  <p class="prepare-section-copy">不同协议需要准备的信息不同。家庭 NAS 或电脑共享目录优先考虑 SMB；已有安全服务或需要异地访问时，再按实际环境选择 WebDAV、SFTP 或云盘。</p>
+                  <div class="prepare-protocol-grid">
+                    <article class="prepare-protocol-card prepare-protocol-recommended">
+                      <p class="prepare-card-kicker">家庭用户优先推荐</p>
+                      <h4>SMB</h4>
+                      <p>适合群晖、威联通、飞牛、Windows 共享文件夹和 Mac 文件共享。首次使用最容易配置，通常在同一局域网内使用。需要准备服务器 IP、共享文件夹、用户名和密码，默认端口为 <code>445</code>。</p>
+                    </article>
+                    <article class="prepare-protocol-card">
+                      <p class="prepare-card-kicker">已有 WebDAV 服务</p>
+                      <h4>WebDAV</h4>
+                      <p>需要服务器地址、端口、文件夹路径、用户名和密码。服务器支持时应选择 HTTPS；HTTP WebDAV 不加密凭据和媒体内容，只应在完全可信的局域网中使用。</p>
+                    </article>
+                    <article class="prepare-protocol-card">
+                      <p class="prepare-card-kicker">熟悉服务器管理</p>
+                      <h4>SFTP</h4>
+                      <p>需要开启 SSH/SFTP 服务，并准备服务器地址、端口、账号和远端绝对路径。可使用密码或私钥认证；私钥优先采用 Ed25519 或 ECDSA，当前不把 RSA 作为推荐方案。</p>
+                    </article>
+                    <article class="prepare-protocol-card">
+                      <p class="prepare-card-kicker">不依赖家庭局域网</p>
+                      <h4>云盘</h4>
+                      <p>支持 Google Drive、Dropbox、OneDrive 和百度网盘。在 PhotoHarbor 内完成官方登录，再选择或新建归档文件夹，不需要手动填写 access token。Google Drive 只管理默认 PhotoHarbor 文件夹或用户明确选择授权的文件夹。</p>
+                    </article>
+                  </div>
+                  <aside class="prepare-notice prepare-notice-warning">
+                    <strong>异地访问先连接 VPN</strong>
+                    <p>如果目标只在家中局域网可访问，而你当前不在家，请先连接家庭 VPN。不要直接把 SMB <code>445</code> 端口暴露到互联网；异地访问优先使用 VPN、HTTPS WebDAV、SFTP 或云盘。</p>
+                  </aside>
+                </section>
+
+                <section class="prepare-subsection" id="prepare-device">
+                  <div class="prepare-section-heading">
+                    <span>02</span>
+                    <div>
+                      <p>按设备完成共享与权限配置</p>
+                      <h3>准备 NAS 或电脑</h3>
+                    </div>
+                  </div>
+                  <p class="prepare-section-copy">下面的菜单名称可能因系统版本略有不同。每次只需展开你正在使用的平台；无论品牌如何，最终都要确保账号能在目标目录中创建、读取、重命名和删除文件。</p>
+                  <div class="prepare-vendor-list">
+                    <details class="prepare-vendor-card" name="prepare-platforms">
+                      <summary><span>群晖 Synology</span><small>DSM · SMB</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>登录 DSM，进入“控制面板 → 文件服务 → SMB”，开启 SMB 服务。</li>
+                          <li>在“控制面板 → 共享文件夹”中新建或选择专用目录，例如 <code>PhotoHarbor</code>。</li>
+                          <li>建议创建专用普通账号，并授予该目录读写权限；不要依赖 Guest 账号。</li>
+                          <li>确认账号可以新建、读取、重命名和删除文件。</li>
+                          <li>记录 NAS 的局域网 IP、共享文件夹名称、用户名和密码。</li>
+                        </ol>
+                        <div class="prepare-official-links">
+                          <a href="https://kb.synology.com/en-global/DSM/help/DSM/AdminCenter/file_winmacnfs_win" target="_blank" rel="noopener noreferrer">群晖 SMB 官方说明<span aria-hidden="true">↗</span></a>
+                          <a href="https://kb.synology.com/en-global/DSM/tutorial/Why_cant_access_shared_folder" target="_blank" rel="noopener noreferrer">共享文件夹排查说明<span aria-hidden="true">↗</span></a>
+                        </div>
+                      </div>
+                    </details>
+                    <details class="prepare-vendor-card" name="prepare-platforms">
+                      <summary><span>威联通 QNAP</span><small>QTS · SMB</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>登录 QTS，进入“控制台 → 网络和文件服务 → Win/Mac/NFS/WebDAV → Microsoft 网络”，启用 SMB。</li>
+                          <li>在“权限 → 共享文件夹”中新建或选择归档目录。</li>
+                          <li>为 PhotoHarbor 使用的账号授予读写权限，并限制匿名访问。</li>
+                          <li>记录 NAS IP、共享目录、账号和密码；SMB 默认端口为 <code>445</code>。</li>
+                          <li>如果设置了主机访问限制，确认 iPhone 所在网段没有被拒绝。</li>
+                        </ol>
+                        <div class="prepare-official-links">
+                          <a href="https://docs.qnap.com/operating-system/qts/5.1.x/en-us/configuring-samba-microsoft-networking-settings-7447174D.html" target="_blank" rel="noopener noreferrer">QNAP SMB 官方说明<span aria-hidden="true">↗</span></a>
+                          <a href="https://docs.qnap.com/operating-system/qts/4.5.x/en-us/GUID-75840FD2-079E-40D5-AF8B-4156DB0E126A.html" target="_blank" rel="noopener noreferrer">共享目录权限说明<span aria-hidden="true">↗</span></a>
+                        </div>
+                      </div>
+                    </details>
+                    <details class="prepare-vendor-card" name="prepare-platforms">
+                      <summary><span>飞牛 fnOS</span><small>SMB / WebDAV / SFTP</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>进入“设置 → 文件共享协议”，开启 SMB；需要 SFTP 时进入“设置 → SSH”开启服务。</li>
+                          <li>在“文件管理 → 我的文件 → 团队文件”中新建专用团队文件夹。</li>
+                          <li>创建时允许该目录通过 SMB/WebDAV 等文件共享协议挂载。</li>
+                          <li>为使用的账号授予“读写”权限，并确认该账号的文件共享可见范围包含此目录。</li>
+                          <li>记录设备 IP、账号和目录原始路径。</li>
+                        </ol>
+                        <div class="prepare-official-links">
+                          <a href="https://help.fnnas.com/articles/v1/contact/user-role" target="_blank" rel="noopener noreferrer">飞牛文件共享权限说明<span aria-hidden="true">↗</span></a>
+                          <a href="https://help.fnnas.com/articles/v1/file/team" target="_blank" rel="noopener noreferrer">团队文件夹说明<span aria-hidden="true">↗</span></a>
+                        </div>
+                      </div>
+                    </details>
+                    <details class="prepare-vendor-card" name="prepare-platforms">
+                      <summary><span>macOS</span><small>文件共享 · SMB</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>打开“系统设置 → 通用 → 共享 → 文件共享”。</li>
+                          <li>点击文件共享旁的信息按钮，在“选项”中开启“使用 SMB 来共享文件和文件夹”。</li>
+                          <li>勾选允许通过 SMB 登录的 Mac 用户。</li>
+                          <li>将归档目录加入共享文件夹，并给予该用户“读与写”权限。</li>
+                          <li>记录 Mac 的局域网 IP、共享文件夹名称、用户名和密码；归档期间避免 Mac 进入睡眠。</li>
+                        </ol>
+                        <div class="prepare-official-links">
+                          <a href="https://support.apple.com/guide/mac-help/mh14107/mac" target="_blank" rel="noopener noreferrer">Apple 官方 SMB 设置说明<span aria-hidden="true">↗</span></a>
+                        </div>
+                      </div>
+                    </details>
+                    <details class="prepare-vendor-card" name="prepare-platforms">
+                      <summary><span>Windows 11</span><small>网络文件共享 · SMB</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>将当前网络配置为“专用网络”，并开启网络发现和文件及打印机共享。</li>
+                          <li>在文件资源管理器中右键目标文件夹，选择“显示更多选项 → 授予访问权限 → 特定用户”。</li>
+                          <li>为专用账号授予读取和写入权限；不建议长期使用无密码或 Everyone 完全控制。</li>
+                          <li>确认 Windows 防火墙允许专用网络中的文件共享。</li>
+                          <li>记录电脑 IP、共享名称、Windows 用户名和密码；上传期间保持电脑开机。</li>
+                        </ol>
+                        <div class="prepare-official-links">
+                          <a href="https://support.microsoft.com/windows/experience/connectivity-networking/file-sharing-over-a-network-in-windows" target="_blank" rel="noopener noreferrer">Microsoft 官方网络文件共享说明<span aria-hidden="true">↗</span></a>
+                        </div>
+                      </div>
+                    </details>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection" id="prepare-connection">
+                  <div class="prepare-section-heading">
+                    <span>03</span>
+                    <div>
+                      <p>与 App 表单逐项对应</p>
+                      <h3>准备连接信息</h3>
+                    </div>
+                  </div>
+                  <p class="prepare-section-copy">先把下面的信息记在手边。主机地址只填写 IP 或域名，不要把共享文件夹或目录路径拼在主机地址中。</p>
+                  <div class="prepare-table-wrap">
+                    <table class="prepare-fields-table">
+                      <thead>
+                        <tr><th scope="col">App 字段</th><th scope="col">应填写内容</th><th scope="col">示例</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><th scope="row">显示名称</th><td data-label="应填写内容">只用于在 PhotoHarbor 中识别目标</td><td data-label="示例">家庭群晖</td></tr>
+                        <tr><th scope="row">主机地址</th><td data-label="应填写内容">IP 或域名，不填写文件夹路径</td><td data-label="示例"><code>192.168.1.20</code></td></tr>
+                        <tr><th scope="row">端口</th><td data-label="应填写内容">SMB 常用 445、WebDAV 常用 443/80、SFTP 常用 22</td><td data-label="示例"><code>445</code></td></tr>
+                        <tr><th scope="row">文件夹路径</th><td data-label="应填写内容">账号有读写权限的归档目录</td><td data-label="示例"><code>/PhotoHarbor</code></td></tr>
+                        <tr><th scope="row">用户名/密码</th><td data-label="应填写内容">NAS、Mac、Windows 或服务器账号</td><td data-label="示例">专用普通账号</td></tr>
+                        <tr><th scope="row">SMB 域</th><td data-label="应填写内容">仅在工作组或域环境需要</td><td data-label="示例">留空或填写实际域</td></tr>
+                        <tr><th scope="row">SFTP 认证</th><td data-label="应填写内容">密码或支持的私钥</td><td data-label="示例">Ed25519/ECDSA</td></tr>
+                        <tr><th scope="row">云盘文件夹</th><td data-label="应填写内容">授权后在 App 中选择</td><td data-label="示例">无需手工输入 ID</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <aside class="prepare-notice prepare-notice-info">
+                    <strong>使用独立普通账号</strong>
+                    <p>建议为 PhotoHarbor 使用独立普通账号和独立归档目录，不要直接使用 NAS 超级管理员账号。凭据保存在设备 Keychain 中，数据库和诊断报告只保留目标元数据及凭据引用。</p>
+                  </aside>
+                  <div class="prepare-action-explainer">
+                    <p class="prepare-card-kicker">“检查并保存”会做什么</p>
+                    <h4>通过完整的目标能力检查后才会保存</h4>
+                    <p>点击“检查并保存”后，PhotoHarbor 会检查是否能够连接、创建测试内容、提交或重命名文件、列出目录并执行轻量读取。测试成功后才保存目标，临时探测内容会尽力清理。页面必须显示“可用于归档”后，再进入下一步。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection" id="prepare-permissions">
+                  <div class="prepare-section-heading">
+                    <span>04</span>
+                    <div>
+                      <p>允许 App 读取所选内容并访问目标</p>
+                      <h3>授予系统权限</h3>
+                    </div>
+                  </div>
+                  <div class="prepare-permission-grid">
+                    <article>
+                      <h4>照片权限</h4>
+                      <p>第一次从“上传”进入选择流程时，允许 PhotoHarbor 访问照片。建议选择完整访问；如果选择有限访问，只能处理已授权的照片，后续新增照片可能需要在系统设置中更新授权范围。</p>
+                    </article>
+                    <article>
+                      <h4>本地网络权限</h4>
+                      <p>连接 NAS、Mac 或 Windows 时，需要允许本地网络访问。若曾拒绝，可到“iOS 设置 → 隐私与安全性 → 本地网络”重新开启 PhotoHarbor。</p>
+                    </article>
+                    <article>
+                      <h4>云盘授权</h4>
+                      <p>云盘登录在服务商官方授权页面完成。PhotoHarbor 不接收云盘登录密码，只保存完成操作所需的 OAuth 凭据。</p>
+                    </article>
+                    <article>
+                      <h4>iCloud 原件</h4>
+                      <p>如果 iPhone 开启了“优化 iPhone 储存空间”，部分原件可能只在 iCloud 中。首次大批归档前应保持稳定网络、足够的本机临时空间和电量，让系统能够下载所选原件。</p>
+                    </article>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection" id="prepare-network">
+                  <div class="prepare-section-heading">
+                    <span>05</span>
+                    <div>
+                      <p>避免任务因网络策略暂停</p>
+                      <h3>检查网络与上传设置</h3>
+                    </div>
+                  </div>
+                  <div class="prepare-wifi-summary">
+                    <span aria-hidden="true">Wi‑Fi</span>
+                    <p>“仅在 Wi‑Fi 网络下上传”默认开启。开启时，如果当前只有蜂窝网络，新建任务仍会创建，但会显示“等待 Wi‑Fi”，接入 Wi‑Fi 或有线网络后自动继续。浏览、预览、播放和删除校验不受这个开关影响。</p>
+                  </div>
+                  <ul class="prepare-check-list prepare-network-list">
+                    <li>iPhone/iPad 与 NAS 或电脑处于同一 Wi‑Fi 或可互通的 VPN。</li>
+                    <li>避免使用开启“客户端隔离”的访客 Wi‑Fi。</li>
+                    <li>NAS、电脑、外接硬盘和目标卷保持在线。</li>
+                    <li>归档大视频时连接电源，并避免电脑自动睡眠。</li>
+                    <li>云盘账号授权有效，目标文件夹仍存在且可写。</li>
+                    <li>若允许蜂窝上传，在“设置”页关闭“仅在 Wi‑Fi 网络下上传”，并留意流量消耗。</li>
+                  </ul>
+                </section>
+
+                <section class="prepare-subsection" id="prepare-checklist">
+                  <div class="prepare-section-heading">
+                    <span>06</span>
+                    <div>
+                      <p>确认可以安全开始第一次归档</p>
+                      <h3>完成归档前检查</h3>
+                    </div>
+                  </div>
+                  <div class="prepare-final-checks">
+                    <ul class="prepare-check-list">
+                      <li>目标页面显示“可用于归档”。</li>
+                      <li>连接、写入、文件夹浏览和轻量预览检查均已通过。</li>
+                      <li>远端目录有足够剩余空间。</li>
+                      <li>当前账号拥有创建、读取、重命名和删除权限。</li>
+                      <li>已确定本次任务使用的远端文件夹。</li>
+                      <li>已理解冲突策略：重命名保留两份、跳过项不会获得 Safe Delete 资格、覆盖需要额外确认。</li>
+                      <li>已确认 Wi‑Fi 上传偏好。</li>
+                      <li>已理解“上传完成”不等于可以删除；必须等待最终归档 proof 完成，再进入 Safe Delete。</li>
+                    </ul>
+                    <a class="btn btn-primary prepare-next-action" href="#target">继续：添加存储目标<span aria-hidden="true">→</span></a>
+                  </div>
+                  <div class="prepare-troubleshooting">
+                    <div class="prepare-card-heading">
+                      <span class="prepare-step-mark prepare-step-mark-warning" aria-hidden="true">!</span>
+                      <div>
+                        <h3>常见失败速查</h3>
+                        <p>连接检查没有通过时，先按错误类型排查，不要跳过检查直接开始归档。</p>
+                      </div>
+                    </div>
+                    <dl>
+                      <div><dt>目标不可达</dt><dd>检查 Wi‑Fi、VPN、服务器地址和端口。</dd></div>
+                      <div><dt>认证失败</dt><dd>检查用户名、密码、SMB 域或 SFTP 私钥。</dd></div>
+                      <div><dt>文件夹权限不足</dt><dd>换用可写目录，或补齐创建、重命名和删除权限。</dd></div>
+                      <div><dt>远端空间不足</dt><dd>释放空间或选择其他目录。</dd></div>
+                      <div><dt>无法浏览/轻量读取</dt><dd>重新运行连接检查；仍失败时改用其他协议或目标，避免进入不完整的 proof 链路。</dd></div>
+                    </dl>
+                  </div>
+                </section>
+              </div>
             </section>
             <section class="page-section" id="target">
               <h2 data-i18n="guide_target_title">添加存储目标</h2>
@@ -114,6 +405,6 @@
         <div><h3 data-i18n="footer_contact">联系</h3><div class="footer-links"><a href="mailto:support@showleafy.com">support@showleafy.com</a></div><p data-i18n="footer_privacy_note">PhotoHarbor 不通过官网托管你的照片或凭据。</p></div>
       </div>
     </footer>
-    <script src="assets/app.js?v=20260617delegalfix"></script>
+    <script src="assets/app.js?v=20260713prepareguide"></script>
   </body>
 </html>
