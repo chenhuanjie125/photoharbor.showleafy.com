@@ -58,7 +58,7 @@
         <div class="page-grid">
           <aside class="toc" aria-label="Guide sections" data-i18n-aria-label="aria_guide_sections">
             <a href="#prepare" data-i18n="guide_toc_1">准备工作</a>
-            <details class="toc-submenu" data-locale-only="zh-Hans" open>
+            <details class="toc-submenu" data-locale-only="zh-Hans" data-guide-nav-group="prepare" open>
               <summary>准备工作目录</summary>
               <nav class="toc-subnav" aria-label="准备工作目录">
                 <a href="#prepare-storage">选择存储方式</a>
@@ -70,6 +70,18 @@
               </nav>
             </details>
             <a href="#target" data-i18n="guide_toc_2">添加目标</a>
+            <details class="toc-submenu" data-locale-only="zh-Hans" data-guide-nav-group="target" open>
+              <summary>添加目标目录</summary>
+              <nav class="toc-subnav" aria-label="添加目标目录">
+                <a href="#target-entry">进入添加页面</a>
+                <a href="#target-type">选择目标类型</a>
+                <a href="#target-server">填写服务器信息</a>
+                <a href="#target-cloud">完成云盘授权</a>
+                <a href="#target-options">确认特殊设置</a>
+                <a href="#target-check">检查并保存</a>
+                <a href="#target-after-save">确认建库状态</a>
+              </nav>
+            </details>
             <a href="#task" data-i18n="guide_toc_3">创建任务</a>
             <a href="#proof" data-i18n="guide_toc_4">等待 proof</a>
             <a href="#delete" data-i18n="guide_toc_5">安全删除</a>
@@ -105,7 +117,7 @@
                   </ul>
                 </div>
 
-                <section class="prepare-subsection" id="prepare-storage">
+                <section class="prepare-subsection" id="prepare-storage" data-guide-section-group="prepare">
                   <div class="prepare-section-heading">
                     <span>01</span>
                     <div>
@@ -142,7 +154,7 @@
                   </aside>
                 </section>
 
-                <section class="prepare-subsection" id="prepare-device">
+                <section class="prepare-subsection" id="prepare-device" data-guide-section-group="prepare">
                   <div class="prepare-section-heading">
                     <span>02</span>
                     <div>
@@ -233,7 +245,7 @@
                   </div>
                 </section>
 
-                <section class="prepare-subsection" id="prepare-connection">
+                <section class="prepare-subsection" id="prepare-connection" data-guide-section-group="prepare">
                   <div class="prepare-section-heading">
                     <span>03</span>
                     <div>
@@ -270,7 +282,7 @@
                   </div>
                 </section>
 
-                <section class="prepare-subsection" id="prepare-permissions">
+                <section class="prepare-subsection" id="prepare-permissions" data-guide-section-group="prepare">
                   <div class="prepare-section-heading">
                     <span>04</span>
                     <div>
@@ -298,7 +310,7 @@
                   </div>
                 </section>
 
-                <section class="prepare-subsection" id="prepare-network">
+                <section class="prepare-subsection" id="prepare-network" data-guide-section-group="prepare">
                   <div class="prepare-section-heading">
                     <span>05</span>
                     <div>
@@ -320,7 +332,7 @@
                   </ul>
                 </section>
 
-                <section class="prepare-subsection" id="prepare-checklist">
+                <section class="prepare-subsection" id="prepare-checklist" data-guide-section-group="prepare">
                   <div class="prepare-section-heading">
                     <span>06</span>
                     <div>
@@ -362,7 +374,251 @@
             </section>
             <section class="page-section" id="target">
               <h2 data-i18n="guide_target_title">添加存储目标</h2>
-              <p data-i18n="guide_target_text">在 Targets 中添加目标并完成连接检查。云盘目标需要通过对应平台 OAuth 授权，并选择用于归档的文件夹。</p>
+              <p data-i18n="guide_target_text" data-locale-except="zh-Hans">在 Targets 中添加目标并完成连接检查。云盘目标需要通过对应平台 OAuth 授权，并选择用于归档的文件夹。</p>
+
+              <div class="target-guide" data-locale-only="zh-Hans">
+                <div class="prepare-intro">
+                  <p>存储目标是 PhotoHarbor 用来归档照片和视频的远端位置。添加前请先完成“准备工作”，确认目标目录可以连接并具有读写权限。</p>
+                  <p>基础版可以配置 1 个可写目标；完整版或完整试用期可以配置多个目标。达到数量上限时，App 会先显示升级提示，不会进入添加表单。</p>
+                </div>
+
+                <ol class="target-flow" aria-label="添加存储目标流程">
+                  <li>目标页面</li>
+                  <li>点击“+”</li>
+                  <li>选择协议或云盘</li>
+                  <li>填写信息或授权</li>
+                  <li>选择归档文件夹</li>
+                  <li>检查并保存</li>
+                  <li>等待媒体库准备</li>
+                </ol>
+
+                <section class="prepare-subsection target-subsection" id="target-entry" data-guide-section-group="target">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">01</span>
+                    <div><p>打开入口</p><h3>进入添加页面</h3></div>
+                  </div>
+                  <ol class="target-step-list">
+                    <li>打开 PhotoHarbor，进入“目标”页面。</li>
+                    <li>点击右上角“+”；当前还没有目标时，也可以点击空状态中的添加按钮。</li>
+                    <li>输入可选的“显示名称”。它只用于在 App 中识别目标，留空时会自动生成。</li>
+                    <li>如果基础版已经配置了一个目标，App 会说明目标数量已达到上限，并提供升级入口。</li>
+                  </ol>
+                  <div class="prepare-notice prepare-notice-info">
+                    <strong>此时不会上传照片</strong>
+                    <p>添加目标不会立即上传任何照片。只有后续创建归档任务并选择照片或视频后，上传才会开始。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection target-subsection" id="target-type" data-guide-section-group="target">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">02</span>
+                    <div><p>确定连接方式</p><h3>选择目标类型</h3></div>
+                  </div>
+                  <div class="prepare-protocol-grid target-protocol-grid">
+                    <article class="prepare-protocol-card prepare-protocol-recommended">
+                      <p class="prepare-card-kicker">家庭用户优先推荐</p>
+                      <h4>SMB</h4>
+                      <p>适合家庭 NAS、Windows 共享文件夹和 Mac 文件共享，通常在同一局域网或 VPN 中使用。</p>
+                    </article>
+                    <article class="prepare-protocol-card">
+                      <p class="prepare-card-kicker">已有 WebDAV 服务</p>
+                      <h4>WebDAV</h4>
+                      <p>适合已部署 WebDAV 的服务器。服务器支持时应优先选择 HTTPS。</p>
+                    </article>
+                    <article class="prepare-protocol-card">
+                      <p class="prepare-card-kicker">熟悉服务器管理</p>
+                      <h4>SFTP</h4>
+                      <p>适合已经开启 SSH/SFTP 的 NAS 或服务器，可使用密码或受支持的私钥认证。</p>
+                    </article>
+                    <article class="prepare-protocol-card">
+                      <p class="prepare-card-kicker">无需家庭局域网</p>
+                      <h4>云盘</h4>
+                      <p>支持 Google Drive、Dropbox、OneDrive 和百度网盘，通过服务商官方页面完成授权。</p>
+                    </article>
+                  </div>
+                  <div class="prepare-notice prepare-notice-warning">
+                    <strong>切换类型后重新核对所有字段</strong>
+                    <p>地址、端口、路径和认证方式会随协议变化，不要直接沿用上一个协议的参数。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection target-subsection" id="target-server" data-guide-section-group="target">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">03</span>
+                    <div><p>对应 App 表单</p><h3>填写服务器信息</h3></div>
+                  </div>
+                  <div class="prepare-table-wrap">
+                    <table class="prepare-fields-table target-fields-table">
+                      <thead><tr><th>类型</th><th>必填内容</th><th>特殊设置</th></tr></thead>
+                      <tbody>
+                        <tr><th>SMB</th><td>主机、共享文件夹、用户名、密码</td><td>端口通常为 <code>445</code>；工作组或域环境才填写“SMB 域”</td></tr>
+                        <tr><th>WebDAV</th><td>HTTP/HTTPS、主机、端口、路径</td><td>HTTPS 通常为 <code>443</code>，HTTP 通常为 <code>80</code>；HTTP 会显示未加密风险提示</td></tr>
+                        <tr><th>SFTP</th><td>主机、端口、远端路径、用户名、认证信息</td><td>端口通常为 <code>22</code>；支持密码或私钥认证</td></tr>
+                        <tr><th>云盘</th><td>官方账号授权、归档文件夹</td><td>不需要填写服务器密码、access token 或文件夹 ID</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <ul class="target-rule-list">
+                    <li>主机地址只填写 IP 或域名，不要把归档文件夹路径写进主机字段。</li>
+                    <li>路径必须指向当前账号有权创建、读取、重命名和删除内容的目录。</li>
+                    <li>WebDAV 允许匿名访问时可以不填凭据；一旦填写用户名或密码，两项应配套填写。</li>
+                    <li>SFTP 私钥支持 Ed25519 和 ECDSA P256/P384/P521。RSA、无法识别的私钥，以及加密但未填写口令的私钥不能使用。</li>
+                    <li>密码和 OAuth 凭据保存在设备 Keychain 中，不会提交到 PhotoHarbor 官网。</li>
+                  </ul>
+                </section>
+
+                <section class="prepare-subsection target-subsection" id="target-cloud" data-guide-section-group="target">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">04</span>
+                    <div><p>服务商官方登录</p><h3>完成云盘授权</h3></div>
+                  </div>
+                  <p class="prepare-section-copy">选择云盘后，在 PhotoHarbor 内发起官方授权，再确认用于归档的文件夹。无需复制 access token，也无需手工输入 provider 文件夹 ID。</p>
+                  <div class="prepare-vendor-list target-cloud-list">
+                    <details class="prepare-vendor-card" open>
+                      <summary><span>Google Drive</span><small>Picker 文件夹授权</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>在 Google 官方授权页登录账号。</li>
+                          <li>通过 Google Picker 选择允许 PhotoHarbor 管理的归档文件夹。</li>
+                          <li>PhotoHarbor 只管理 App 创建的默认文件夹或你明确授权的文件夹，不默认浏览整个“我的云端硬盘”。</li>
+                          <li>切换 Google 账号后，必须重新授权并重新选择文件夹。</li>
+                        </ol>
+                      </div>
+                    </details>
+                    <details class="prepare-vendor-card">
+                      <summary><span>Dropbox</span><small>授权后在 App 内选目录</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>完成 Dropbox 官方 OAuth 登录。</li>
+                          <li>在 App 中浏览、新建或选择归档文件夹。</li>
+                          <li>文件夹 ID 由 App 自动保存，不需要手工填写。</li>
+                        </ol>
+                      </div>
+                    </details>
+                    <details class="prepare-vendor-card">
+                      <summary><span>OneDrive</span><small>个人与全球版 Microsoft 365</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>使用个人 Microsoft 账号或全球版 Microsoft 365 工作/学校账号登录。</li>
+                          <li>当前暂不支持世纪互联账号。</li>
+                          <li>授权后在 App 中浏览、新建或选择归档文件夹。</li>
+                        </ol>
+                      </div>
+                    </details>
+                    <details class="prepare-vendor-card">
+                      <summary><span>百度网盘</span><small>授权、选目录与播放设置</small></summary>
+                      <div class="prepare-vendor-content">
+                        <ol>
+                          <li>完成百度官方授权，再选择归档文件夹。</li>
+                          <li>授权失效时，按照 App 提示重新登录。</li>
+                          <li>文件夹路径和内部标识由 App 管理，无需手工输入。</li>
+                        </ol>
+                      </div>
+                    </details>
+                  </div>
+                  <div class="prepare-notice prepare-notice-warning">
+                    <strong>切换云盘账号会重置文件夹选择</strong>
+                    <p>重新登录后，应再次确认归档文件夹，再运行“检查并保存”。</p>
+                  </div>
+                  <details class="target-technical-details">
+                    <summary>技术详情：授权范围和过期时间</summary>
+                    <p>App 可能显示 OAuth scopes 和 token 到期时间，供排查授权问题使用。普通用户不需要修改这些值；授权过期时按提示重新登录即可。</p>
+                  </details>
+                </section>
+
+                <section class="prepare-subsection target-subsection" id="target-options" data-guide-section-group="target">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">05</span>
+                    <div><p>协议与账号差异</p><h3>确认特殊设置</h3></div>
+                  </div>
+                  <div class="target-option-grid">
+                    <article><h4>SMB 域</h4><p>家庭 NAS 通常留空，仅工作组、Active Directory 或企业域环境需要填写。</p></article>
+                    <article><h4>WebDAV HTTP/HTTPS</h4><p>优先使用 HTTPS；HTTP 只用于完全可信的局域网，因为凭据和媒体内容不会被传输层加密。</p></article>
+                    <article><h4>SFTP 认证方式</h4><p>密码与私钥二选一；只有私钥本身已加密时才填写私钥口令。</p></article>
+                    <article><h4>云盘账号切换</h4><p>切换后重新授权，并重新选择与新账号对应的归档文件夹。</p></article>
+                  </div>
+                  <details class="target-feature-card" open>
+                    <summary><span>百度转码视频播放</span><small>只影响远端视频播放</small></summary>
+                    <div>
+                      <ul>
+                        <li>App 会显示百度账号会员状态。</li>
+                        <li>超级会员默认自动开启；非超级会员或未知状态默认关闭。</li>
+                        <li>用户可以手动覆盖，并通过“恢复默认”回到自动策略。</li>
+                        <li>此开关不影响上传、归档 proof 或 Safe Delete 判断。</li>
+                      </ul>
+                    </div>
+                  </details>
+                  <div class="prepare-notice prepare-notice-info">
+                    <strong>技术详情不是必填设置</strong>
+                    <p>授权范围和 token 到期时间只用于查看与排障，不需要用户手工编辑。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection target-subsection" id="target-check" data-guide-section-group="target">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">06</span>
+                    <div><p>保存前能力探测</p><h3>检查并保存</h3></div>
+                  </div>
+                  <ol class="target-check-steps">
+                    <li><span>1</span><p><strong>连接与认证</strong>连接服务器，或验证云盘授权仍然有效。</p></li>
+                    <li><span>2</span><p><strong>创建探测内容</strong>在目标目录写入小型临时内容，不会读取或上传你的照片。</p></li>
+                    <li><span>3</span><p><strong>写入与提交</strong>检查创建、写入、提交或重命名能力。</p></li>
+                    <li><span>4</span><p><strong>浏览与轻量读取</strong>检查目录列表、范围读取和轻量预览能力。</p></li>
+                    <li><span>5</span><p><strong>清理并保存</strong>尽力清理探测内容，达到最低归档要求后才保存目标和 Keychain 凭据。</p></li>
+                  </ol>
+                  <div class="target-result-grid">
+                    <article class="target-result-success"><h4>可用于归档</h4><p>连接、写入和提交能力满足要求，可以进入下一步。</p></article>
+                    <article class="target-result-limited"><h4>可用于归档，但部分能力受限</h4><p>目标可以保存，但文件夹浏览或轻量预览可能受限。具体项目能否进入 Safe Delete，仍取决于归档任务最终 proof。</p></article>
+                    <article class="target-result-failed"><h4>检查失败</h4><p>目标不会保存。请按照提示修正地址、认证、目录权限、远端空间或协议。</p></article>
+                  </div>
+                  <div class="prepare-notice prepare-notice-info">
+                    <strong>探测内容会尽力清理</strong>
+                    <p>极少数云盘或服务器可能短暂保留探测目录，但这不代表照片已经开始上传。</p>
+                  </div>
+                  <div class="prepare-troubleshooting target-troubleshooting">
+                    <div class="prepare-card-heading">
+                      <span class="prepare-step-mark prepare-step-mark-warning" aria-hidden="true">!</span>
+                      <div><h3>检查失败速查</h3><p>先按错误类型修正，再重新运行“检查并保存”。</p></div>
+                    </div>
+                    <dl>
+                      <div><dt>找不到服务器</dt><dd>检查 Wi‑Fi、VPN、地址和端口。</dd></div>
+                      <div><dt>认证失败</dt><dd>检查账号、密码、SMB 域、OAuth 登录或私钥。</dd></div>
+                      <div><dt>无法写入/提交</dt><dd>补齐创建、重命名和删除权限。</dd></div>
+                      <div><dt>无法浏览</dt><dd>检查目录权限；若 App 显示降级可用，应理解浏览功能可能受限。</dd></div>
+                      <div><dt>无法轻量读取</dt><dd>重试连接或更换协议；“已上传”不等于已获得 Safe Delete 资格。</dd></div>
+                      <div><dt>云盘授权失效</dt><dd>重新登录并重新选择归档文件夹。</dd></div>
+                    </dl>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection target-subsection" id="target-after-save" data-guide-section-group="target">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">07</span>
+                    <div><p>保存后的自动流程</p><h3>确认建库状态</h3></div>
+                  </div>
+                  <p class="prepare-section-copy">保存成功后，App 会进入目标详情页，并自动启动远端媒体库准备任务。达到可浏览阈值后即可先进入媒体库，其余缩略图继续在后台获取。</p>
+                  <ol class="target-bootstrap-flow">
+                    <li><strong>扫描远端文件夹</strong><span>发现目标中的目录结构。</span></li>
+                    <li><strong>发现照片和视频</strong><span>逐步更新已发现目录数和媒体数。</span></li>
+                    <li><strong>获取首批缩略图</strong><span>优先准备目录封面和首批可见媒体。</span></li>
+                    <li><strong>开放媒体库浏览</strong><span>达到阈值后可先浏览，剩余缩略图继续后台获取。</span></li>
+                  </ol>
+                  <div class="target-option-grid">
+                    <article><h4>进度与控制</h4><p>目标详情显示目录、媒体和缩略图进度，并提供暂停、继续、取消、重试或重新扫描。</p></article>
+                    <article><h4>扫描排除项</h4><p>系统目录、回收站、快照或异常目录可能被跳过。可查看原因，并按需选择“仍然扫描”或恢复默认。</p></article>
+                    <article><h4>NAS 原生缩略图</h4><p>识别成功的群晖、威联通和飞牛设备会 best-effort 使用原生缩略图加速；失败时自动回退，不影响归档 proof。</p></article>
+                    <article><h4>失败边界</h4><p>缩略图准备失败不等于目标保存失败，也不代表远端文件损坏。</p></article>
+                  </div>
+                  <div class="prepare-notice prepare-notice-warning">
+                    <strong>建库不是归档任务</strong>
+                    <p>保存目标和自动建库都不会自动创建归档任务、上传本机照片或删除本机原件。</p>
+                  </div>
+                  <div class="target-next-actions">
+                    <a class="btn btn-primary" href="#task">继续：创建归档任务<span aria-hidden="true">→</span></a>
+                    <a class="btn btn-secondary" href="#prepare-checklist">返回：检查准备工作</a>
+                  </div>
+                </section>
+              </div>
             </section>
             <section class="page-section" id="task">
               <h2 data-i18n="guide_task_title">创建归档任务</h2>

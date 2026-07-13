@@ -1760,7 +1760,7 @@ function enhanceLanguageSelect(select) {
   syncLanguageControl(select);
 }
 
-let prepareNavigationObserver = null;
+let guideNavigationObserver = null;
 
 function localeAttributeIncludes(value, language) {
   return String(value || "")
@@ -1778,8 +1778,8 @@ function applyLocaleVisibility(language) {
   });
 }
 
-function setActivePrepareNavigation(sectionID) {
-  document.querySelectorAll(".toc-subnav a[href^='#prepare-']").forEach((link) => {
+function setActiveGuideNavigation(sectionID) {
+  document.querySelectorAll("[data-guide-nav-group] .toc-subnav a[href^='#']").forEach((link) => {
     const isCurrent = link.getAttribute("href") === `#${sectionID}`;
     link.classList.toggle("is-current", isCurrent);
     if (isCurrent) {
@@ -1790,59 +1790,68 @@ function setActivePrepareNavigation(sectionID) {
   });
 }
 
-function refreshPrepareNavigation() {
-  if (prepareNavigationObserver) {
-    prepareNavigationObserver.disconnect();
-    prepareNavigationObserver = null;
+function refreshGuideNavigation() {
+  if (guideNavigationObserver) {
+    guideNavigationObserver.disconnect();
+    guideNavigationObserver = null;
   }
 
-  const menu = document.querySelector(".toc-submenu");
-  const sections = Array.from(document.querySelectorAll(".prepare-subsection[id]"));
-  if (!menu || menu.hidden || !sections.length) {
-    setActivePrepareNavigation("");
+  const groups = Array.from(document.querySelectorAll("[data-guide-nav-group]"))
+    .filter((menu) => !menu.hidden);
+  const enabledGroupNames = new Set(groups.map((menu) => menu.dataset.guideNavGroup));
+  const sections = Array.from(document.querySelectorAll("[data-guide-section-group][id]"))
+    .filter((section) => enabledGroupNames.has(section.dataset.guideSectionGroup));
+  if (!groups.length || !sections.length) {
+    setActiveGuideNavigation("");
     return;
   }
 
-  const hashSection = sections.find((section) => `#${section.id}` === window.location.hash);
-  setActivePrepareNavigation((hashSection || sections[0]).id);
+  const hashToken = window.location.hash.replace(/^#/, "");
+  const hashGroup = groups.find((menu) => menu.dataset.guideNavGroup === hashToken);
+  const hashSection = sections.find((section) => section.id === hashToken)
+    || (hashGroup
+      ? sections.find((section) => section.dataset.guideSectionGroup === hashGroup.dataset.guideNavGroup)
+      : null);
+  setActiveGuideNavigation((hashSection || sections[0]).id);
+  if (hashSection) {
+    groups.find((menu) => menu.dataset.guideNavGroup === hashSection.dataset.guideSectionGroup)?.setAttribute("open", "");
+  }
 
   if (!("IntersectionObserver" in window)) return;
 
-  const visibleSections = new Map();
-  prepareNavigationObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        visibleSections.set(entry.target.id, entry.boundingClientRect.top);
-      } else {
-        visibleSections.delete(entry.target.id);
-      }
-    });
-
-    const active = Array.from(visibleSections.entries())
-      .sort((left, right) => Math.abs(left[1]) - Math.abs(right[1]))[0];
-    if (active) setActivePrepareNavigation(active[0]);
+  guideNavigationObserver = new IntersectionObserver(() => {
+    const activationLine = Math.max(112, window.innerHeight * 0.28);
+    const active = sections
+      .map((section) => ({ section, bounds: section.getBoundingClientRect() }))
+      .filter(({ bounds }) => bounds.bottom > 72)
+      .sort((left, right) => Math.abs(left.bounds.top - activationLine) - Math.abs(right.bounds.top - activationLine))[0];
+    if (active) setActiveGuideNavigation(active.section.id);
   }, {
     rootMargin: "-18% 0px -62% 0px",
     threshold: [0, 0.05, 0.2]
   });
-  sections.forEach((section) => prepareNavigationObserver.observe(section));
+  sections.forEach((section) => guideNavigationObserver.observe(section));
 }
 
-function syncPrepareMenuForViewport() {
-  const menu = document.querySelector(".toc-submenu");
-  if (!menu) return;
-
+function syncGuideMenusForViewport() {
   const compact = window.matchMedia("(max-width: 980px)").matches;
-  if (!compact) {
-    menu.open = true;
-    delete menu.dataset.compactInitialized;
-    return;
-  }
+  document.querySelectorAll("[data-guide-nav-group]").forEach((menu) => {
+    if (menu.hidden) return;
+    if (!compact) {
+      menu.open = true;
+      delete menu.dataset.compactInitialized;
+      return;
+    }
 
-  if (!menu.dataset.compactInitialized) {
-    menu.open = false;
-    menu.dataset.compactInitialized = "true";
-  }
+    const containsHash = menu.dataset.guideNavGroup === window.location.hash.replace(/^#/, "")
+      || Boolean(menu.querySelector(`a[href="${window.location.hash}"]`));
+    if (!menu.dataset.compactInitialized) {
+      menu.open = containsHash;
+      menu.dataset.compactInitialized = "true";
+    } else if (containsHash) {
+      menu.open = true;
+    }
+  });
 }
 
 function applyLanguage(language) {
@@ -1909,8 +1918,8 @@ function applyLanguage(language) {
   }
 
   localStorage.setItem("ph-lang", lang);
-  syncPrepareMenuForViewport();
-  refreshPrepareNavigation();
+  syncGuideMenusForViewport();
+  refreshGuideNavigation();
 }
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -1924,8 +1933,12 @@ document.addEventListener("DOMContentLoaded", () => {
     select.addEventListener("change", (event) => applyLanguage(event.target.value));
   });
 
-  const prepareMenuMedia = window.matchMedia("(max-width: 980px)");
-  prepareMenuMedia.addEventListener?.("change", syncPrepareMenuForViewport);
+  const guideMenuMedia = window.matchMedia("(max-width: 980px)");
+  guideMenuMedia.addEventListener?.("change", syncGuideMenusForViewport);
+  window.addEventListener("hashchange", () => {
+    syncGuideMenusForViewport();
+    refreshGuideNavigation();
+  });
 
   document.addEventListener("click", (event) => {
     document.querySelectorAll(".lang-switch.is-open").forEach((switcher) => {
