@@ -596,18 +596,34 @@
                     <span aria-hidden="true">07</span>
                     <div><p>保存后的自动流程</p><h3>确认建库状态</h3></div>
                   </div>
-                  <p class="prepare-section-copy">保存成功后，App 会进入目标详情页，并自动启动远端媒体库准备任务。达到可浏览阈值后即可先进入媒体库，其余缩略图继续在后台获取。</p>
+                  <div class="target-bootstrap-explainer">
+                    <h4>如果目标里已经有照片或视频</h4>
+                    <p>保存成功后，PhotoHarbor 会先扫描目标中已有的文件夹，记录可以浏览的照片和视频，再按浏览时最先会看到的内容准备缩略图。整个过程自动开始，不需要手动设置。</p>
+                    <p>已有媒体不会等待全部缩略图生成完成后才显示。App 会先准备第一批常用内容；达到可以浏览的条件后，你就能进入媒体库，App 会继续在后台补齐其余缩略图。</p>
+                  </div>
                   <ol class="target-bootstrap-flow">
-                    <li><strong>扫描远端文件夹</strong><span>发现目标中的目录结构。</span></li>
-                    <li><strong>发现照片和视频</strong><span>逐步更新已发现目录数和媒体数。</span></li>
-                    <li><strong>获取首批缩略图</strong><span>优先准备目录封面和首批可见媒体。</span></li>
-                    <li><strong>开放媒体库浏览</strong><span>达到阈值后可先浏览，剩余缩略图继续后台获取。</span></li>
+                    <li><strong>扫描已有文件夹</strong><span>从所选归档目录开始，逐层查找其中的文件夹；系统目录、回收站和快照目录会按规则跳过。</span></li>
+                    <li><strong>识别照片和视频</strong><span>记录媒体所在文件夹和基本信息，目标详情中的目录数、媒体数会随着扫描逐步增加。</span></li>
+                    <li><strong>安排生成顺序</strong><span>不会一次性处理所有文件，而是把用户最可能先看到的目录和媒体排在前面。</span></li>
+                    <li><strong>准备首批缩略图</strong><span>优先准备根目录和一级文件夹的封面、首批可见媒体，以及每个文件夹的第一张代表图片。</span></li>
+                    <li><strong>先开放媒体库</strong><span>第一批内容准备好并达到可以浏览的条件后，即可进入媒体库，无需等待整个目标处理完。</span></li>
+                    <li><strong>后台继续补齐</strong><span>剩余照片和视频的缩略图继续在后台生成；你可以离开目标详情页，正常使用 App。</span></li>
                   </ol>
+
+                  <div class="target-option-grid target-bootstrap-status-grid">
+                    <article><h4>正在扫描文件夹</h4><p>App 正在确认目录结构。此时目录数会先增加，媒体数量可能仍然较少。</p></article>
+                    <article><h4>正在发现媒体</h4><p>App 已开始识别照片和视频，媒体数量会持续更新，不必停留在当前页面等待。</p></article>
+                    <article><h4>正在准备首批缩略图</h4><p>正在处理最先用于目录封面和媒体库首屏的内容，完成后会优先开放浏览。</p></article>
+                    <article><h4>正在获取剩余缩略图</h4><p>媒体库已经可以使用，后台继续补齐其余小图；网络速度和媒体数量会影响完成时间。</p></article>
+                  </div>
+
                   <div class="target-option-grid">
                     <article><h4>进度与控制</h4><p>目标详情显示目录、媒体和缩略图进度，并提供暂停、继续、取消、重试或重新扫描。</p></article>
-                    <article><h4>扫描排除项</h4><p>系统目录、回收站、快照或异常目录可能被跳过。可查看原因，并按需选择“仍然扫描”或恢复默认。</p></article>
-                    <article><h4>NAS 原生缩略图</h4><p>识别成功的群晖、威联通和飞牛设备会 best-effort 使用原生缩略图加速；失败时自动回退，不影响归档 proof。</p></article>
-                    <article><h4>失败边界</h4><p>缩略图准备失败不等于目标保存失败，也不代表远端文件损坏。</p></article>
+                    <article><h4>哪些文件夹会被跳过</h4><p>系统目录、回收站、快照或看起来异常的目录可能被跳过。可在“扫描排除项”查看原因，并按需选择“仍然扫描”或恢复默认。</p></article>
+                    <article><h4>缩略图从哪里来</h4><p>PhotoHarbor 会先使用存储设备或云盘已经准备好的小图；如果没有，再从照片或视频中生成浏览用小图。这个过程不需要手动设置，也不会修改远端原文件。</p></article>
+                    <article><h4>为什么有时比较慢</h4><p>文件夹很多、视频较大、网络较慢，或存储设备正在休眠时，扫描和生成缩略图会花更长时间。连接恢复后可以继续或重新扫描。</p></article>
+                    <article><h4>个别缩略图失败</h4><p>原照片或视频仍保存在目标中，目标也仍然保存成功。可以稍后重试或重新扫描失败的部分。</p></article>
+                    <article><h4>已经有缓存时</h4><p>App 会优先使用之前已经准备好的缩略图，减少重复读取远端文件并更快显示媒体库。</p></article>
                   </div>
                   <div class="prepare-notice prepare-notice-warning">
                     <strong>建库不是归档任务</strong>

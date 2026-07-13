@@ -2608,20 +2608,61 @@ html[lang="en"] .detail-card p {
   background: var(--ph-color-surface-subtle);
 }
 
+.target-bootstrap-explainer {
+  display: grid;
+  gap: 10px;
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid rgba(10, 102, 232, 0.18);
+  border-radius: 18px;
+  background: linear-gradient(140deg, #f4f9ff, #eef8ff);
+}
+
+.target-bootstrap-explainer h4,
+.target-bootstrap-explainer p {
+  margin: 0;
+}
+
+.target-bootstrap-explainer h4 {
+  color: var(--ph-color-text);
+  font-size: 19px;
+}
+
+.target-bootstrap-explainer p {
+  font-size: 14px;
+}
+
 .target-bootstrap-flow {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
   margin: 22px 0 0;
   padding: 0;
+  counter-reset: target-bootstrap-step;
   list-style: none;
 }
 
 .target-bootstrap-flow li {
+  counter-increment: target-bootstrap-step;
   padding: 18px;
   border: 1px solid rgba(10, 102, 232, 0.16);
   border-radius: 16px;
   background: linear-gradient(145deg, #f7fbff, #edf5ff);
+}
+
+.target-bootstrap-flow li::before {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  margin-bottom: 12px;
+  color: var(--ph-color-primary);
+  border: 1px solid rgba(10, 102, 232, 0.2);
+  border-radius: 9px;
+  background: #fff;
+  content: counter(target-bootstrap-step);
+  font-size: 11px;
+  font-weight: 850;
 }
 
 .target-bootstrap-flow strong,
@@ -2639,6 +2680,11 @@ html[lang="en"] .detail-card p {
   color: var(--ph-color-text-muted);
   font-size: 12px;
   line-height: 1.6;
+}
+
+.target-bootstrap-status-grid article {
+  border-color: rgba(22, 168, 116, 0.18);
+  background: linear-gradient(145deg, #f8fffb, var(--ph-color-success-soft));
 }
 
 .target-next-actions {
