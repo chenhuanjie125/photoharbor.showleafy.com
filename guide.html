@@ -11,7 +11,7 @@
     <title>使用说明 | PhotoHarbor</title>
     <link rel="icon" href="assets/app-icon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
-    <link rel="stylesheet" href="assets/styles.css?v=20260714guidei18n2">
+    <link rel="stylesheet" href="assets/styles.css?v=20260714taskguide">
   </head>
   <body data-title-key="guide_title">
     <header class="site-header">
@@ -83,6 +83,18 @@
               </nav>
             </details>
             <a href="#task" data-i18n="guide_toc_3">创建任务</a>
+            <details class="toc-submenu" data-guide-nav-group="task" open>
+              <summary data-i18n="guide_task_menu_title">创建任务目录</summary>
+              <nav class="toc-subnav" aria-label="创建任务目录" data-i18n-aria-label="guide_task_menu_title">
+                <a href="#task-entry" data-i18n="guide_task_menu_entry">开始新建上传</a>
+                <a href="#task-target" data-i18n="guide_task_menu_target">选择归档目标</a>
+                <a href="#task-folder" data-i18n="guide_task_menu_folder">选择远端文件夹</a>
+                <a href="#task-conflict" data-i18n="guide_task_menu_conflict">设置同名文件策略</a>
+                <a href="#task-media" data-i18n="guide_task_menu_media">选择照片和视频</a>
+                <a href="#task-preflight" data-i18n="guide_task_menu_preflight">确认创建条件</a>
+                <a href="#task-created" data-i18n="guide_task_menu_created">查看任务创建结果</a>
+              </nav>
+            </details>
             <a href="#proof" data-i18n="guide_toc_4">等待 proof</a>
             <a href="#delete" data-i18n="guide_toc_5">安全删除</a>
             <a href="#library" data-i18n="guide_toc_6">浏览与恢复</a>
@@ -673,7 +685,250 @@
             </section>
             <section class="page-section" id="task">
               <h2 data-i18n="guide_task_title">创建归档任务</h2>
-              <p data-i18n="guide_task_text">在 Archive 中选择目标、远端文件夹、冲突策略和照片/视频。任务创建后会进入后台队列。</p>
+              <div class="task-guide" id="task-guide-detail">
+                <div class="prepare-intro">
+                  <p>归档任务决定把哪些 iPhone 或 iPad 照片和视频写入哪个存储目标、哪个远端文件夹，以及遇到同名文件时如何处理。目标、文件夹和冲突策略只对当前任务生效，不会修改已经保存的存储目标配置。</p>
+                  <p>完成照片选择后，任务才会进入后台队列。创建任务、上传完成或看到媒体库缩略图，都不会自动删除本机原件；只有最终归档证明完成后，相关项目才可能进入 Safe Delete。</p>
+                </div>
+
+                <ol class="target-flow task-flow" aria-label="创建归档任务流程">
+                  <li>归档任务</li>
+                  <li>新建上传</li>
+                  <li>选择目标</li>
+                  <li>选择或新建文件夹</li>
+                  <li>设置同名文件策略</li>
+                  <li>选择照片和视频</li>
+                  <li>创建后台任务</li>
+                </ol>
+
+                <div class="prepare-check-card task-quick-check">
+                  <div class="prepare-card-heading">
+                    <span class="prepare-step-mark" aria-hidden="true">✓</span>
+                    <div>
+                      <h3>第一次创建前检查</h3>
+                      <p>先确认下面七项，再开始第一次小批量归档。</p>
+                    </div>
+                  </div>
+                  <ul class="prepare-check-list">
+                    <li>存储目标仍显示可用于归档。</li>
+                    <li>NAS、电脑、云盘账号和目标磁盘当前在线。</li>
+                    <li>远端目录有足够空间，并允许创建、读取、重命名和删除文件。</li>
+                    <li>PhotoHarbor 可以访问准备归档的照片。</li>
+                    <li>已确认“仅在 Wi‑Fi 网络下上传”是否符合当前需求。</li>
+                    <li>开启“优化 iPhone 储存空间”时，当前网络可以下载 iCloud 原件。</li>
+                    <li>第一次建议先选择少量照片、视频和 Live Photo，完整走通归档证明后再创建大批量任务。</li>
+                  </ul>
+                </div>
+
+                <section class="prepare-subsection task-subsection" id="task-entry" data-guide-section-group="task">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">01</span>
+                    <div><p>从归档任务或媒体库进入</p><h3>开始新建上传</h3></div>
+                  </div>
+                  <ol class="target-step-list">
+                    <li>打开 PhotoHarbor，进入“归档任务”页面。</li>
+                    <li>点击右上角“新建上传”；没有任务时也可以点击空状态中的“开始归档”。</li>
+                    <li>App 会先检查照片访问权限。若权限被拒绝，按提示打开系统设置并重新授权。</li>
+                    <li>如果尚未配置可写目标，App 会提示先完成“添加存储目标”，不会直接打开照片选择器。</li>
+                    <li>也可以在“媒体库”中的文件夹模式进入某个文件夹，点击“上传到这里”。这种入口会自动预选当前目标和文件夹，后续仍需选择冲突策略和照片。</li>
+                  </ol>
+                  <div class="prepare-notice prepare-notice-info">
+                    <strong>此时还不会上传照片</strong>
+                    <p>PhotoHarbor 会先让你确定远端位置和同名文件处理方式，最后才打开系统照片选择器。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection task-subsection" id="task-target" data-guide-section-group="task">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">02</span>
+                    <div><p>确定本次任务写入哪里</p><h3>选择归档目标</h3></div>
+                  </div>
+                  <div class="target-option-grid task-target-grid">
+                    <article><h4>完整版或完整试用期</h4><p>可以从所有已配置的可写目标中选择。</p></article>
+                    <article><h4>基础版</h4><p>每天可以归档 50 项，并只能从最早配置的一个可写目标创建任务。</p></article>
+                    <article><h4>试用期结束后</h4><p>其他目标仍可用于浏览，但不能用于新建上传，除非解锁完整版。</p></article>
+                    <article><h4>不支持目录浏览</h4><p>该目标不能完成归档文件夹选择。请重新检查目录权限或更换协议。</p></article>
+                  </div>
+                  <p class="prepare-section-copy">选择目标只决定当前任务写入哪里，不会改变目标保存时的根目录。</p>
+                  <div class="prepare-notice prepare-notice-warning">
+                    <strong>保存成功不代表目标永远在线</strong>
+                    <p>NAS 休眠、电脑关机、VPN 断开、云盘授权失效或权限变化都可能让目标暂时不可用。创建任务时会重新确认当前连接条件。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection task-subsection" id="task-folder" data-guide-section-group="task">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">03</span>
+                    <div><p>确认本次任务的具体目录</p><h3>选择远端文件夹</h3></div>
+                  </div>
+                  <ol class="target-step-list">
+                    <li>点击目标后，从目标根目录开始浏览远端文件夹。</li>
+                    <li>可以继续进入已有子文件夹，也可以直接选择当前目录。</li>
+                    <li>当前账号允许创建目录时，可点击“新建文件夹”，输入名称后进入新目录。</li>
+                    <li>页面底部会显示本次选择的相对路径；确认无误后点击“选择当前位置”。</li>
+                    <li>从媒体库“上传到这里”进入时，当前浏览目录会自动成为本次任务文件夹。</li>
+                  </ol>
+                  <div class="task-folder-rules">
+                    <article><h4>不会修改目标根目录</h4><p>任务文件夹始终位于已保存的目标根目录之内。</p></article>
+                    <article><h4>建议使用独立目录</h4><p>可按年份、事件或项目整理，避免把大量文件直接写入 NAS 根目录。</p></article>
+                    <article><h4>任务期间保持路径稳定</h4><p>归档和证明生成期间，不要在 NAS、电脑或云盘后台重命名、移动或删除该文件夹。</p></article>
+                    <article><h4>新建失败时</h4><p>检查连接、文件夹名称、同名目录和账号的创建权限。</p></article>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection task-subsection" id="task-conflict" data-guide-section-group="task">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">04</span>
+                    <div><p>决定同名文件如何处理</p><h3>设置同名文件策略</h3></div>
+                  </div>
+                  <div class="task-conflict-grid">
+                    <article class="task-conflict-card task-conflict-recommended">
+                      <p class="prepare-card-kicker">默认推荐</p>
+                      <h4>重命名重复文件</h4>
+                      <p>远端已有同名文件时，为新上传文件追加数字后缀，同时保留新旧文件。新文件会按照实际保存路径建立归档证明。</p>
+                    </article>
+                    <article class="task-conflict-card">
+                      <p class="prepare-card-kicker">保留远端原文件</p>
+                      <h4>跳过重复文件</h4>
+                      <p>远端同名文件保持不变，本次项目不会提交为新的归档副本。被跳过的项目不会获得本次任务的归档证明，也不会进入 Safe Delete。</p>
+                    </article>
+                    <article class="task-conflict-card task-conflict-danger">
+                      <p class="prepare-card-kicker">需要再次确认</p>
+                      <h4>覆盖重复文件</h4>
+                      <p>用本次上传替换远端同名文件，并在证明记录中保存覆盖策略。PhotoHarbor 不保证可以恢复被替换的旧文件。</p>
+                    </article>
+                  </div>
+                  <div class="prepare-notice prepare-notice-info">
+                    <strong>策略只应用于当前任务</strong>
+                    <p>它不会修改存储目标，也不会自动应用到下一次上传。不能确定时选择“重命名重复文件”。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection task-subsection" id="task-media" data-guide-section-group="task">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">05</span>
+                    <div><p>使用系统照片选择器</p><h3>选择照片和视频</h3></div>
+                  </div>
+                  <ol class="target-step-list">
+                    <li>确认冲突策略后，系统照片选择器才会打开。</li>
+                    <li>可以选择普通照片、视频和 Live Photo。</li>
+                    <li>点击取消或没有选择任何内容时，不会创建任务。</li>
+                    <li>完成选择后，PhotoHarbor 会读取所选项目的资源信息并准备后台任务，不需要先手工复制到“文件”App。</li>
+                  </ol>
+
+                  <div class="task-resource-explainer">
+                    <div class="target-thumbnail-heading">
+                      <span aria-hidden="true">2×</span>
+                      <div><p>理解任务进度</p><h4>素材数与资源数可能不同</h4></div>
+                    </div>
+                    <div class="task-resource-grid">
+                      <article><h5>普通照片</h5><p>通常对应一个主要图片资源。</p></article>
+                      <article><h5>视频</h5><p>对应一个需要上传和验证的视频资源。</p></article>
+                      <article><h5>Live Photo</h5><p>Live Photo 会把静态照片和动态视频作为一个成组素材处理，因此一项 Live Photo 通常产生两个资源。</p></article>
+                    </div>
+                    <p class="target-thumbnail-boundary">任务卡中的项目数与资源进度可能不同，这是正常现象；Safe Delete 必须等待成组资源全部完成证明。</p>
+                  </div>
+
+                  <div class="prepare-notice prepare-notice-warning">
+                    <strong>基础版每天最多选择 50 项</strong>
+                    <p>额度按照片选择器中的项目数量计算。完整试用期和完整版不受该每日额度限制；超过剩余额度时，可以减少选择数量后重新创建任务。</p>
+                  </div>
+
+                  <details class="prepare-vendor-card task-special-details">
+                    <summary><span>照片权限与 iCloud 原件</span><small>首次大批归档前建议检查</small></summary>
+                    <div class="prepare-vendor-content">
+                      <ul>
+                        <li>完整照片访问最适合首次大批归档。</li>
+                        <li>使用有限访问时，只能处理系统当前允许 PhotoHarbor 读取的项目；需要时到系统设置扩大授权范围。</li>
+                        <li>开启“优化 iPhone 储存空间”后，部分原件可能只在 iCloud。归档大视频或大量 iCloud 原件时，应保持稳定网络、电量和足够本机临时空间。</li>
+                        <li>无法取得原件或 Live Photo 成组资源不完整的项目会进入需要关注状态，不会伪装成归档成功。</li>
+                      </ul>
+                    </div>
+                  </details>
+                </section>
+
+                <section class="prepare-subsection task-subsection" id="task-preflight" data-guide-section-group="task">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">06</span>
+                    <div><p>照片选择完成后的系统处理</p><h3>确认创建条件</h3></div>
+                  </div>
+                  <ol class="target-bootstrap-flow task-preflight-flow">
+                    <li><strong>确认目标</strong><span>确认所选存储目标仍然存在。</span></li>
+                    <li><strong>读取资源</strong><span>读取照片、视频和 Live Photo 的资源清单。</span></li>
+                    <li><strong>估算任务</strong><span>计算预计资源数量和总体积。</span></li>
+                    <li><strong>准备目录</strong><span>确认远端路径并准备所需文件夹。</span></li>
+                    <li><strong>重新连接</strong><span>在当前网络允许上传时连接目标。</span></li>
+                    <li><strong>进入队列</strong><span>创建任务记录并加入可处理资源。</span></li>
+                    <li><strong>保留阻断</strong><span>无法读取的项目会显示明确失败原因。</span></li>
+                  </ol>
+
+                  <div class="task-network-grid">
+                    <article class="task-state-card task-state-running"><h4>当前允许上传</h4><p>目标连接成功后，任务进入“正在进行”。</p></article>
+                    <article class="task-state-card task-state-waiting"><h4>等待 Wi‑Fi</h4><p>仅在 Wi‑Fi 下上传且当前只有蜂窝网络时，任务仍会创建；接入 Wi‑Fi 或有线网络后自动继续。</p></article>
+                    <article class="task-state-card task-state-warning"><h4>连接或目录准备失败</h4><p>App 会显示地址、认证、权限或空间错误，不会把尚未成立的任务显示为正常上传。</p></article>
+                    <article class="task-state-card"><h4>照片选择已经变化</h4><p>照片被删除、授权范围变化或系统无法重新取得项目时，需要返回照片选择器重新选择。</p></article>
+                  </div>
+
+                  <div class="prepare-notice prepare-notice-info">
+                    <strong>离开任务页面不会取消任务</strong>
+                    <p>任务记录会持久保存。系统允许时上传会继续，App 再次进入前台后也会接管未完成任务。大批量归档时建议设备接电，并避免强制退出 App。</p>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection task-subsection" id="task-created" data-guide-section-group="task">
+                  <div class="prepare-section-heading">
+                    <span aria-hidden="true">07</span>
+                    <div><p>读懂任务卡和下一步</p><h3>查看任务创建结果</h3></div>
+                  </div>
+                  <div class="task-status-grid">
+                    <article class="task-state-card task-state-running"><h4>正在进行</h4><p>资源已经进入上传和归档证明队列。</p></article>
+                    <article class="task-state-card task-state-waiting"><h4>等待 Wi‑Fi</h4><p>任务已创建，但上传策略正在等待允许的网络。</p></article>
+                    <article class="task-state-card task-state-warning"><h4>需要关注</h4><p>部分资源遇到 iCloud 原件、权限、网络、认证、空间或远端读取问题。</p></article>
+                    <article class="task-state-card task-state-complete"><h4>已完成</h4><p>队列已经结束；是否可以删除仍以最终 proof 和 Safe Delete 状态为准。</p></article>
+                  </div>
+
+                  <div class="task-progress-guide">
+                    <article><span class="task-progress-swatch task-progress-upload" aria-hidden="true"></span><div><h4>蓝色上传进度</h4><p>蓝色进度表示按已上传字节计算的上传推进。</p></div></article>
+                    <article><span class="task-progress-swatch task-progress-proof" aria-hidden="true"></span><div><h4>绿色证明进度</h4><p>绿色进度表示已完成归档证明检查的收口进度。</p></div></article>
+                    <article><span class="task-progress-count" aria-hidden="true">x/x</span><div><h4>资源终态数量</h4><p>右侧数量表示已经进入终态的资源数，不等同于照片选择器中的素材数。</p></div></article>
+                  </div>
+
+                  <ul class="prepare-check-list task-control-list">
+                    <li>“详情”可以查看每项照片、视频或 Live Photo 的体积、执行结果、proof 状态和冲突处理结果。</li>
+                    <li>运行中的任务可以暂停；暂停后可以继续。</li>
+                    <li>可恢复错误会显示“重试”，只重跑仍需处理的资源。</li>
+                    <li>只有已暂停或已结束的任务可以从任务列表移除。</li>
+                  </ul>
+
+                  <div class="prepare-notice prepare-notice-warning">
+                    <strong>删除任务不等于删除照片</strong>
+                    <p>“删除任务”只会移除本机任务列表和相关本地执行记录，不会删除远端文件、既有证明历史或本机照片，也不能代替 Safe Delete。</p>
+                  </div>
+
+                  <div class="prepare-troubleshooting task-troubleshooting">
+                    <div class="prepare-card-heading">
+                      <span class="prepare-step-mark prepare-step-mark-warning" aria-hidden="true">!</span>
+                      <div><h3>常见失败速查</h3><p>先按当前界面显示的问题处理，再重新创建或继续任务。</p></div>
+                    </div>
+                    <dl>
+                      <div><dt>没有可选目标</dt><dd>先添加并检查一个可写存储目标。</dd></div>
+                      <div><dt>目标没有出现</dt><dd>检查基础版目标限制、目标是否仍存在，以及当前目标是否可写。</dd></div>
+                      <div><dt>不能浏览文件夹</dt><dd>重新运行目标检查，补齐目录浏览权限或更换协议。</dd></div>
+                      <div><dt>新建文件夹失败</dt><dd>检查名称、同名目录、连接状态和创建权限。</dd></div>
+                      <div><dt>无法访问照片</dt><dd>到系统设置更新完整或有限照片访问权限。</dd></div>
+                      <div><dt>超过每日额度</dt><dd>减少本次选择数量，或升级完整版。</dd></div>
+                      <div><dt>iCloud 原件不可用</dt><dd>连接稳定网络，保证电量和临时空间后重试。</dd></div>
+                      <div><dt>目标认证或写入失败</dt><dd>检查账号、密码、OAuth、VPN、目录权限和远端空间。</dd></div>
+                      <div><dt>显示“等待 Wi‑Fi”</dt><dd>这不是创建失败；接入 Wi‑Fi，或在设置中关闭“仅在 Wi‑Fi 网络下上传”。</dd></div>
+                    </dl>
+                  </div>
+
+                  <div class="target-next-actions">
+                    <a class="btn btn-primary" href="#proof">继续：等待归档证明<span aria-hidden="true">→</span></a>
+                    <a class="btn btn-secondary" href="#target-after-save">返回：确认建库状态</a>
+                  </div>
+                </section>
+              </div>
             </section>
             <section class="page-section" id="proof">
               <h2 data-i18n="guide_proof_title">等待归档证明</h2>
@@ -712,6 +967,6 @@
         <div><h3 data-i18n="footer_contact">联系</h3><div class="footer-links"><a href="mailto:support@showleafy.com">support@showleafy.com</a></div><p data-i18n="footer_privacy_note">PhotoHarbor 不通过官网托管你的照片或凭据。</p></div>
       </div>
     </footer>
-    <script src="assets/app.js?v=20260714guidei18n2"></script>
+    <script src="assets/app.js?v=20260714taskguide"></script>
   </body>
 </html>
