@@ -2345,7 +2345,11 @@ html[lang="en"] .detail-card p {
 }
 
 .prepare-guide,
-.target-guide {
+.target-guide,
+.task-guide,
+.proof-guide,
+.delete-guide,
+.library-guide {
   display: grid;
   gap: 0;
   margin-top: 24px;
@@ -2356,7 +2360,19 @@ html[lang="en"] .detail-card p {
 .prepare-guide dd,
 .target-guide p,
 .target-guide li,
-.target-guide dd {
+.target-guide dd,
+.task-guide p,
+.task-guide li,
+.task-guide dd,
+.proof-guide p,
+.proof-guide li,
+.proof-guide dd,
+.delete-guide p,
+.delete-guide li,
+.delete-guide dd,
+.library-guide p,
+.library-guide li,
+.library-guide dd {
   color: var(--ph-color-text-muted);
   line-height: 1.75;
   overflow-wrap: anywhere;
@@ -2370,6 +2386,22 @@ html[lang="en"] .detail-card p {
 .target-guide h4,
 .target-guide summary,
 .target-guide a,
+.task-guide h3,
+.task-guide h4,
+.task-guide summary,
+.task-guide a,
+.proof-guide h3,
+.proof-guide h4,
+.proof-guide summary,
+.proof-guide a,
+.delete-guide h3,
+.delete-guide h4,
+.delete-guide summary,
+.delete-guide a,
+.library-guide h3,
+.library-guide h4,
+.library-guide summary,
+.library-guide a,
 .toc-subnav a {
   overflow-wrap: anywhere;
   word-break: normal;
@@ -2377,12 +2409,20 @@ html[lang="en"] .detail-card p {
 
 html[lang="de"] .prepare-guide,
 html[lang="de"] .target-guide,
+html[lang="de"] .task-guide,
+html[lang="de"] .proof-guide,
+html[lang="de"] .delete-guide,
+html[lang="de"] .library-guide,
 html[lang="de"] .toc-subnav {
   hyphens: auto;
 }
 
 .prepare-guide code,
-.target-guide code {
+.target-guide code,
+.task-guide code,
+.proof-guide code,
+.delete-guide code,
+.library-guide code {
   padding: 0.12em 0.38em;
   color: #1857a8;
   border: 1px solid rgba(10, 102, 232, 0.12);
@@ -2823,6 +2863,224 @@ html[lang="de"] .toc-subnav {
 
 .task-guide {
   min-width: 0;
+}
+
+.proof-guide,
+.delete-guide,
+.library-guide {
+  min-width: 0;
+}
+
+.proof-flow {
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.proof-boundary-card,
+.delete-boundary-card,
+.library-live-photo-card {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid rgba(10, 102, 232, 0.18);
+  border-radius: 18px;
+  background: linear-gradient(145deg, rgba(237, 246, 255, 0.96), rgba(247, 251, 255, 0.92));
+}
+
+.proof-boundary-card h4,
+.proof-boundary-card p,
+.delete-boundary-card h4,
+.delete-boundary-card p,
+.library-live-photo-card h4,
+.library-live-photo-card p {
+  margin: 0;
+}
+
+.proof-boundary-card h4,
+.delete-boundary-card h4,
+.library-live-photo-card h4 {
+  color: var(--ph-color-text);
+  font-size: 16px;
+}
+
+.proof-boundary-card p,
+.delete-boundary-card p,
+.library-live-photo-card p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+.proof-stage-grid,
+.proof-progress-grid,
+.proof-blocker-grid,
+.delete-candidate-grid,
+.delete-confirm-flow,
+.library-source-grid,
+.library-browse-grid,
+.library-preview-grid,
+.library-share-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.proof-stage-grid article,
+.proof-progress-grid article,
+.proof-blocker-grid article,
+.delete-candidate-grid article,
+.delete-confirm-flow article,
+.library-source-grid article,
+.library-browse-grid article,
+.library-preview-grid article,
+.library-share-grid article {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid rgba(10, 102, 232, 0.14);
+  border-radius: 16px;
+  background: var(--ph-color-surface-subtle);
+}
+
+.proof-stage-grid h4,
+.proof-stage-grid p,
+.proof-progress-grid h4,
+.proof-progress-grid p,
+.proof-blocker-grid h4,
+.proof-blocker-grid p,
+.delete-candidate-grid h4,
+.delete-candidate-grid p,
+.delete-confirm-flow h4,
+.delete-confirm-flow p,
+.library-source-grid h4,
+.library-source-grid p,
+.library-browse-grid h4,
+.library-browse-grid p,
+.library-preview-grid h4,
+.library-preview-grid p,
+.library-share-grid h4,
+.library-share-grid p {
+  margin: 0;
+}
+
+.proof-stage-grid h4,
+.proof-progress-grid h4,
+.proof-blocker-grid h4,
+.delete-candidate-grid h4,
+.delete-confirm-flow h4,
+.library-source-grid h4,
+.library-browse-grid h4,
+.library-preview-grid h4,
+.library-share-grid h4 {
+  color: var(--ph-color-text);
+  font-size: 15px;
+}
+
+.proof-stage-grid p,
+.proof-progress-grid p,
+.proof-blocker-grid p,
+.delete-candidate-grid p,
+.delete-confirm-flow p,
+.library-source-grid p,
+.library-browse-grid p,
+.library-preview-grid p,
+.library-share-grid p {
+  margin-top: 7px;
+  font-size: 13px;
+}
+
+.proof-progress-upload {
+  border-color: rgba(10, 102, 232, 0.28) !important;
+  background: var(--ph-color-primary-soft) !important;
+}
+
+.proof-progress-proof {
+  border-color: rgba(22, 168, 116, 0.28) !important;
+  background: var(--ph-color-success-soft) !important;
+}
+
+.proof-technical-details,
+.library-web-playback-details {
+  margin-top: 20px;
+  border: 1px solid rgba(10, 102, 232, 0.16);
+  border-radius: 16px;
+  background: var(--ph-color-surface-subtle);
+  overflow: hidden;
+}
+
+.proof-technical-details summary,
+.library-web-playback-details summary {
+  padding: 16px 18px;
+  color: var(--ph-color-text);
+  cursor: pointer;
+  font-weight: 800;
+}
+
+.proof-technical-details > div,
+.library-web-playback-details > div {
+  padding: 0 18px 18px;
+  border-top: 1px solid rgba(10, 102, 232, 0.1);
+}
+
+.proof-technical-details p,
+.library-web-playback-details p {
+  margin: 14px 0 0;
+  font-size: 14px;
+}
+
+.delete-confirm-flow {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.delete-confirm-flow article > span {
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  color: #1857a8;
+  border-radius: 9px;
+  background: var(--ph-color-primary-soft);
+  font-weight: 850;
+}
+
+.delete-confirm-flow h4 {
+  margin-top: 12px;
+}
+
+.delete-troubleshooting {
+  margin-top: 22px;
+  padding: 22px;
+  border: 1px solid rgba(220, 232, 250, 0.96);
+  border-radius: 20px;
+  background: var(--ph-color-surface-subtle);
+}
+
+.delete-troubleshooting h4 {
+  margin: 0;
+  color: var(--ph-color-text);
+}
+
+.delete-troubleshooting dl {
+  margin: 14px 0 0;
+}
+
+.delete-troubleshooting dl > div {
+  display: grid;
+  grid-template-columns: minmax(120px, 0.42fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 13px 0;
+  border-top: 1px solid rgba(10, 102, 232, 0.1);
+}
+
+.delete-troubleshooting dt {
+  color: var(--ph-color-text);
+  font-weight: 800;
+}
+
+.delete-troubleshooting dd {
+  margin: 0;
+  font-size: 14px;
+}
+
+.library-danger-notice {
+  margin-top: 20px;
 }
 
 .task-quick-check {
@@ -4322,7 +4580,16 @@ html[lang="de"] .toc-subnav {
   .task-status-grid,
   .task-resource-grid,
   .task-conflict-grid,
-  .task-preflight-flow {
+  .task-preflight-flow,
+  .proof-stage-grid,
+  .proof-progress-grid,
+  .proof-blocker-grid,
+  .delete-candidate-grid,
+  .delete-confirm-flow,
+  .library-source-grid,
+  .library-browse-grid,
+  .library-preview-grid,
+  .library-share-grid {
     grid-template-columns: 1fr;
   }
 
@@ -4332,6 +4599,15 @@ html[lang="de"] .toc-subnav {
 
   .task-resource-explainer {
     padding: 20px 17px;
+  }
+
+  .delete-troubleshooting {
+    padding: 20px 17px;
+  }
+
+  .delete-troubleshooting dl > div {
+    grid-template-columns: 1fr;
+    gap: 5px;
   }
 
   .target-thumbnail-optimizations {

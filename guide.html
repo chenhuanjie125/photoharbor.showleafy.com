@@ -96,8 +96,42 @@
               </nav>
             </details>
             <a href="#proof" data-i18n="guide_toc_4">等待 proof</a>
+            <details class="toc-submenu" data-guide-nav-group="proof" open>
+              <summary data-i18n="guide_proof_menu_title">等待 proof 目录</summary>
+              <nav class="toc-subnav" aria-label="等待 proof 目录" data-i18n-aria-label="guide_proof_menu_title">
+                <a href="#proof-entry" data-i18n="guide_proof_menu_entry">理解归档证明</a>
+                <a href="#proof-stages" data-i18n="guide_proof_menu_stages">查看处理阶段</a>
+                <a href="#proof-progress" data-i18n="guide_proof_menu_progress">理解任务进度</a>
+                <a href="#proof-meaning" data-i18n="guide_proof_menu_meaning">理解 proof 的含义</a>
+                <a href="#proof-blockers" data-i18n="guide_proof_menu_blockers">处理阻断与失败</a>
+                <a href="#proof-next" data-i18n="guide_proof_menu_next">进入安全删除</a>
+              </nav>
+            </details>
             <a href="#delete" data-i18n="guide_toc_5">安全删除</a>
+            <details class="toc-submenu" data-guide-nav-group="delete" open>
+              <summary data-i18n="guide_delete_menu_title">安全删除目录</summary>
+              <nav class="toc-subnav" aria-label="安全删除目录" data-i18n-aria-label="guide_delete_menu_title">
+                <a href="#delete-entry" data-i18n="guide_delete_menu_entry">了解 Safe Delete</a>
+                <a href="#delete-candidates" data-i18n="guide_delete_menu_candidates">查看可删除候选</a>
+                <a href="#delete-existing-proof" data-i18n="guide_delete_menu_existing_proof">复用已有 proof</a>
+                <a href="#delete-recheck" data-i18n="guide_delete_menu_recheck">主动再次校验</a>
+                <a href="#delete-confirm" data-i18n="guide_delete_menu_confirm">完成删除确认</a>
+                <a href="#delete-results" data-i18n="guide_delete_menu_results">理解删除结果</a>
+              </nav>
+            </details>
             <a href="#library" data-i18n="guide_toc_6">浏览与恢复</a>
+            <details class="toc-submenu" data-guide-nav-group="library" open>
+              <summary data-i18n="guide_library_menu_title">浏览与恢复目录</summary>
+              <nav class="toc-subnav" aria-label="浏览与恢复目录" data-i18n-aria-label="guide_library_menu_title">
+                <a href="#library-entry" data-i18n="guide_library_menu_entry">进入媒体库</a>
+                <a href="#library-browse" data-i18n="guide_library_menu_browse">按时间或文件夹浏览</a>
+                <a href="#library-preview" data-i18n="guide_library_menu_preview">预览与缩略图</a>
+                <a href="#library-restore" data-i18n="guide_library_menu_restore">保存回 iPhone</a>
+                <a href="#library-share" data-i18n="guide_library_menu_share">分享预览或原件</a>
+                <a href="#library-remote-delete" data-i18n="guide_library_menu_remote_delete">谨慎删除远端文件</a>
+                <a href="#library-web-playback" data-i18n="guide_library_menu_web_playback">官方网页播放</a>
+              </nav>
+            </details>
           </aside>
           <div class="page-content">
             <section class="page-section" id="prepare">
@@ -932,16 +966,90 @@
             </section>
             <section class="page-section" id="proof">
               <h2 data-i18n="guide_proof_title">等待归档证明</h2>
-              <p data-i18n="guide_proof_text">任务会经历上传、上传回执、提交、预览和最终归档证明检查。只有 proof 完成后，项目才具备 Safe Delete 资格。</p>
-              <div class="notice" data-i18n="privacy_delete_text">PhotoHarbor 不会自动删除本机照片。只有通过 proof 的项目才会进入 Safe Delete 复核，最终删除仍需要用户确认。</div>
+              <div class="proof-guide" id="proof-guide-detail">
+                <div class="prepare-intro">
+                  <p>归档 proof 是 PhotoHarbor 对远端副本完成当前归档证明策略后的结果。它不是上传进度的别名：上传完成”不等于“可以安全删除”。</p>
+                  <p>任务可以在后台继续推进，但在 proof 完成前，请保留本机原件，也不要在 NAS、电脑或云盘中移动、重命名或删除本次任务的远端文件。</p>
+                </div>
+                <ol class="target-flow proof-flow" aria-label="归档证明流程">
+                  <li>上传</li><li>上传回执</li><li>提交到最终路径</li><li>轻量预览检查</li><li>最终归档证明</li><li>可进入 Safe Delete</li>
+                </ol>
+
+                <section class="prepare-subsection proof-subsection" id="proof-entry" data-guide-section-group="proof">
+                  <div class="prepare-section-heading"><span aria-hidden="true">01</span><div><h3>先理解什么是归档证明</h3></div></div>
+                  <div class="proof-boundary-card"><h4>proof 是远端副本的可用证明</h4><p>它表示远端文件已经经过当前策略要求的大小、可读性与预览性检查。只有通过 proof 的资源才会被记录为后续 Safe Delete 的依据。</p></div>
+                  <div class="prepare-notice prepare-notice-warning"><strong>上传完成仍需等待</strong><p>文件已经传到远端，不代表所有后续检查均已结束。请以任务详情里的 proof 状态为准，不要仅凭上传百分比删除本机照片。</p></div>
+                </section>
+
+                <section class="prepare-subsection proof-subsection" id="proof-stages" data-guide-section-group="proof">
+                  <div class="prepare-section-heading"><span aria-hidden="true">02</span><div><h3>查看任务正在经过的阶段</h3></div></div>
+                  <div class="proof-stage-grid">
+                    <article><h4>上传与上传回执</h4><p>App 传输本机资源，并确认远端暂存内容的基本大小与可读状态。</p></article>
+                    <article><h4>提交到最终路径</h4><p>暂存内容被移动或提交到本次任务选定的归档文件夹；同名文件策略在这一阶段生效。</p></article>
+                    <article><h4>轻量预览检查</h4><p>App 读取少量远端内容，确认可以建立用于浏览的基础预览。</p></article>
+                    <article><h4>最终归档证明</h4><p>完成远端大小与可读性验证后，写入 proof 记录；通过后才会继续判断 Safe Delete 资格。</p></article>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection proof-subsection" id="proof-progress" data-guide-section-group="proof">
+                  <div class="prepare-section-heading"><span aria-hidden="true">03</span><div><h3>理解任务卡上的进度</h3></div></div>
+                  <div class="proof-progress-grid">
+                    <article class="proof-progress-upload"><h4>蓝色进度</h4><p>表示按已上传字节计算的上传推进。大视频会在传输过程中持续变化。</p></article>
+                    <article class="proof-progress-proof"><h4>绿色进度</h4><p>表示已完成归档证明检查的收口进度；它通常会落后于蓝色上传进度。</p></article>
+                    <article><h4><code>x/x</code> 资源数量</h4><p>表示已进入终态的资源数量，不等同于照片选择器中的素材数量。一个 Live Photo 需要静态照片和动态视频都完成处理。</p></article>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection proof-subsection" id="proof-meaning" data-guide-section-group="proof">
+                  <div class="prepare-section-heading"><span aria-hidden="true">04</span><div><h3>理解 proof 检查了什么</h3></div></div>
+                  <p class="prepare-section-copy">proof 会确认远端文件大小、可读性与当前可用的校验依据；它不默认等同于远端全文逐字节校验。这样可以在可靠性与大文件等待时间之间取得平衡。</p>
+                  <details class="proof-technical-details">
+                    <summary>技术说明：当前 proof 策略</summary>
+                    <div><p>支持的存储会优先使用服务商提供的校验和。其他目标会在本机临时文件可用时，对远端头部、中段和尾部做抽样读取；只有本机临时文件已不存在且保留了校验和时，才会回退为流式读取远端文件完成校验。</p><p>无论采用哪种依据，任务还需要通过轻量读取与预览检查。proof 的含义始终是“满足当前归档证明策略”，而不是默认承诺每个文件都已全文逐字节比对。</p></div>
+                  </details>
+                </section>
+
+                <section class="prepare-subsection proof-subsection" id="proof-blockers" data-guide-section-group="proof">
+                  <div class="prepare-section-heading"><span aria-hidden="true">05</span><div><h3>处理等待、阻断与失败</h3></div></div>
+                  <div class="proof-blocker-grid">
+                    <article><h4>等待 Wi‑Fi 或已暂停</h4><p>接入允许的网络后会继续；手动暂停的任务需要在任务页点击继续。</p></article>
+                    <article><h4>iCloud、权限或资源组问题</h4><p>保持网络、电量与照片权限；Live Photo 的静态照片和动态视频必须都可取得，缺失的一侧不会伪装为成功。</p></article>
+                    <article><h4>认证、空间、网络或远端读取失败</h4><p>检查目标在线状态、VPN、账号、空间和目录权限；可恢复错误使用“重试”只处理仍需收口的资源。</p></article>
+                    <article><h4>预览失败或跳过重复文件</h4><p>预览失败会阻断 proof；被冲突策略跳过的项目不会进入 Safe Delete，应保留本机原件或改用重命名重新归档。</p></article>
+                  </div>
+                </section>
+
+                <section class="prepare-subsection proof-subsection" id="proof-next" data-guide-section-group="proof">
+                  <div class="prepare-section-heading"><span aria-hidden="true">06</span><div><h3>proof 完成后再决定是否释放空间</h3></div></div>
+                  <div class="prepare-notice prepare-notice-info"><strong>资格按完整资源组判断</strong><p>普通照片、视频以及 Live Photo 的全部必要资源均完成 proof 后，相关素材才可能出现在 Safe Delete。失败、跳过或远端已删除的项目不会获得资格。</p></div>
+                  <div class="target-next-actions"><a class="btn btn-primary" href="#delete-entry">继续：进入 Safe Delete<span aria-hidden="true">→</span></a><a class="btn btn-secondary" href="#task-created">返回：查看任务结果</a></div>
+                </section>
+              </div>
             </section>
             <section class="page-section" id="delete">
               <h2 data-i18n="guide_delete_title">安全删除</h2>
-              <p data-i18n="guide_delete_text">进入 Safe Delete 查看候选、proof 和阻断原因。需要时主动再次校验，最后通过双确认删除本机副本。</p>
+              <div class="delete-guide" id="delete-guide-detail">
+                <div class="prepare-intro"><p>Safe Delete 是在你决定释放 iPhone 或 iPad 空间时使用的本机删除流程。它只处理本机照片库副本，不会删除 NAS、电脑或云盘中的远端原件。</p><p>请先查看候选和 proof，再决定是否发起删除。远端文件、归档任务和 proof 历史不会因为删除本机副本而被移除。</p></div>
+                <section class="prepare-subsection delete-subsection" id="delete-entry" data-guide-section-group="delete"><div class="prepare-section-heading"><span aria-hidden="true">01</span><div><h3>先从 Safe Delete 候选开始</h3></div></div><p class="prepare-section-copy">打开 Safe Delete 后，页面会把可复核候选与被阻断项目分开显示。没有候选时，通常表示 proof 尚未完成、资源不完整，或本机照片已经不在照片库中。</p><div class="prepare-notice prepare-notice-warning"><strong>Safe Delete 不会自动执行</strong><p>即使项目符合资格，PhotoHarbor 也不会自动删除本机照片；每次删除仍需要你主动确认。</p></div></section>
+                <section class="prepare-subsection delete-subsection" id="delete-candidates" data-guide-section-group="delete"><div class="prepare-section-heading"><span aria-hidden="true">02</span><div><h3>查看候选、proof 与阻断原因</h3></div></div><div class="delete-candidate-grid"><article><h4>可删除候选</h4><p>显示本机素材、所属目标、proof 状态与预计可释放空间。打开详情可查看对应的远端路径和证明记录。</p></article><article><h4>Live Photo 成组判断</h4><p>Live Photo 的静态照片和动态视频都必须具备有效 proof；其中任意资源缺失、失败或已被标记远端删除，整组都不会进入候选。</p></article><article><h4>阻断项目</h4><p>proof 未完成、冲突时跳过、远端副本已删除、资源组不完整或照片权限状态变化时，会显示原因而不是允许删除。</p></article></div></section>
+                <section class="prepare-subsection delete-subsection" id="delete-existing-proof" data-guide-section-group="delete"><div class="prepare-section-heading"><span aria-hidden="true">03</span><div><h3>“删除照片”默认复用已有 proof</h3></div></div><p class="prepare-section-copy">点击“删除照片”时，App 默认复用已保存的 proof 来准备删除确认，不会为了开始确认而自动重新读取远端文件。这让你在 NAS 离线或不在家时，仍能基于已完成的归档证明进入复核。</p><div class="delete-boundary-card"><h4>需要更强确认时，再主动再次校验</h4><p>如果你希望确认远端副本此刻仍然可读，请使用“再次校验”。它是额外复核，不是默认删除流程的隐含步骤。</p></div></section>
+                <section class="prepare-subsection delete-subsection" id="delete-recheck" data-guide-section-group="delete"><div class="prepare-section-heading"><span aria-hidden="true">04</span><div><h3>按需主动再次校验远端</h3></div></div><ol class="target-step-list"><li>在 Safe Delete 中选择“再次校验”。</li><li>App 重新连接目标并检查候选资源的远端可读性。</li><li>通过的项目进入本次删除确认；未通过的项目保留为阻断，不会被删除。</li></ol><div class="prepare-notice prepare-notice-info"><strong>多个目标可部分通过</strong><p>当候选来自多个目标时，能连接并通过检查的项目可以继续；认证失效、VPN 断开或远端读取失败的项目不会混入确认列表。</p></div></section>
+                <section class="prepare-subsection delete-subsection" id="delete-confirm" data-guide-section-group="delete"><div class="prepare-section-heading"><span aria-hidden="true">05</span><div><h3>完成双确认后才删除本机副本</h3></div></div><div class="delete-confirm-flow"><article><span>1</span><h4>准备确认</h4><p>App 汇总即将删除的项目数量与预计释放空间，并生成短时有效的确认状态。</p></article><article><span>2</span><h4>再次确认</h4><p>在确认对话框中核对内容后，才会向 iOS 照片库请求删除本机照片。</p></article><article><span>3</span><h4>遇到变化则停止</h4><p>确认过期、候选变化或 proof 失效时会阻断操作，需要重新回到候选列表确认。</p></article></div></section>
+                <section class="prepare-subsection delete-subsection" id="delete-results" data-guide-section-group="delete"><div class="prepare-section-heading"><span aria-hidden="true">06</span><div><h3>理解删除后的结果与常见阻断</h3></div></div><p class="prepare-section-copy">删除完成后，本机项目从系统照片库移除，PhotoHarbor 会记录删除历史与释放空间。iOS “最近删除”的保留和恢复规则由系统照片库决定，PhotoHarbor 不承诺可恢复期限。</p><div class="delete-troubleshooting"><h4>不能删除时怎么办</h4><dl><div><dt>proof 未完成</dt><dd>返回归档任务，等待或重试失败资源。</dd></div><div><dt>远端副本已删除</dt><dd>该 proof 已不能作为删除依据；请重新归档并完成 proof。</dd></div><div><dt>再次校验失败</dt><dd>检查网络、VPN、认证和远端文件可读性，未通过项目不会被删除。</dd></div><div><dt>确认已过期或候选变化</dt><dd>重新打开候选并再次发起删除确认。</dd></div></dl></div><div class="target-next-actions"><a class="btn btn-primary" href="#library-entry">继续：浏览与恢复<span aria-hidden="true">→</span></a><a class="btn btn-secondary" href="#proof-entry">返回：理解归档证明</a></div></section>
+              </div>
             </section>
             <section class="page-section" id="library">
               <h2 data-i18n="guide_library_title">浏览与恢复</h2>
-              <p data-i18n="guide_library_text">在 Timeline 浏览远端媒体库。你可以预览、分享或保存回 iPhone，但缓存预览不能替代原件。</p>
+              <div class="library-guide" id="library-guide-detail">
+                <div class="prepare-intro"><p>媒体库用于继续浏览、预览、分享或恢复远端照片和视频。它不会因为你打开、播放或看到缩略图而自动上传本机内容，也不会自动删除本机原件。</p><p>浏览体验会优先使用已准备的缩略图和缓存；缓存预览不能替代远端原件，也不能单独作为 Safe Delete 的依据。</p></div>
+                <section class="prepare-subsection library-subsection" id="library-entry" data-guide-section-group="library"><div class="prepare-section-heading"><span aria-hidden="true">01</span><div><h3>先理解媒体库中的两类内容</h3></div></div><div class="library-source-grid"><article><h4>已归档并有 proof 的项目</h4><p>这些项目来自 PhotoHarbor 的归档记录。只要远端副本仍有效，相关 proof 可用于后续 Safe Delete 判断。</p></article><article><h4>扫描发现的远端媒体</h4><p>这些是 App 在目标中发现的已有文件，可以浏览、预览、分享或保存回 iPhone，但不因此获得 Safe Delete 资格。</p></article></div></section>
+                <section class="prepare-subsection library-subsection" id="library-browse" data-guide-section-group="library"><div class="prepare-section-heading"><span aria-hidden="true">02</span><div><h3>按时间或文件夹浏览</h3></div></div><div class="library-browse-grid"><article><h4>时间线浏览</h4><p>按年、月、日查看远端媒体，适合回顾拍摄时间与快速定位最近归档的内容。</p></article><article><h4>文件夹浏览</h4><p>从目标根目录进入目录，适合按项目、年份或 NAS 原有结构查看文件；进入具体目录后也可使用“上传到这里”。</p></article><article><h4>建库仍在进行时</h4><p>扫描和缩略图准备达到可浏览条件后即可先进入媒体库，剩余内容会在后台继续补齐，不需要一直停留在目标详情页。</p></article></div></section>
+                <section class="prepare-subsection library-subsection" id="library-preview" data-guide-section-group="library"><div class="prepare-section-heading"><span aria-hidden="true">03</span><div><h3>正确理解缩略图、预览与原件</h3></div></div><div class="library-preview-grid"><article><h4>缩略图</h4><p>用于快速展示网格和目录封面。App 会优先复用已准备的小图，必要时再从远端生成。</p></article><article><h4>预览与播放</h4><p>打开项目后会按需读取远端内容。网络慢、设备休眠或授权失效时可能需要等待、重试或重新连接。</p></article><article><h4>个别缩略图失败</h4><p>不直接代表原照片或视频损坏；可稍后重新打开预览、重新扫描或等待网络恢复后重试。</p></article></div><div class="prepare-notice prepare-notice-info"><strong>缓存预览不能替代远端原件</strong><p>缓存用于加快再次浏览，不是另一份可用于 proof 或 Safe Delete 的远端备份。</p></div></section>
+                <section class="prepare-subsection library-subsection" id="library-restore" data-guide-section-group="library"><div class="prepare-section-heading"><span aria-hidden="true">04</span><div><h3>把远端素材保存回 iPhone</h3></div></div><ol class="target-step-list"><li>打开照片、视频或 Live Photo 的预览页，选择“保存回 iPhone”。</li><li>App 从远端准备所需资源，并请求系统照片库的添加权限。</li><li>保存完成后，新副本会出现在 iPhone 或 iPad 的照片库中；网络中断或权限被拒绝时不会显示为成功。</li></ol><div class="library-live-photo-card"><h4>Live Photo 会成组恢复</h4><p>保存 Live Photo 时，PhotoHarbor 会同时准备静态照片和动态视频，并作为一组写入系统照片库；其中一项不可用时会提示失败，不会伪装成完整 Live Photo。</p></div></section>
+                <section class="prepare-subsection library-subsection" id="library-share" data-guide-section-group="library"><div class="prepare-section-heading"><span aria-hidden="true">05</span><div><h3>按用途分享高清预览或原件</h3></div></div><div class="library-share-grid"><article><h4>高清预览分享</h4><p>适合快速发送图片预览。App 会先准备可分享的高清预览，首次准备可能需要等待，之后可复用缓存。</p></article><article><h4>原件分享</h4><p>适合需要完整照片、视频或 Live Photo 文件的场景。App 必须从远端下载并准备资源，耗时与网络、文件大小和访问权限有关。</p></article><article><h4>受限或失败时</h4><p>基础版的高分辨率预览和远端原件分享可能显示相应的访问提示；不要把分享成功理解为新的归档 proof。</p></article></div></section>
+                <section class="prepare-subsection library-subsection" id="library-remote-delete" data-guide-section-group="library"><div class="prepare-section-heading"><span aria-hidden="true">06</span><div><h3>谨慎删除远端文件或文件夹</h3></div></div><div class="prepare-notice prepare-notice-warning library-danger-notice"><strong>远端删除会删除实际远端文件</strong><p>它直接作用于 NAS、电脑共享目录或云盘中的原始文件，不能替代 Safe Delete，也不会删除本机照片。删除前必须确认目标、当前目录和所选项目。</p></div><p class="prepare-section-copy">如果删除的是已归档副本，相关远端 proof 将不再可用于 Safe Delete；本机照片会保留，但需要重新归档并完成 proof 后才能再次进入安全删除候选。正在使用该目录的可恢复归档任务也应先完成、暂停或移出该目录。</p></section>
+                <section class="prepare-subsection library-subsection" id="library-web-playback" data-guide-section-group="library"><div class="prepare-section-heading"><span aria-hidden="true">07</span><div><h3>按需使用官方网页播放</h3></div></div><details class="library-web-playback-details"><summary>实验性功能：打开云盘官方播放页面</summary><div><p>当设置中已开启官方网页播放，并且对应目标是 Dropbox、Google Drive 或 OneDrive 时，视频预览页可提供打开服务商官方网页的入口。</p><p>该入口依赖你在 Safari 中已有的服务商登录状态，不会创建公开分享链接，也不保证服务商网页一定能够播放、预览或保持登录。它只用于辅助浏览，不参与上传、proof 或 Safe Delete 判断。</p></div></details><div class="target-next-actions"><a class="btn btn-secondary" href="#task-entry">返回：创建归档任务</a></div></section>
+              </div>
               <img
                 class="guide-workflow-image"
                 src="assets/guide-workflow-zh-Hans.png"
