@@ -2359,6 +2359,26 @@ html[lang="en"] .detail-card p {
 .target-guide dd {
   color: var(--ph-color-text-muted);
   line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+
+.prepare-guide h3,
+.prepare-guide h4,
+.prepare-guide summary,
+.prepare-guide a,
+.target-guide h3,
+.target-guide h4,
+.target-guide summary,
+.target-guide a,
+.toc-subnav a {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+html[lang="de"] .prepare-guide,
+html[lang="de"] .target-guide,
+html[lang="de"] .toc-subnav {
+  hyphens: auto;
 }
 
 .prepare-guide code,
@@ -4158,14 +4178,6 @@ html[lang="en"] .detail-card p {
     content: attr(data-label);
     font-size: 11px;
     font-weight: 800;
-  }
-
-  .target-fields-table tbody td:nth-of-type(1)::before {
-    content: "必填内容";
-  }
-
-  .target-fields-table tbody td:nth-of-type(2)::before {
-    content: "特殊设置";
   }
 
   .target-feature-card summary {

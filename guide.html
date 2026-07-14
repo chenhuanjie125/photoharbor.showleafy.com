@@ -11,7 +11,7 @@
     <title>使用说明 | PhotoHarbor</title>
     <link rel="icon" href="assets/app-icon.png" type="image/png">
     <link rel="apple-touch-icon" href="assets/app-icon.png">
-    <link rel="stylesheet" href="assets/styles.css?v=20260713prepareguide">
+    <link rel="stylesheet" href="assets/styles.css?v=20260714guidei18n">
   </head>
   <body data-title-key="guide_title">
     <header class="site-header">
@@ -90,9 +90,7 @@
           <div class="page-content">
             <section class="page-section" id="prepare">
               <h2 data-i18n="guide_prepare_title">准备工作</h2>
-              <p data-i18n="guide_prepare_text" data-locale-except="zh-Hans">准备一个可访问的 NAS、Mac / Windows 共享文件夹、WebDAV、SFTP 或云盘目标，并在 iOS 中授予 PhotoHarbor 照片访问权限。</p>
-
-              <div class="prepare-guide" id="prepare-guide-detail" data-locale-only="zh-Hans">
+              <div class="prepare-guide" id="prepare-guide-detail">
                 <div class="prepare-intro">
                   <p>完成以下准备后，再进入“添加存储目标”。第一次使用时，建议让 iPhone 或 iPad 与 NAS、Mac 或 Windows 电脑连接到同一个 Wi‑Fi，并优先使用 SMB。</p>
                   <p>PhotoHarbor 不要求你先把照片复制到电脑，也不要求把家中的 NAS 暴露到公网。App 只有在所选远端文件夹通过连接、写入、浏览和轻量读取检查后，才会把它保存为可用目标；本机照片也不会被自动删除。</p>
@@ -260,14 +258,14 @@
                         <tr><th scope="col">App 字段</th><th scope="col">应填写内容</th><th scope="col">示例</th></tr>
                       </thead>
                       <tbody>
-                        <tr><th scope="row">显示名称</th><td data-label="应填写内容">只用于在 PhotoHarbor 中识别目标</td><td data-label="示例">家庭群晖</td></tr>
-                        <tr><th scope="row">主机地址</th><td data-label="应填写内容">IP 或域名，不填写文件夹路径</td><td data-label="示例"><code>192.168.1.20</code></td></tr>
-                        <tr><th scope="row">端口</th><td data-label="应填写内容">SMB 常用 445、WebDAV 常用 443/80、SFTP 常用 22</td><td data-label="示例"><code>445</code></td></tr>
-                        <tr><th scope="row">文件夹路径</th><td data-label="应填写内容">账号有读写权限的归档目录</td><td data-label="示例"><code>/PhotoHarbor</code></td></tr>
-                        <tr><th scope="row">用户名/密码</th><td data-label="应填写内容">NAS、Mac、Windows 或服务器账号</td><td data-label="示例">专用普通账号</td></tr>
-                        <tr><th scope="row">SMB 域</th><td data-label="应填写内容">仅在工作组或域环境需要</td><td data-label="示例">留空或填写实际域</td></tr>
-                        <tr><th scope="row">SFTP 认证</th><td data-label="应填写内容">密码或支持的私钥</td><td data-label="示例">Ed25519/ECDSA</td></tr>
-                        <tr><th scope="row">云盘文件夹</th><td data-label="应填写内容">授权后在 App 中选择</td><td data-label="示例">无需手工输入 ID</td></tr>
+                        <tr><th scope="row">显示名称</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">只用于在 PhotoHarbor 中识别目标</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example">家庭群晖</td></tr>
+                        <tr><th scope="row">主机地址</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">IP 或域名，不填写文件夹路径</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example"><code>192.168.1.20</code></td></tr>
+                        <tr><th scope="row">端口</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">SMB 常用 445、WebDAV 常用 443/80、SFTP 常用 22</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example"><code>445</code></td></tr>
+                        <tr><th scope="row">文件夹路径</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">账号有读写权限的归档目录</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example"><code>/PhotoHarbor</code></td></tr>
+                        <tr><th scope="row">用户名/密码</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">NAS、Mac、Windows 或服务器账号</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example">专用普通账号</td></tr>
+                        <tr><th scope="row">SMB 域</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">仅在工作组或域环境需要</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example">留空或填写实际域</td></tr>
+                        <tr><th scope="row">SFTP 认证</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">密码或支持的私钥</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example">Ed25519/ECDSA</td></tr>
+                        <tr><th scope="row">云盘文件夹</th><td data-label="应填写内容" data-i18n-data-label="guide_detail_table_value">授权后在 App 中选择</td><td data-label="示例" data-i18n-data-label="guide_detail_table_example">无需手工输入 ID</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -374,9 +372,7 @@
             </section>
             <section class="page-section" id="target">
               <h2 data-i18n="guide_target_title">添加存储目标</h2>
-              <p data-i18n="guide_target_text" data-locale-except="zh-Hans">在 Targets 中添加目标并完成连接检查。云盘目标需要通过对应平台 OAuth 授权，并选择用于归档的文件夹。</p>
-
-              <div class="target-guide" id="target-guide-detail" data-locale-only="zh-Hans">
+              <div class="target-guide" id="target-guide-detail">
                 <div class="prepare-intro">
                   <p>存储目标是 PhotoHarbor 用来归档照片和视频的远端位置。添加前请先完成“准备工作”，确认目标目录可以连接并具有读写权限。</p>
                   <p>基础版可以配置 1 个可写目标；完整版或完整试用期可以配置多个目标。达到数量上限时，App 会先显示升级提示，不会进入添加表单。</p>
@@ -451,10 +447,10 @@
                     <table class="prepare-fields-table target-fields-table">
                       <thead><tr><th>类型</th><th>必填内容</th><th>特殊设置</th></tr></thead>
                       <tbody>
-                        <tr><th>SMB</th><td>主机、共享文件夹、用户名、密码</td><td>端口通常为 <code>445</code>；工作组或域环境才填写“SMB 域”</td></tr>
-                        <tr><th>WebDAV</th><td>HTTP/HTTPS、主机、端口、路径</td><td>HTTPS 通常为 <code>443</code>，HTTP 通常为 <code>80</code>；HTTP 会显示未加密风险提示</td></tr>
-                        <tr><th>SFTP</th><td>主机、端口、远端路径、用户名、认证信息</td><td>端口通常为 <code>22</code>；支持密码或私钥认证</td></tr>
-                        <tr><th>云盘</th><td>官方账号授权、归档文件夹</td><td>不需要填写服务器密码、access token 或文件夹 ID</td></tr>
+                        <tr><th>SMB</th><td data-label="必填内容" data-i18n-data-label="guide_detail_table_required">主机、共享文件夹、用户名、密码</td><td data-label="特殊设置" data-i18n-data-label="guide_detail_table_options">端口通常为 <code>445</code>；工作组或域环境才填写“SMB 域”</td></tr>
+                        <tr><th>WebDAV</th><td data-label="必填内容" data-i18n-data-label="guide_detail_table_required">HTTP/HTTPS、主机、端口、路径</td><td data-label="特殊设置" data-i18n-data-label="guide_detail_table_options">HTTPS 通常为 <code>443</code>，HTTP 通常为 <code>80</code>；HTTP 会显示未加密风险提示</td></tr>
+                        <tr><th>SFTP</th><td data-label="必填内容" data-i18n-data-label="guide_detail_table_required">主机、端口、远端路径、用户名、认证信息</td><td data-label="特殊设置" data-i18n-data-label="guide_detail_table_options">端口通常为 <code>22</code>；支持密码或私钥认证</td></tr>
+                        <tr><th>云盘</th><td data-label="必填内容" data-i18n-data-label="guide_detail_table_required">官方账号授权、归档文件夹</td><td data-label="特殊设置" data-i18n-data-label="guide_detail_table_options">不需要填写服务器密码、access token 或文件夹 ID</td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -716,6 +712,6 @@
         <div><h3 data-i18n="footer_contact">联系</h3><div class="footer-links"><a href="mailto:support@showleafy.com">support@showleafy.com</a></div><p data-i18n="footer_privacy_note">PhotoHarbor 不通过官网托管你的照片或凭据。</p></div>
       </div>
     </footer>
-    <script src="assets/app.js?v=20260713prepareguide"></script>
+    <script src="assets/app.js?v=20260714guidei18n"></script>
   </body>
 </html>
