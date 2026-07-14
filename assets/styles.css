@@ -4166,14 +4166,14 @@ html[lang="de"] .toc-subnav {
   }
 
   .prepare-fields-table tbody td {
-    display: grid;
-    grid-template-columns: minmax(76px, 0.32fr) minmax(0, 1fr);
-    gap: 9px;
+    display: block;
     padding-top: 7px;
     border-top: 1px solid rgba(220, 232, 250, 0.66);
   }
 
   .prepare-fields-table tbody td::before {
+    display: block;
+    margin-bottom: 4px;
     color: var(--ph-color-text-subtle);
     content: attr(data-label);
     font-size: 11px;
